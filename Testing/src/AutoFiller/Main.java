@@ -115,13 +115,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setEnabled(false);
+        crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
         okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(false);
-        tempoeEnabled.setEnabled(false);
+        merchantsEnabled.setEnabled(true);
+        tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);      
     }
 
@@ -1554,7 +1554,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             firstThread.SimpleFinance(driver1);
         }
         
-       /*
+       
         if(snapEnabled.isSelected()) {
             WebDriver driver2 = new ChromeDriver();
             driver2.get("https://merchant.snapfinance.com/#/dashboard");
@@ -1579,13 +1579,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("loading tempoe");
             firstThread.TempoeFinance(driver5);
         }
-*/
+
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
             driver6.get("https://app.okinus.com/applicationStart?storeguid=f2b9b394-6b2d-4567-8466-f7c90d0eee96&sel=true");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }
+        
         
         //Simple
         
@@ -3153,9 +3154,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-bank-name']")).sendKeys(bankName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-checking-account']")).sendKeys(accountNumber);
-//           String tempDate = (month - Integer.parseInt(monthsAccountOpen.getSelectedItem().toString())) + "30" + year;
-  //         System.out.println(tempDate);
-    //       driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
+           String tempDate = "";
+           if (month - Integer.parseInt(monthAccountOpen) < 10){
+           tempDate = "0"+(month - Integer.parseInt(monthAccountOpen) + "30" + year);
+           } else {
+           tempDate = (month - Integer.parseInt(monthAccountOpen) + "30" + year);
+           } 
+           
+           System.out.println(tempDate);
+           driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-number']")).sendKeys(cardNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-bank-name']")).sendKeys(bankName);
            //Decode Card Type by number
