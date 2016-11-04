@@ -14,6 +14,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -132,7 +133,11 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inputLine = null;
         String user = username.getText();
-        String pass = password.getText();       
+        String pass = password.getText(); 
+        if ( username.getText().trim().length() == 0 ||password.getText().trim().length() == 0 ){
+            JOptionPane.showMessageDialog(null, "Please enter username and password"); 
+            return ;
+        }        
         MessageDigest m = null;
         try {
             m = MessageDigest.getInstance("MD5");
@@ -152,18 +157,23 @@ public class Login extends javax.swing.JFrame {
         java.net.URL connectURL;
         BufferedReader data = null;
         try {
-            connectURL = new URL("https://www.surconsultinggroup.com/finance/signintemp.php?name="+ user + "&pass=" + pass);
+            connectURL = new URL("https://www.surconsultinggroup.com/finance/signin.php?name="+ user + "&pass=" + pass);
             System.out.println(connectURL);
             data = new BufferedReader(new InputStreamReader(connectURL.openStream()));
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception occured");
         }
         try {
             inputLine = data.readLine();
-            if (inputLine.contains(pass)) {
+            if (inputLine != null) {
                 System.out.println(inputLine);
                 this.setVisible(false);
                 new Main().setVisible(true);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
             }
             data.close();
         } catch (IOException ex) {
@@ -196,6 +206,8 @@ public class Login extends javax.swing.JFrame {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
+        username.setText("");
+        password.setText("");
     }//GEN-LAST:event_clearActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
