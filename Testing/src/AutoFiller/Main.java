@@ -1,8 +1,8 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+  */
 package AutoFiller;
 
 import java.awt.Color;
@@ -1063,30 +1063,23 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                                     .addComponent(nextPaydayDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(nextPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(305, 305, 305)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(snapEnabled)
+                    .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(crestEnabled)
-                                .addComponent(simpleEnabled))
-                            .addGap(10, 10, 10))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(snapEnabled)
-                                .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(merchantsEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tempoeEnabled)))
-                            .addContainerGap()))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(okinusEnabled))
-                        .addContainerGap())))
+                        .addComponent(merchantsEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tempoeEnabled))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(progressiveEnabled)
+                        .addComponent(crestEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(simpleEnabled)
+                        .addComponent(okinusEnabled)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1310,8 +1303,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(lastPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(crestEnabled)
-                        .addGap(10, 10, 10)
                         .addComponent(simpleEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(okinusEnabled)
@@ -1319,7 +1310,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addComponent(progressiveEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(snapEnabled)
-                        .addGap(4, 4, 4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(crestEnabled)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(merchantsEnabled)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tempoeEnabled)
@@ -1543,7 +1536,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
+            driver.get("https://dealers.crestfinancial.com/Apply/jokers_audio");
             firstThread.CrestFinance(driver);
         
         }
@@ -1554,7 +1547,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             firstThread.SimpleFinance(driver1);
         }
         
-       /*
+       
         if(snapEnabled.isSelected()) {
             WebDriver driver2 = new ChromeDriver();
             driver2.get("https://merchant.snapfinance.com/#/dashboard");
@@ -1563,7 +1556,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/nancysamericantrade/48947#/marketing");
+            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/marketing");
             firstThread.ProgressFinance(driver3);
         }
 
@@ -1579,7 +1572,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("loading tempoe");
             firstThread.TempoeFinance(driver5);
         }
-*/
+        
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
             driver6.get("https://app.okinus.com/applicationStart?storeguid=f2b9b394-6b2d-4567-8466-f7c90d0eee96&sel=true");
