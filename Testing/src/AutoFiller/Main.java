@@ -1990,26 +1990,25 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private void sfSetNextPayDay(WebDriver driver1) throws InterruptedException{
         String lp_month = nextPay.substring(0,2);
                 //nextPaydayMonth.getSelectedItem().toString();
-        int lp_month_num = monthToNum(lp_month, "MM");
+        int lp_month_num = Integer.parseInt(lp_month);
         String lp_month_name = numToMonth(lp_month_num);
         String lp_day = nextPay.substring(2,4);
                 //"" + (nextPaydayDay.getSelectedIndex() + 1);
         String lp_year = nextPay.substring(6,8);
                 //nextPaydayYear.getSelectedItem().toString();
-            System.out.println(lp_month + "/"+ lp_day + "/"+ lp_year);
-            
-            
+            System.out.println(lp_month + "/"+ lp_day + "/"+ lp_year);                     
         // Click to open calendar
         String lp_mo_button_xpath = "//*[@id=\"lease_applicant_attributes_next_payday_on\"]";
         driver1.findElement(By.xpath(lp_mo_button_xpath)).click();
-        Thread.sleep(500);
+        Thread.sleep(500);          
         
         // Parse the month on the page
         String lp_mo_xpath = "/html/body/div[7]/div[1]/table/thead/tr[1]/th[2]";
         String month_on_page = driver1.findElement(By.xpath(lp_mo_xpath)).getText().split(" ")[0];
         
         // Get the month numbers and compare to last payday
-        int month_on_page_num = monthToNum(month_on_page, "MMMM");
+        int month_on_page_num1 = monthToNum(month_on_page, "MMMM");
+        int month_on_page_num = month_on_page_num1 +1;       
 
         // Go backwards if date is ahead
         if(lp_month_num < month_on_page_num) {
@@ -2047,7 +2046,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                     String xPathString = "/html/body/div[7]/div[1]/table/tbody/tr["+ i +"]/td["+ j +"]";
                     System.out.println("I looking for the date " + xPathString); 
 
-                    if(driver1.findElement(By.xpath(xPathString)).getText().equalsIgnoreCase(lp_day)){
+                    if(Integer.parseInt(driver1.findElement(By.xpath(xPathString)).getText()) == Integer.parseInt(lp_day)){
                        System.out.println("I clicked the date ");
                        driver1.findElement(By.xpath(xPathString)).click();
                        found_date = true;
@@ -2520,8 +2519,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
          System.out.println(Pay);
          }
         driver1.findElement(By.id("lease_applicant_attributes_last_payday_on")).click();
-
         sfSetLastPayDay(driver1);
+        driver1.findElement(By.id("lease_applicant_attributes_next_payday_on")).click();
         sfSetNextPayDay(driver1);
         
         driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/button")).click();
