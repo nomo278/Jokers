@@ -1725,21 +1725,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         income.setText("");
         supername.setText("");
         workphone.setText("");
-        addressYears.setSelectedIndex(0);
-        addressMonths.setSelectedIndex(0);
-        monthExp.setSelectedIndex(0);
-        yearExp.setSelectedIndex(0);
-        hireDateMonth.setSelectedIndex(0);
-        hireDateYear.setSelectedIndex(0);
-        lastPaydayMonth.setSelectedIndex(0);
-        lastPaydayYear.setSelectedIndex(0);
-        lastPaydayDay.setSelectedIndex(0);
-        nextPaydayMonth.setSelectedIndex(0);
-        nextPaydayYear.setSelectedIndex(0);
-        nextPaydayDay.setSelectedIndex(0);
-        yearsaccountopen.setSelectedIndex(0);
-        monthsaccountopen.setSelectedIndex(0);       
-        
     }//GEN-LAST:event_clearFieldsActionPerformed
 
     private void crestEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crestEnabledActionPerformed
@@ -2532,7 +2517,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         sfSetNextPayDay(driver1);
         
         driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/button")).click();
-       String income_type_xpath = "/html/body/div[1]/div[1]/div/div/form/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[" + (incomeType.getSelectedIndex() + 1) + "]/a/label/input";
+        String income_type_xpath = "/html/body/div[1]/div[1]/div/div/form/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[" + (incomeType.getSelectedIndex() + 1) + "]/a/label/input";
         driver1.findElement(By.xpath(income_type_xpath)).click();
 
         //driver1.findElement(By.className("submit_button")).click();
@@ -2738,24 +2723,19 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver3.findElement(By.xpath("//*[@id='MoveNext']")).click();
         //    Thread.sleep(2000);
         //Rent or Own
-        if("Rent".equals(Rent)){
+        if(Rent == "Rent"){
           driver3.findElement(By.id("Residence_HousingStatus_Rent")).click();
         }
-        else if("Own".equals(Own)){
+        if(Own == "Own"){
         
         driver3.findElement(By.id("Residence_HousingStatus_Own")).click();
         }
             Thread.sleep(2000);
                  
-        //Select dropdown43 = new Select(driver3.findElement(By.id("Identification_IdentificationType"))); //TODO: Make if statment
-        //dropdown43.selectByIndex(1); 
-        Select dropdown43 = new Select(driver3.findElement(By.name("Identification_IdentificationType"))); //TODO: Make if statment
-        dropdown43.selectByIndex(1);
+        Select dropdown43 = new Select(driver3.findElement(By.id("Identification_IdentificationType"))); //TODO: Make if statment
+        dropdown43.selectByIndex(1); 
         
         driver3.findElement(By.id("Identification_Number")).sendKeys(dlN);
-        Select dropdown44 = new Select(driver3.findElement(By.name("Identification_State"))); //TODO: Make if statment
-        dropdown44.selectByIndex(1);
-        
         driver3.findElement(By.id("Identification_State")).sendKeys(stateK);
                
         driver3.findElement(By.id("MoveNext")).click();
@@ -3140,10 +3120,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[4]/a/span[2]")).click();
            if(Pay == "Weekly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[2]/a")).click();
-           //if(Integer.valueOf(incomeN)<= 2000){
+           if(Integer.valueOf(incomeN)<= 2000){
            tempIncome = Integer.valueOf(incomeN) / 4;
            System.out.println(tempIncome);
-           //}
+           }
            }else if(Pay == "Bi weekly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[3]/a")).click();
            
@@ -3154,7 +3134,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            tempIncome = Integer.valueOf(incomeN) / 2;
            }else if(Pay == "Monthly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[5]/a")).click();
-           tempIncome = Integer.valueOf(incomeN);
+           
            }
            String tempIncomeString = String.valueOf(tempIncome);
          //  driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[4]/div/div[1]/div[4]/a/span[1]")).sendKeys(Pay);
@@ -3165,20 +3145,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-bank-name']")).sendKeys(bankName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-checking-account']")).sendKeys(accountNumber);
-           Calendar tempDate5 = Calendar.getInstance();
-           tempDate5.add(Calendar.DAY_OF_YEAR, -10);
-           System.out.println(tempDate5.getTime());
-           int totalMonths = (Integer.parseInt(yearAccountOpen) * 12)+ Integer.parseInt(monthAccountOpen);
-           int yearsBack = totalMonths/12;
-           int monthsBack = totalMonths%12;
-           System.out.println(yearsBack+"and"+monthsBack);
-          // tempDate5.roll(Calendar.ge,-10 );
-           System.out.println(tempDate5.getTime());
-           //String tempDate = (month - Integer.parseInt(monthsaccountopen.getSelectedItem().toString())) + "30" + year;
-           int monthOpen = Integer.parseInt(monthAccountOpen);           
-           String monthOpen1 = Integer.toString(month - monthOpen);
-           String tempDate = monthOpen1 + "30" + year;
-           System.out.println(tempDate);
+//           String tempDate = (month - Integer.parseInt(monthsAccountOpen.getSelectedItem().toString())) + "30" + year;
+  //         System.out.println(tempDate);
     //       driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-number']")).sendKeys(cardNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-bank-name']")).sendKeys(bankName);

@@ -42,6 +42,8 @@ public class Login extends javax.swing.JFrame {
         Img = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
         clear = new javax.swing.JButton();
         login = new javax.swing.JButton();
 
@@ -55,6 +57,14 @@ public class Login extends javax.swing.JFrame {
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Password");
+
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
             }
         });
 
@@ -82,10 +92,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(Img, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addComponent(username)
+                    .addComponent(jLabel3)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(clear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(login)))
+                        .addComponent(login))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,11 +109,15 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login)
                     .addComponent(clear))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,17 +133,31 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inputLine = null;
         String user = username.getText();
-        
-        if ( username.getText().trim().length() == 0 ){
-            JOptionPane.showMessageDialog(null, "Please enter username"); 
+        String pass = password.getText(); 
+        if ( username.getText().trim().length() == 0 ||password.getText().trim().length() == 0 ){
+            JOptionPane.showMessageDialog(null, "Please enter username and password"); 
             return ;
         }        
-        
-        
+        MessageDigest m = null;
+        try {
+            m = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        m.reset();
+        m.update(pass.getBytes());
+        byte[] digest = m.digest();
+        BigInteger bigInt = new BigInteger(1, digest);
+        String hashtext = bigInt.toString(16);
+// Now we need to zero pad it if you actually want the full 32 chars.
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        System.out.println(hashtext);
         java.net.URL connectURL;
         BufferedReader data = null;
         try {
-            connectURL = new URL("https://www.surconsultinggroup.com/finance/signin.php?name="+ user + "&pass=");
+            connectURL = new URL("https://www.surconsultinggroup.com/finance/signin.php?name="+ user + "&pass=" + pass);
             System.out.println(connectURL);
             data = new BufferedReader(new InputStreamReader(connectURL.openStream()));
         } catch (IOException ex) {
@@ -143,7 +173,7 @@ public class Login extends javax.swing.JFrame {
             }
             else
             {
-               JOptionPane.showMessageDialog(null, "Username incorrect. Please try again!!"); 
+               JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
             }
             data.close();
         } catch (IOException ex) {
@@ -177,8 +207,12 @@ public class Login extends javax.swing.JFrame {
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
         username.setText("");
-       
+        password.setText("");
     }//GEN-LAST:event_clearActionPerformed
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +261,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Img;
     private javax.swing.JButton clear;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton login;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
