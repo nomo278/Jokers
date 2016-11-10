@@ -1725,6 +1725,24 @@ public class Main extends javax.swing.JFrame implements Runnable{
         income.setText("");
         supername.setText("");
         workphone.setText("");
+        dobYear.setSelectedIndex(0);
+        dobMonth.setSelectedIndex(0);
+        dobDay.setSelectedIndex(0);
+        addressYears.setSelectedIndex(0);
+        addressMonths.setSelectedIndex(0);
+        yearsaccountopen.setSelectedIndex(0);
+        monthsaccountopen.setSelectedIndex(0);
+        monthExp.setSelectedIndex(0);
+        yearExp.setSelectedIndex(0);
+        hireDateMonth.setSelectedIndex(0);
+        hireDateYear.setSelectedIndex(0);
+        lastPaydayYear.setSelectedIndex(0);
+        lastPaydayMonth.setSelectedIndex(0);
+        lastPaydayDay.setSelectedIndex(0);
+        nextPaydayYear.setSelectedIndex(0);
+        nextPaydayMonth.setSelectedIndex(0);
+        nextPaydayDay.setSelectedIndex(0);          
+                
     }//GEN-LAST:event_clearFieldsActionPerformed
 
     private void crestEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crestEnabledActionPerformed
@@ -2726,7 +2744,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         if(Rent == "Rent"){
           driver3.findElement(By.id("Residence_HousingStatus_Rent")).click();
         }
-        if(Own == "Own"){
+        else if(Own == "Own"){
         
         driver3.findElement(By.id("Residence_HousingStatus_Own")).click();
         }
