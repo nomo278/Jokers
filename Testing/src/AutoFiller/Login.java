@@ -62,6 +62,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Password");
 
+        password.setToolTipText("");
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
