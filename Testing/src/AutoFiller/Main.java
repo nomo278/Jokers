@@ -115,13 +115,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setEnabled(false);
+        crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
         okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(false);
-        tempoeEnabled.setEnabled(false);
+        merchantsEnabled.setEnabled(true);
+        tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);      
     }
 
@@ -1067,18 +1067,18 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(merchantsEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tempoeEnabled))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(progressiveEnabled)
-                                .addComponent(crestEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addComponent(simpleEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(snapEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(snapEnabled)
+                                .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(merchantsEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tempoeEnabled))
+                                .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(simpleEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(crestEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1175,7 +1175,19 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                         .addGap(10, 10, 10)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(crestEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(okinusEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(simpleEnabled)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(snapEnabled)))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1302,19 +1314,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(lastPaydayDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lastPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(snapEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(okinusEnabled)
-                        .addGap(10, 10, 10)
                         .addComponent(progressiveEnabled)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(crestEnabled)
-                        .addGap(10, 10, 10)
                         .addComponent(merchantsEnabled)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(10, 10, 10)
                         .addComponent(tempoeEnabled)
                         .addGap(18, 18, 18)
                         .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1533,33 +1536,34 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Main firstThread = new Main();
         //Crest
          
-        /*
+        
+        
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
             firstThread.CrestFinance(driver);
         
         }
-        */
+        
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?merchant_id=72C9ED");
+            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=644781");
             firstThread.SimpleFinance(driver1);
-        }
-        
-       
+        } 
+         
         if(snapEnabled.isSelected()) {
             WebDriver driver2 = new ChromeDriver();
             driver2.get("https://merchant.snapfinance.com/#/dashboard");
             firstThread.SnapFinance(driver2);
-        }
-       
+        } 
+        
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/marketing");
+            driver3.get("https://approve.me/s/paylessfurniture2/32918#/marketing");
             firstThread.ProgressFinance(driver3);
-        }
-/*
+        } 
+        
+        
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
           driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
@@ -1571,49 +1575,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver5.get("https://pulse.tempoe.com/onlinewebapp-intempoe.aspx");
             System.out.println("loading tempoe");
             firstThread.TempoeFinance(driver5);
-        }*/
+        }
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://app.okinus.com/applicationStart?storeguid=a3806da4-1471-48a3-b1d2-4fcfff9f7fa6&sel=true");
+            driver6.get("https://app.okinus.com/applicationStart?storeguid=f2b9b394-6b2d-4567-8466-f7c90d0eee96&sel=true");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
-        }
-        
-        //Simple
-        
-
-        //Snap
-  
-        //Progressive
-
-        /*
-        //Merchants Perferred
-        
-        WebDriver driver4 = new ChromeDriver();
-        driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
-        */
-        // CHECK BOX STUFF
-        
-        
-        
-        // 
-
-        // driver.findElement(By.id("FirstName")).sendKeys(this.firstname.getText());
-
-        /*
-        //   RunnableDemo R1 = new RunnableDemo( "Thread-1");
-        System.out.println("Hello " + R1.threadName);
-        R1.StartCrest();
-        //  RunnableDemo R2 = new RunnableDemo( "Thread-2");
-        System.out.println("Starting StartCrest Thread-2");
-        R2.StartCrest();
-        R1.CrestFinance();
-
-        System.out.println("Hello " + R1.threadName);
-
-        R2.CrestFinance();
-        */
+        } 
+          
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void postholdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postholdActionPerformed
@@ -2554,8 +2524,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
           try{
                Thread.sleep(500);
-        driver2.findElement(By.name("username")).sendKeys("jordanfurngallery");
-        driver2.findElement(By.name("password")).sendKeys("Jordan" + "3190");
+        driver2.findElement(By.name("username")).sendKeys("payless furn");
+        driver2.findElement(By.name("password")).sendKeys("Payless2");
         driver2.findElement(By.id("btn-login")).click();
         
         Thread.sleep(4500);
