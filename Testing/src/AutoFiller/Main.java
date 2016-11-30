@@ -109,6 +109,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
+   public int toggleLang = 0;
     /**
      * Creates new form Main
      */
@@ -122,7 +123,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         okinusEnabled.setEnabled(true);
         merchantsEnabled.setEnabled(true);
         tempoeEnabled.setEnabled(true);
-       debugAutoFill.setVisible(true);      
+       debugAutoFill.setVisible(true);  
+       LangToggle.setVisible(true);      
+  
+       
     }
 
     /**
@@ -260,6 +264,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         title = new javax.swing.JComboBox<>();
         csvCode = new javax.swing.JTextField();
         cardCode1 = new javax.swing.JLabel();
+        LangToggle = new javax.swing.JToggleButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -807,6 +812,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         cardCode1.setForeground(new java.awt.Color(201, 174, 30));
         cardCode1.setText("Security Code");
 
+        LangToggle.setText("English");
+        LangToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LangToggleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -815,7 +827,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(LangToggle)))
                         .addGap(202, 202, 202)
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -1086,9 +1102,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(LangToggle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1537,7 +1557,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //Crest
          
         
-        
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
             driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
@@ -1668,7 +1687,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         middlename.setText("");
         lastname.setText("");
         dl.setText("");
-        // dlstate.setText("");
+//        dlstate.setSelectedIndex(0);
         ssn.setText("");
         streetaddress.setText("");
         city.setText("");
@@ -1814,6 +1833,44 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private void lastPaydayMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastPaydayMonthActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lastPaydayMonthActionPerformed
+
+    private void LangToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LangToggleActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        if(toggleLang == 0){
+            LangToggle.setText("Spanish");
+            jLabel9.setText("Nombre De Pila");
+            jLabel10.setText("Segundo Nombre");
+            jLabel11.setText("Apellido");
+            jLabel22.setText("Número de Licencia de Conducir");
+            jLabel21.setText("Número de Licencia de Conducir");
+            jLabel6.setText("Referencias personales");
+            jLabel26.setText("Teléfono #");
+            jLabel3.setText("Primer apellido");
+            jLabel28.setText("Teléfono #");
+            jLabel27.setText("Primer apellido");
+            jLabel12.setText("nombre de la calle");
+            jLabel20.setText("Fecha de nacimiento");
+            jLabel9.setText("Nombre De Pila");
+            
+            
+            
+        toggleLang ++; 
+        } else if(toggleLang == 1){
+        progressiveEnabled.setBackground(Color.LIGHT_GRAY);
+        toggleLang --;
+        }
+        /*
+        if(toggleLang = false){
+        jLabel9.setText("Not some shit");
+        
+        
+        toggleLang = true; 
+        } 
+        if (toggleLang = true){
+        jLabel9.setText("Someshit");
+        }*/
+    }//GEN-LAST:event_LangToggleActionPerformed
     
     Random r = new Random();
     
@@ -2086,6 +2143,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JToggleButton LangToggle;
     public javax.swing.JTextField accountnumber;
     private javax.swing.JComboBox<String> addressMonths;
     private javax.swing.JComboBox<String> addressYears;
