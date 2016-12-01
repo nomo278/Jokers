@@ -2961,11 +2961,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             Thread.sleep(2000);
             //Select company
-            String addyear_xpath = "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]";
-            SetText(driver4, addyear_xpath, addYears, true);
-            String addmonth_xpath = "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input[1]";
-            SetText(driver4, addmonth_xpath, addMonths, true);
-              
+            
+            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")).sendKeys(addYears);
+            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input[1]")).sendKeys(addMonths);
 
             
             
@@ -3061,9 +3059,19 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
             Thread.sleep(2000);
 
-            
-            
-            
+        
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmployerTextBox")).sendKeys(employerN);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pTitleTextBox")).sendKeys(Title);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
+        
         } catch(Exception e){
             System.out.println("Element not Found on 5th page (Perferred)");
       }
