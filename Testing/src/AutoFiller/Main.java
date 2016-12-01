@@ -117,12 +117,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(true);
+        simpleEnabled.setEnabled(false);
         snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(true);
+        okinusEnabled.setEnabled(false);
         merchantsEnabled.setEnabled(true);
-        tempoeEnabled.setEnabled(true);
+       tempoeEnabled.setEnabled(false);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -315,7 +315,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(201, 174, 30));
-        jLabel8.setText("IncomeType");
+        jLabel8.setText("Income Type");
 
         incomeType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direct Deposit from Employer", "Paychecks from Employer", "Self-Employment", "Social Security", "Long Term Disability", "Military", "Alimony" }));
         incomeType.addActionListener(new java.awt.event.ActionListener() {
@@ -839,7 +839,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -910,26 +910,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel21)
-                                            .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel18)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(rent)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(own)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel25)
-                                            .addComponent(email))))
+                                            .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
@@ -949,6 +930,26 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                     .addComponent(refphone1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel28)
                                     .addComponent(refphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(own)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
+                                    .addComponent(email))
+                                .addGap(292, 292, 292))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1079,22 +1080,23 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(nextPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(snapEnabled)
-                                .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(merchantsEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tempoeEnabled))
-                                .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(simpleEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(okinusEnabled)
                         .addComponent(crestEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(snapEnabled)
+                        .addComponent(merchantsEnabled)
+                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(simpleEnabled)
+                    .addComponent(tempoeEnabled)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1102,11 +1104,22 @@ public class Main extends javax.swing.JFrame implements Runnable{
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(crestEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(snapEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(progressiveEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(merchantsEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(okinusEnabled))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addComponent(LangToggle)
+                                .addComponent(LangToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1195,19 +1208,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                         .addGap(10, 10, 10)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(crestEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(okinusEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(snapEnabled)))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1281,8 +1283,21 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(yearExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(monthExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(csvCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(csvCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(simpleEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(tempoeEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1306,10 +1321,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(jLabel42)
                                 .addComponent(jLabel43)))
                         .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
                                 .addComponent(jLabel46)
-                                .addGap(2, 2, 2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(supername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1332,19 +1348,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(nextPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lastPaydayMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lastPaydayDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lastPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(progressiveEnabled)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(merchantsEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(tempoeEnabled)
-                        .addGap(18, 18, 18)
-                        .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lastPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1559,7 +1563,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/3888");
             firstThread.CrestFinance(driver);
         
         }
@@ -1748,19 +1752,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
     }//GEN-LAST:event_crestEnabledActionPerformed
 
-    private void simpleEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpleEnabledActionPerformed
-        // TODO add your handling code here:
-        
-         if(odd2 == 0){
-        simpleEnabled.setBackground(Color.green);
-        odd2 ++; 
-        } else if(odd2 == 1){
-        
-        simpleEnabled.setBackground(Color.LIGHT_GRAY);
-        odd2 --;
-        } 
-    }//GEN-LAST:event_simpleEnabledActionPerformed
-
     private void snapEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snapEnabledActionPerformed
         // TODO add your handling code here:
          if(odd3 == 0){
@@ -1783,40 +1774,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         odd4 --;
         } 
     }//GEN-LAST:event_progressiveEnabledActionPerformed
-
-    private void okinusEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okinusEnabledActionPerformed
-        // TODO add your handling code here:
-        if(odd5 == 0){
-        okinusEnabled.setBackground(Color.green);
-        odd5 ++; 
-        } else if(odd5 == 1){
-        
-        okinusEnabled.setBackground(Color.LIGHT_GRAY);
-        odd5 --;
-        } 
-    }//GEN-LAST:event_okinusEnabledActionPerformed
-
-    private void merchantsEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_merchantsEnabledActionPerformed
-        // TODO add your handling code here:
-        if(odd6 == 0){
-        merchantsEnabled.setBackground(Color.green);
-        odd6 ++; 
-        } else if(odd6 == 1){
-        merchantsEnabled.setBackground(Color.LIGHT_GRAY);
-        odd6 --;
-        } 
-    }//GEN-LAST:event_merchantsEnabledActionPerformed
-
-    private void tempoeEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempoeEnabledActionPerformed
-        // TODO add your handling code here:
-        if(odd7 == 0){
-        tempoeEnabled.setBackground(Color.green);
-        odd7 ++; 
-        } else if(odd7 == 1){
-        tempoeEnabled.setBackground(Color.LIGHT_GRAY);
-        odd7 --;
-        } 
-    }//GEN-LAST:event_tempoeEnabledActionPerformed
 
     private void hireDateYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireDateYearActionPerformed
         // TODO add your handling code here:
@@ -1843,34 +1800,156 @@ public class Main extends javax.swing.JFrame implements Runnable{
             jLabel10.setText("Segundo Nombre");
             jLabel11.setText("Apellido");
             jLabel22.setText("Número de Licencia de Conducir");
-            jLabel21.setText("Número de Licencia de Conducir");
+            jLabel21.setText("Estado");
             jLabel6.setText("Referencias personales");
             jLabel26.setText("Teléfono #");
             jLabel3.setText("Primer apellido");
             jLabel28.setText("Teléfono #");
             jLabel27.setText("Primer apellido");
-            jLabel12.setText("nombre de la calle");
+            jLabel12.setText("Dirección");
+            jLabel13.setText("Unidad / Apt #");
+            jLabel19.setText("SSN / ITIN");
             jLabel20.setText("Fecha de nacimiento");
-            jLabel9.setText("Nombre De Pila");
-            
+            jLabel14.setText("Ciudad");
+            jLabel15.setText("Estado");
+            jLabel16.setText("Cremallera");
+            jLabel23.setText("Teléfono principal");
+            jLabel24.setText("Teléfono alternativo");
+            jLabel4.setText("Hora en esta dirección");
+            jLabel17.setText("Años");
+            jLabel18.setText("Meses");
+            rent.setText("alquilar");
+            own.setText("propio");
+            jLabel25.setText("correo electrónico");
+            jLabel29.setText("Enrutamiento #");
+            jLabel30.setText("Cuenta #");
+            jLabel37.setText("Nombre del titular de la tarjeta");
+            jLabel35.setText("Años Cuenta Abierta");
+            jLabel36.setText("Meses Cuenta abierta");
+            jLabel31.setText("Nombre del banco");
+            jLabel32.setText("ciudad del banco");
+            jLabel33.setText("Estado del banco");
+            jLabel40.setText("Número de tarjeta");
+            jLabel39.setText("mes de exp");
+            jLabel38.setText("Año de Exp");
+            cardCode1.setText("Código de seguridad");
+            recentopen.setText("Abierto por lo menos 90 días");
+            checkingbox.setText("Es una cuenta de cheques");
+            jLabel41.setText("Nombre del Empleador");
+            jLabel47.setText("Cargo que ocupa");
+            jLabel42.setText("Teléfono fijo");
+            jLabel43.setText("Fecha de contratación");
+            jLabel44.setText("Ingreso mensual");
+            jLabel46.setText("Nombre del supervisor");
+            jLabel45.setText("Teléfono del trabajo #");
+            jLabel8.setText("Tipo de ingreso");
+            jLabel53.setText("Frecuencia de pago");
+            jLabel51.setText("Último día de pago");
+            jLabel52.setText("Próximo día de pago"); 
             
             
         toggleLang ++; 
         } else if(toggleLang == 1){
-        progressiveEnabled.setBackground(Color.LIGHT_GRAY);
+              LangToggle.setText("English");
+            jLabel9.setText("First Name");
+            jLabel10.setText("Middle Name");
+            jLabel11.setText("Last Name");
+            jLabel22.setText("Driver License Number");
+            jLabel21.setText("State");
+            jLabel6.setText("Personal References");
+            jLabel26.setText("Phone #");
+            jLabel3.setText("First & Last Name");
+            jLabel28.setText("Phone #");
+            jLabel27.setText("First & Last Name");
+            jLabel12.setText("Street Address");
+            jLabel13.setText("Unit/Apt#");
+            jLabel19.setText("SSN / ITIN");
+            jLabel20.setText("Date of Birth");
+            jLabel14.setText("City");
+            jLabel15.setText("State");
+            jLabel16.setText("Zip");
+            jLabel23.setText("Main Phone");
+            jLabel24.setText("Alternate Phone");
+            jLabel4.setText("Time at this address");
+            jLabel17.setText("Years");
+            jLabel18.setText("Months");
+            rent.setText("rent");
+            own.setText("Own");
+            jLabel25.setText("Email Address");
+            jLabel37.setText("Card Holder Name");
+            jLabel35.setText("Years Account Open");
+            jLabel36.setText("Months Account Open");
+            jLabel31.setText("Bank Name");
+            jLabel32.setText("Bank City");
+            jLabel33.setText("Bank State");
+            jLabel40.setText("Card Number");
+            jLabel39.setText("Exp Month");
+            jLabel38.setText("Exp Year ");
+            cardCode1.setText("Security Code");
+            recentopen.setText("Open at least 90 days");
+            checkingbox.setText("Is this a checking account");
+            jLabel41.setText("Employer Name");
+            jLabel47.setText("Position Held");
+            jLabel42.setText("Phone (Land Line)");
+            jLabel43.setText("Hire Date");
+            jLabel44.setText("Monthly Income");
+            jLabel46.setText("Supervisor Name");
+            jLabel45.setText("Work Phone #");
+            jLabel8.setText("Income Type");
+            jLabel53.setText("Pay Frequency");
+            jLabel51.setText("Last Payday");
+            jLabel52.setText("Next Payday "); 
+            
         toggleLang --;
-        }
-        /*
-        if(toggleLang = false){
-        jLabel9.setText("Not some shit");
-        
-        
-        toggleLang = true; 
         } 
-        if (toggleLang = true){
-        jLabel9.setText("Someshit");
-        }*/
     }//GEN-LAST:event_LangToggleActionPerformed
+
+    private void simpleEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpleEnabledActionPerformed
+        // TODO add your handling code here:
+
+        if(odd2 == 0){
+            simpleEnabled.setBackground(Color.green);
+            odd2 ++;
+        } else if(odd2 == 1){
+
+            simpleEnabled.setBackground(Color.LIGHT_GRAY);
+            odd2 --;
+        }
+    }//GEN-LAST:event_simpleEnabledActionPerformed
+
+    private void tempoeEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempoeEnabledActionPerformed
+        // TODO add your handling code here:
+        if(odd7 == 0){
+            tempoeEnabled.setBackground(Color.green);
+            odd7 ++;
+        } else if(odd7 == 1){
+            tempoeEnabled.setBackground(Color.LIGHT_GRAY);
+            odd7 --;
+        }
+    }//GEN-LAST:event_tempoeEnabledActionPerformed
+
+    private void merchantsEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_merchantsEnabledActionPerformed
+        // TODO add your handling code here:
+        if(odd6 == 0){
+            merchantsEnabled.setBackground(Color.green);
+            odd6 ++;
+        } else if(odd6 == 1){
+            merchantsEnabled.setBackground(Color.LIGHT_GRAY);
+            odd6 --;
+        }
+    }//GEN-LAST:event_merchantsEnabledActionPerformed
+
+    private void okinusEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okinusEnabledActionPerformed
+        // TODO add your handling code here:
+        if(odd5 == 0){
+            okinusEnabled.setBackground(Color.green);
+            odd5 ++;
+        } else if(odd5 == 1){
+
+            okinusEnabled.setBackground(Color.LIGHT_GRAY);
+            odd5 --;
+        }
+    }//GEN-LAST:event_okinusEnabledActionPerformed
     
     Random r = new Random();
     
@@ -2233,14 +2312,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private javax.swing.JComboBox<String> lastPaydayMonth;
     private javax.swing.JComboBox<String> lastPaydayYear;
     public javax.swing.JTextField lastname;
-    public javax.swing.JToggleButton merchantsEnabled;
+    private javax.swing.JToggleButton merchantsEnabled;
     public javax.swing.JTextField middlename;
     private javax.swing.JComboBox<String> monthExp;
     private javax.swing.JComboBox<String> monthsaccountopen;
     private javax.swing.JComboBox<String> nextPaydayDay;
     private javax.swing.JComboBox<String> nextPaydayMonth;
     private javax.swing.JComboBox<String> nextPaydayYear;
-    public javax.swing.JToggleButton okinusEnabled;
+    private javax.swing.JToggleButton okinusEnabled;
     public javax.swing.JRadioButton own;
     private javax.swing.JComboBox<String> pay;
     public javax.swing.JTextField phone1;
@@ -2256,14 +2335,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JTextField refphone2;
     public javax.swing.JRadioButton rent;
     public javax.swing.JTextField routing;
-    public javax.swing.JToggleButton simpleEnabled;
+    private javax.swing.JToggleButton simpleEnabled;
     public javax.swing.JToggleButton snapEnabled;
     private javax.swing.JFormattedTextField ssn;
     public javax.swing.JComboBox<String> states;
     public javax.swing.JTextField streetaddress;
     private javax.swing.JButton submitButton;
     public javax.swing.JTextField supername;
-    public javax.swing.JToggleButton tempoeEnabled;
+    private javax.swing.JToggleButton tempoeEnabled;
     public javax.swing.JComboBox<String> title;
     public javax.swing.JTextField unit;
     public javax.swing.JTextField workphone;

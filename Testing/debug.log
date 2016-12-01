@@ -6,3 +6,7 @@
 [0818/110233:WARNING:in_range_cast.h(38)] value 3062021494944 out of range
 [0818/110233:WARNING:in_range_cast.h(38)] value 3062021492254 out of range
 [0818/110233:WARNING:in_range_cast.h(38)] value 3062021492478 out of range
+[1130/171734:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1130/171846:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1201/112527:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1201/112640:ERROR:crash_report_database_win.cc(425)] unexpected header
