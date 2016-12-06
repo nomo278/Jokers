@@ -117,12 +117,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(false);
+        simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(false);
+        okinusEnabled.setEnabled(true);
         merchantsEnabled.setEnabled(true);
-       tempoeEnabled.setEnabled(false);
+       tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -1209,7 +1209,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1286,11 +1285,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                         .addComponent(csvCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(0, 0, 0)
                         .addComponent(simpleEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(tempoeEnabled)
-                        .addGap(10, 10, 10)
+                        .addGap(18, 18, 18)
                         .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1592,7 +1591,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
           driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
            firstThread.PerferredFinance(driver4);
         }
-        
+        /*
         if(tempoeEnabled.isSelected()) {
             WebDriver driver5 = new ChromeDriver();
             driver5.get("https://pulse.tempoe.com/onlinewebapp-intempoe.aspx");
@@ -1606,7 +1605,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         } 
-          
+          */
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void postholdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postholdActionPerformed
@@ -2312,14 +2311,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private javax.swing.JComboBox<String> lastPaydayMonth;
     private javax.swing.JComboBox<String> lastPaydayYear;
     public javax.swing.JTextField lastname;
-    private javax.swing.JToggleButton merchantsEnabled;
+    public javax.swing.JToggleButton merchantsEnabled;
     public javax.swing.JTextField middlename;
     private javax.swing.JComboBox<String> monthExp;
     private javax.swing.JComboBox<String> monthsaccountopen;
     private javax.swing.JComboBox<String> nextPaydayDay;
     private javax.swing.JComboBox<String> nextPaydayMonth;
     private javax.swing.JComboBox<String> nextPaydayYear;
-    private javax.swing.JToggleButton okinusEnabled;
+    public javax.swing.JToggleButton okinusEnabled;
     public javax.swing.JRadioButton own;
     private javax.swing.JComboBox<String> pay;
     public javax.swing.JTextField phone1;
@@ -2335,14 +2334,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JTextField refphone2;
     public javax.swing.JRadioButton rent;
     public javax.swing.JTextField routing;
-    private javax.swing.JToggleButton simpleEnabled;
+    public javax.swing.JToggleButton simpleEnabled;
     public javax.swing.JToggleButton snapEnabled;
     private javax.swing.JFormattedTextField ssn;
     public javax.swing.JComboBox<String> states;
     public javax.swing.JTextField streetaddress;
     private javax.swing.JButton submitButton;
     public javax.swing.JTextField supername;
-    private javax.swing.JToggleButton tempoeEnabled;
+    public javax.swing.JToggleButton tempoeEnabled;
     public javax.swing.JComboBox<String> title;
     public javax.swing.JTextField unit;
     public javax.swing.JTextField workphone;
