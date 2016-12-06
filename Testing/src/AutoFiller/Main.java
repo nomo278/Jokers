@@ -1081,47 +1081,49 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                                         .addComponent(nextPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(crestEnabled))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(okinusEnabled)
-                                .addComponent(crestEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(snapEnabled)
-                                .addComponent(merchantsEnabled)
-                                .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(merchantsEnabled)
+                                    .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(okinusEnabled)
+                                    .addComponent(simpleEnabled))
+                                .addComponent(snapEnabled))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(simpleEnabled)
-                            .addComponent(tempoeEnabled))))
+                        .addComponent(tempoeEnabled)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(crestEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(snapEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(progressiveEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(merchantsEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(okinusEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(simpleEnabled)
-                .addGap(0, 0, 0)
-                .addComponent(tempoeEnabled)
                 .addGap(10, 10, 10)
+                .addComponent(snapEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(progressiveEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(merchantsEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(okinusEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(simpleEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(tempoeEnabled)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3059,8 +3061,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
             Thread.sleep(2000);
 
-        
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmployerTextBox")).sendKeys(employerN);
+        System.out.println("Checking the last page");
+            driver4.findElement(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")).click();
+            /*
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pTitleTextBox")).sendKeys(Title);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
@@ -3071,7 +3074,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-        
+        */
         } catch(Exception e){
             System.out.println("Element not Found on 5th page (Perferred)");
       }
