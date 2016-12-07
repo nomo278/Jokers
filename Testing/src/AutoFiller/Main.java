@@ -31,6 +31,8 @@ import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -55,6 +57,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String ssN;
    public static String dOb; 
    public static String stateK; 
+   public static int stateKMP; 
    public static String dlN;   
    public static String phoneN1;     
    public static String phoneN2;     
@@ -91,7 +94,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String monthAccountOpen;
    public static String cardHolderName;
    public static String expYear;
+   public static int expYearMP;
    public static String expMonth;
+   public static int expMonthMP;   
    public static String cardNumber;
    public static String Title;
    public static String cardCode;
@@ -1509,6 +1514,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 dobDay.getSelectedItem().toString() + 
                 dobYear.getSelectedItem().toString();
         stateK = this.dlstate.getSelectedItem().toString();
+        stateKMP = this.dlstate.getSelectedIndex();
         dlN = this.dl.getText();
         phoneN1 = this.phone1.getText();
         phoneN2 = this.phone2.getText();
@@ -1550,7 +1556,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
         cardHolderName = this.cardholdername.getText();
         expYear = yearExp.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "");
+        expYearMP = yearExp.getSelectedIndex();
         expMonth = monthExp.getSelectedItem().toString().replace(" Mon", "");
+        expMonthMP = monthExp.getSelectedIndex();
         cardNumber = this.cardnumber.getText();
         cardCode = csvCode.getText();
         Title = title.getSelectedItem().toString();
@@ -2988,7 +2996,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.xpath(license_state_click_xpath)).click();
             
             Thread.sleep(500);
-            String license_state_xpath = "//*[@id=\"ContentPlaceHolder1_UC_Step1_pLicenseStateSelect_listbox\"]/li[" + (dlstate.getSelectedIndex() + 1) + "]";
+            
+            String license_state_xpath = "//*[@id=\"ContentPlaceHolder1_UC_Step1_pLicenseStateSelect_listbox\"]/li[" + (stateKMP + 1) + "]";
             driver4.findElement(By.xpath(license_state_xpath)).click();
             
             
@@ -3059,22 +3068,60 @@ public class Main extends javax.swing.JFrame implements Runnable{
               //Submit button
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_AcceptContinueButton")).click();
 
-            Thread.sleep(2000);
+            Thread.sleep(3000);
 
         System.out.println("Checking the last page");
+        
+        WebElement element = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")));
+        
             driver4.findElement(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")).click();
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pTitleTextBox")).sendKeys(postHold);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmployerTextBox")).sendKeys(employerN);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox")).sendKeys(employerPhone);
+            
+            WebElement tempMerchant = driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox"));
+        
+           // driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/input[1]")).sendKeys(yearsAtJob);
+        
+           // Thread.sleep(2000); 
             /*
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pTitleTextBox")).sendKeys(Title);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-        */
+            
+        tempMerchant.sendKeys(Keys.TAB);
+        tempMerchant.sendKeys(monthsAtJob);
+        tempMerchant.sendKeys(Keys.TAB);
+        tempMerchant.sendKeys(incomeN);
+            */
+            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]/span")).click();
+            
+            //TODO: GET WEEKLY SELECTED
+            Thread.sleep(500);
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[2]")).click();            
+                    
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(nextPay);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcNumberTextBox")).sendKeys(cardNumber);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcCvvTextBox")).sendKeys(cardCode);
+            
+            //*[@id="ContentPlaceHolder1_UC_Step3_step3Div"]/div[1]/div[1]/div[3]/div/div[1]/div/span[1]/span/span[2]/span
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/div[1]/div[1]/div[3]/div/div[1]/div/span[1]/span/span[2]/span")).click();
+            Thread.sleep(500);
+            System.out.println("We are trying to find the month" + expMonthMP);
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcExpMonthSelect_listbox\"]/li["+(expMonthMP+1)+"]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/div[1]/div[1]/div[3]/div/div[1]/div/span[3]/span/span[2]/span")).click();
+            Thread.sleep(500);
+           driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcExpYearSelect_listbox\"]/li["+(expYearMP+1)+"]")).click();
+// driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcSameAsPRadio")).click();
+            
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1FnameTextBox")).sendKeys(reference1);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1LnameTextBox")).sendKeys(reference1Last);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1PhoneTextBox")).sendKeys(refPhone1);
+            
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2FnameTextBox")).sendKeys(reference2);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2LnameTextBox")).sendKeys(reference2Last);
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
+            
+            
+       
         } catch(Exception e){
             System.out.println("Element not Found on 5th page (Perferred)");
       }
