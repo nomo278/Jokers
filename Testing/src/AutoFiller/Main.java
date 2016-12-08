@@ -102,6 +102,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String cardCode;
    public static String CrestChecker;
    
+   
    public static int odd1 = 0;
    public static int odd2 = 0;
    public static int odd3 = 0;
@@ -3091,14 +3092,34 @@ public class Main extends javax.swing.JFrame implements Runnable{
         tempMerchant.sendKeys(Keys.TAB);
         tempMerchant.sendKeys(incomeN);
             */
-            
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]/span")).click();
             
             //TODO: GET WEEKLY SELECTED
             Thread.sleep(500);
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[2]")).click();            
                     
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(nextPay);
+            
+            
+            System.out.println("Checkpoint");
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]/span")).click();            
+            Thread.sleep(500);
+            System.out.println("Checkpoint1");
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_PreferredLangSelect_listbox\"]/li["+toggleLang+ 1+"]")).click();
+
+            System.out.println("Checkpoint2");
+            String s1 = Main.nextPay; 
+            System.out.println(java.util.Arrays.toString(s1.split("(?<=\\G..)")));
+            String[] tokens1 = s1.split("(?<=\\G..)");
+            System.out.println(tokens1[0]);
+            System.out.println(tokens1[1]);
+            System.out.println(tokens1[2]+tokens1[3]);            
+
+
+            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(tokens1[0] + "/" + tokens1[1] + "/" + tokens1[2] + tokens1[3]);
+            
+            
+            driver4.findElement(By.id("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[3]/div/div[2]/div/span[1]/span/input[1]")).sendKeys(Main.incomeN);
+            System.out.println("Checkpoint3");
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcNumberTextBox")).sendKeys(cardNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcCvvTextBox")).sendKeys(cardCode);
             
@@ -3120,6 +3141,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2LnameTextBox")).sendKeys(reference2Last);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
             
+            
+             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(nextPay);
             
        
         } catch(Exception e){
