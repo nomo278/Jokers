@@ -3101,7 +3101,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             
             System.out.println("Checkpoint");
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]/span")).click();            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]")).click();            
             Thread.sleep(500);
             System.out.println("Checkpoint1");
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_PreferredLangSelect_listbox\"]/li["+toggleLang+ 1+"]")).click();
