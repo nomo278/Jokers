@@ -2970,8 +2970,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public void PerferredFinance(WebDriver driver4){
         try{
             
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
             //Select company
+            WebElement firstpage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")));
             
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")).sendKeys(addYears);
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input[1]")).sendKeys(addMonths);
@@ -3052,7 +3053,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step1_AcceptContinueButtonSpan")).click();
             
              Thread.sleep(2000);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox")).sendKeys(routingNumber);
+            WebElement secondPage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.id("ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox")));
+             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox")).sendKeys(routingNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReRoutingNumTextBox")).sendKeys(routingNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pAccountNumTextBox")).sendKeys(accountNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
@@ -3068,12 +3070,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
               //Submit button
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_AcceptContinueButton")).click();
-
-            Thread.sleep(3000);
-
+ 
         System.out.println("Checking the last page");
         
-        WebElement element = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")));
+        WebElement lastPage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")));
         
             driver4.findElement(By.xpath("//*[@id='ContentPlaceHolder1_UC_Step3_pEmploymentTypeRepeater_pEmploymentTypeCheckBoxLabel_0']")).click();
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pTitleTextBox")).sendKeys(postHold);
