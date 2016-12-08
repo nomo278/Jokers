@@ -30,6 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import static org.openqa.selenium.Keys.SHIFT;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -83,6 +84,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String recentPay;    
    public static String nextPay;    
    public static String Pay;    
+   public static int PayMP;    
    public static String employmentPayment;    
    public static String superName;    
    public static String workPhone;    
@@ -1550,6 +1552,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         postHold = this.posthold.getText();
         employmentPayment = this.incomeType.getSelectedItem().toString();
         Pay = this.pay.getSelectedItem().toString();
+        PayMP = this.pay.getSelectedIndex();
         // This is redudent startDate  = this.startdate.getText();
         yearsAtJob = Integer.toString(year - Integer.parseInt(hireDateYear.getSelectedItem().toString()));//yearAtJob.getSelectedItem().toString();
         monthsAtJob = Integer.toString(month - Integer.parseInt(hireDateMonth.getSelectedItem().toString())); //monthAtJob.getSelectedItem().toString();
@@ -3080,33 +3083,44 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmployerTextBox")).sendKeys(employerN);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox")).sendKeys(employerPhone);
             
-            WebElement tempMerchant = driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox"));
-        
+          
            // driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/input[1]")).sendKeys(yearsAtJob);
         
            // Thread.sleep(2000); 
             /*
-            
+            WebElement tempMerchant = driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox"));
+          
         tempMerchant.sendKeys(Keys.TAB);
         tempMerchant.sendKeys(monthsAtJob);
         tempMerchant.sendKeys(Keys.TAB);
         tempMerchant.sendKeys(incomeN);
             */
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]/span")).click();
+           // driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]/span")).click();
             
-            //TODO: GET WEEKLY SELECTED
+            
             Thread.sleep(500);
+            //if(Integer.parseInt(Pay) == 0){
+             
+                driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]")).click();
+                
+                System.out.println("This is the payment time " + Pay + " Something" + PayMP );
+                Thread.sleep(900);
+            if(PayMP == 0){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[2]")).click();            
-                    
+            }else if(PayMP == 1){//*[@id="ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox"]/li[2]
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[1]")).click();            
+            }else if(PayMP == 2){//*[@id="ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox"]/li[1]
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[3]")).click();            
+            }else if(PayMP == 3){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[3]")).click();            
+            }
             
-            
-            System.out.println("Checkpoint");
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]")).click();            
-            Thread.sleep(500);
-            System.out.println("Checkpoint1");
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_PreferredLangSelect_listbox\"]/li["+toggleLang+ 1+"]")).click();
-
-            System.out.println("Checkpoint2");
+                System.out.println("Checkpoint4");
+              
+            //driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]")).click();
+            Thread.sleep(900); 
+           // driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_PreferredLangSelect_listbox\"]/li["+toggleLang+ 1+"]")).click();
+ 
             String s1 = Main.nextPay; 
             System.out.println(java.util.Arrays.toString(s1.split("(?<=\\G..)")));
             String[] tokens1 = s1.split("(?<=\\G..)");
@@ -3118,8 +3132,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(tokens1[0] + "/" + tokens1[1] + "/" + tokens1[2] + tokens1[3]);
             
             
-            driver4.findElement(By.id("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[3]/div/div[2]/div/span[1]/span/input[1]")).sendKeys(Main.incomeN);
-            System.out.println("Checkpoint3");
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcNumberTextBox")).sendKeys(cardNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcCvvTextBox")).sendKeys(cardCode);
             
@@ -3143,10 +3155,22 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             
              driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox")).sendKeys(nextPay);
+             WebElement tempMerchant = driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pNextPayDateTextBox"));
+        /*  
+        tempMerchant.sendKeys(Keys.chord(Keys.TAB, Keys.SHIFT)); 
+        tempMerchant.sendKeys(Keys.chord(Keys.TAB, Keys.SHIFT));
+        tempMerchant.sendKeys(incomeN);
+        tempMerchant.sendKeys(Keys.chord(Keys.TAB, Keys.SHIFT));
+        tempMerchant.sendKeys(monthsAtJob);
+          */   
+             
+            System.out.println("Checkpoint");
+            driver4.findElement(By.className("input#ContentPlaceHolder1_UC_Step3_pEmpYearsTextBox")).sendKeys(incomeN);
             
+            System.out.println("Finished Merchants Preferred");
        
         } catch(Exception e){
-            System.out.println("Element not Found on 5th page (Perferred)");
+            System.out.println("Element not Found on 5th page (Perferred)" +  e);
       }
     }
 
