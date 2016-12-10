@@ -131,7 +131,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         okinusEnabled.setEnabled(false);
         merchantsEnabled.setEnabled(true);
        tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(true);  
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);      
   
        
