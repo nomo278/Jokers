@@ -57,6 +57,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String Own;      
    public static String ssN;
    public static String dOb; 
+   public static int dObM; 
+   public static int dObD; 
+   public static int dObY; 
    public static String stateK; 
    public static int stateKMP; 
    public static String dlN;   
@@ -125,13 +128,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(false);
+        simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
-        progressiveEnabled.setEnabled(true);
+        progressiveEnabled.setEnabled(false);
         okinusEnabled.setEnabled(false);
-        merchantsEnabled.setEnabled(true);
+        merchantsEnabled.setEnabled(false);
        tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(false);  
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
        
@@ -1120,6 +1123,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGap(20, 20, 20)
                 .addComponent(crestEnabled)
                 .addGap(10, 10, 10)
+                .addComponent(simpleEnabled)
+                .addGap(10, 10, 10)
                 .addComponent(snapEnabled)
                 .addGap(10, 10, 10)
                 .addComponent(progressiveEnabled)
@@ -1128,10 +1133,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGap(10, 10, 10)
                 .addComponent(okinusEnabled)
                 .addGap(10, 10, 10)
-                .addComponent(simpleEnabled)
-                .addGap(10, 10, 10)
                 .addComponent(tempoeEnabled)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1516,6 +1519,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         dOb = dobMonth.getSelectedItem().toString() + 
                 dobDay.getSelectedItem().toString() + 
                 dobYear.getSelectedItem().toString();
+        dObM = dobMonth.getSelectedIndex();
+        dObD = dobDay.getSelectedIndex();
+        dObY = dobYear.getSelectedIndex();
+        
         stateK = this.dlstate.getSelectedItem().toString();
         stateKMP = this.dlstate.getSelectedIndex();
         dlN = this.dl.getText();
@@ -1577,14 +1584,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/3888");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/oasis_tire_wheels");
             firstThread.CrestFinance(driver);
         
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=644781");
+            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=06B3E4");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1596,14 +1603,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/paylessfurniture2/32918#/marketing");
+            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/splash");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -1888,8 +1895,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
             jLabel17.setText("Years");
             jLabel18.setText("Months");
             rent.setText("rent");
-            own.setText("Own");
+            own.setText("Own"); 
             jLabel25.setText("Email Address");
+            jLabel29.setText("Routing #");
+            jLabel30.setText("Account #");
             jLabel37.setText("Card Holder Name");
             jLabel35.setText("Years Account Open");
             jLabel36.setText("Months Account Open");
@@ -2675,8 +2684,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
           try{
                Thread.sleep(500);
-        driver2.findElement(By.name("username")).sendKeys("payless furn");
-        driver2.findElement(By.name("password")).sendKeys("Payless2");
+        driver2.findElement(By.name("username")).sendKeys("oasisjoe");
+        driver2.findElement(By.name("password")).sendKeys("Oasis2110");
         driver2.findElement(By.id("btn-login")).click();
         
         Thread.sleep(4500);
@@ -2749,8 +2758,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
          driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[6]/input")).sendKeys(reference2Last);
          //TODO: LAST NAME REFERENCES  /html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[7]/input
          driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[7]/input")).sendKeys(refPhone2);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[10]/div/div/label[1]")).click();
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[11]/button")).click();
+         
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[11]/div/div/label[1]")).click();
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[12]/button")).click();
          
            Thread.sleep(4500);
          driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[1]/div/div[1]/div/input")).sendKeys(routingNumber);
@@ -2986,15 +2996,34 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[1]/div/div[2]/div/div/input")).sendKeys(lastName);
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[1]/div/div/input")).sendKeys(ssN);
             //Pasing DOB to have 04/08/1982
-            String s = dOb; 
-            System.out.println(java.util.Arrays.toString(s.split("(?<=\\G..)")));
-            String[] tokens = s.split("(?<=\\G..)");
-            System.out.println(tokens[0]);
-            System.out.println(tokens[1]);
-            System.out.println(tokens[2]+tokens[3]);            
+            //Might not need to be here
+            //String s = dOb; 
+            //System.out.println(java.util.Arrays.toString(s.split("(?<=\\G..)")));
+            //String[] tokens = s.split("(?<=\\G..)");
+            //System.out.println(tokens[0]);
+            //System.out.println(tokens[1]);
+            //System.out.println(tokens[2]+tokens[3]);            
 
-            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[1]/span/input")).sendKeys(tokens[0] + "/" + tokens[1] + "/" +tokens[2]+tokens[3]);
-
+            //driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[1]/span/input")).sendKeys(tokens[0] + "/" + tokens[1] + "/" +tokens[2]+tokens[3]);
+//Figure out new MP Select DOB Checkpoint
+            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_Step1RadPageView\"]/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[1]/span/span[2]/span")).click();
+            //Click on month
+            Thread.sleep(500);
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step1_pDobMMSelect_listbox\"]/li["+(dObM+1)+"]")).click();
+            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_Step1RadPageView\"]/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[3]/span/span[2]/span")).click();
+            //Click on Day
+            
+            Thread.sleep(500);
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step1_pDobDDSelect_listbox\"]/li["+(dObD+1)+"]")).click();
+            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_Step1RadPageView\"]/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[5]/span/span[2]/span")).click();
+            //Click on 
+            Thread.sleep(500);
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step1_pDobYYYYSelect_listbox\"]/li["+(dObY+1)+"]")).click();
+            
+            
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step1_pLicenseTextBox")).sendKeys(dlN);
             
             String license_state_click_xpath = "//div[@id='ContentPlaceHolder1_Step1RadPageView']/div/fieldset[2]/div/div/div[3]/div/div[2]/div/span/span/span";
@@ -3140,12 +3169,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1FnameTextBox")).sendKeys(reference1);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1LnameTextBox")).sendKeys(reference1Last);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1PhoneTextBox")).sendKeys(refPhone1);
+            //driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref1PhoneTextBox")).sendKeys(refPhone1);
+            
+            SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1PhoneTextBox\"]",refPhone1,true);
             
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2FnameTextBox")).sendKeys(reference2);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2LnameTextBox")).sendKeys(reference2Last);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
+            //driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
             
+            
+        SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox\"]",refPhone2,true);
             
              
         /* 

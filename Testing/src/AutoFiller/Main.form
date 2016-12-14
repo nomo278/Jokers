@@ -448,6 +448,8 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="crestEnabled" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="simpleEnabled" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="snapEnabled" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="progressiveEnabled" min="-2" max="-2" attributes="0"/>
@@ -456,10 +458,8 @@
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="okinusEnabled" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="simpleEnabled" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="tempoeEnabled" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="clearFields" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="debugAutoFill" min="-2" pref="43" max="-2" attributes="0"/>
