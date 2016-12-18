@@ -130,10 +130,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
-        progressiveEnabled.setEnabled(false);
-        okinusEnabled.setEnabled(false);
-        merchantsEnabled.setEnabled(false);
-       tempoeEnabled.setEnabled(false);
+        progressiveEnabled.setEnabled(true);
+        okinusEnabled.setEnabled(true);
+        merchantsEnabled.setEnabled(true);
+       tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -1093,21 +1093,23 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(crestEnabled))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(crestEnabled))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(merchantsEnabled)
-                                    .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(okinusEnabled)
-                                    .addComponent(simpleEnabled))
-                                .addComponent(snapEnabled))))
+                                    .addComponent(simpleEnabled)
+                                    .addComponent(snapEnabled))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tempoeEnabled)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tempoeEnabled)))
+                        .addComponent(progressiveEnabled)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1125,11 +1127,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGap(10, 10, 10)
                 .addComponent(simpleEnabled)
                 .addGap(10, 10, 10)
-                .addComponent(snapEnabled)
-                .addGap(10, 10, 10)
                 .addComponent(progressiveEnabled)
                 .addGap(10, 10, 10)
                 .addComponent(merchantsEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(snapEnabled)
                 .addGap(10, 10, 10)
                 .addComponent(okinusEnabled)
                 .addGap(10, 10, 10)
@@ -1584,7 +1586,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/oasis_tire_wheels");
+            driver.get("https://dealers.crestfinancial.com/Apply/oasis_tire_wheels");
             firstThread.CrestFinance(driver);
         
         }
@@ -1603,14 +1605,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/splash");
+            driver3.get("https://approve.me/s/oasistireandwheel/32860#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=m%2fZcVE6DK6g%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -2944,7 +2946,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver3.findElement(By.id("BankAccount_AccountNumber")).sendKeys(accountNumber); 
         driver3.findElement(By.id("BankAccount_OpenYear")).sendKeys(addYears); 
         driver3.findElement(By.id("BankAccount_OpenMonth")).sendKeys(addMonths); 
-        Thread.sleep(500);
+        Thread.sleep(1000);
         driver3.findElement(By.id("MoveNext")).click();
         Thread.sleep(2000); 
         
@@ -2969,8 +2971,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Thread.sleep(500);
         //driver3.findElement(By.id("MoveNext")).click();
         Thread.sleep(2000); 
+         
+        driver3.findElement(By.xpath("//*[@id=\"edit-review-btn\"]")).click(); 
         
-        driver3.findElement(By.cssSelector("#review > div.row.row61.review-row.agree-terms > div > label > span")).click();                 
+        /*
+        WebElement tempProg = driver3.findElement(By.xpath("//*[@id=\"edit-review-btn\"]"));
+        //*[@id="edit-review-btn"]
+        tempProg.sendKeys(Keys.TAB);
+        tempProg.sendKeys(Keys.SPACE);
+        */
        driver3.findElement(By.name("span")).click();                 
        
                   ///driver3.findElement(By.id("submit-app")).click();
@@ -3128,7 +3137,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            // Thread.sleep(2000); 
             /*
             WebElement tempMerchant = driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_pEmpPhoneTextBox"));
-          
+          //*[@id="edit-review-btn"]
         tempMerchant.sendKeys(Keys.TAB);
         tempMerchant.sendKeys(monthsAtJob);
         tempMerchant.sendKeys(Keys.TAB);
