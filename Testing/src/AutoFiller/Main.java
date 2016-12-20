@@ -115,6 +115,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int odd5 = 0;
    public static int odd6 = 0;
    public static int odd7 = 0;
+   public static int odd8 = 0;
    
    public static int year = Calendar.getInstance().get(Calendar.YEAR) ;
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -133,8 +134,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         progressiveEnabled.setEnabled(true);
         okinusEnabled.setEnabled(false);
         merchantsEnabled.setEnabled(false);
+        westEnabled.setEnabled(true);
        tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(false);  
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
        
@@ -276,6 +278,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         csvCode = new javax.swing.JTextField();
         cardCode1 = new javax.swing.JLabel();
         LangToggle = new javax.swing.JToggleButton();
+        westEnabled = new javax.swing.JToggleButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -830,6 +833,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         });
 
+        westEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/wcf_logo-150.png"))); // NOI18N
+        westEnabled.setMargin(new java.awt.Insets(14, 14, 14, 14));
+        westEnabled.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                westEnabledActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1093,22 +1104,26 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(okinusEnabled))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(okinusEnabled))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(merchantsEnabled)
-                                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(snapEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(simpleEnabled))
-                                .addComponent(crestEnabled))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(merchantsEnabled)
+                                            .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(snapEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(simpleEnabled))
+                                    .addComponent(crestEnabled))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tempoeEnabled)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tempoeEnabled)))
+                        .addComponent(westEnabled)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1133,7 +1148,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(okinusEnabled)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(westEnabled)
+                .addGap(14, 14, 14)
                 .addComponent(tempoeEnabled)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1627,6 +1644,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver6.get("https://app.okinus.com/applicationStart?storeguid=f2b9b394-6b2d-4567-8466-f7c90d0eee96&sel=true");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
+        }  
+        
+        if(westEnabled.isSelected()) {
+            WebDriver driver7 = new ChromeDriver();
+            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=abfgreenville&mdlrl=1");
+            System.out.println("loading West Creek...");
+            firstThread.WestCreekFinance(driver7);
         } 
           
     }//GEN-LAST:event_submitButtonActionPerformed
@@ -1974,6 +1998,18 @@ public class Main extends javax.swing.JFrame implements Runnable{
             odd5 --;
         }
     }//GEN-LAST:event_okinusEnabledActionPerformed
+
+    private void westEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westEnabledActionPerformed
+        // TODO add your handling code here:
+         if(odd8 == 0){
+            westEnabled.setBackground(Color.green);
+            odd8 ++;
+        } else if(odd5 == 1){
+
+            westEnabled.setBackground(Color.LIGHT_GRAY);
+            odd8 --;
+        }
+    }//GEN-LAST:event_westEnabledActionPerformed
     
     Random r = new Random();
     
@@ -2369,6 +2405,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JToggleButton tempoeEnabled;
     public javax.swing.JComboBox<String> title;
     public javax.swing.JTextField unit;
+    public javax.swing.JToggleButton westEnabled;
     public javax.swing.JTextField workphone;
     private javax.swing.JComboBox<String> yearExp;
     private javax.swing.JComboBox<String> yearsaccountopen;
@@ -3479,6 +3516,90 @@ public class Main extends javax.swing.JFrame implements Runnable{
        } catch (InterruptedException ex) {
            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
        }
+    }
+    
+      private void WestCreekFinance(WebDriver driver7) {
+       try {
+             
+           /*
+           driver7.findElement(By.xpath("//*[@id=\"PDNO\"]")).sendKeys("abfgreenville");
+           driver7.findElement(By.xpath("//*[@id=\"userid\"]")).sendKeys("abfgreenville");
+           driver7.findElement(By.xpath("//*[@id=\"wrapper\"]/form/div[2]/table/tbody/tr[3]/td[2]/input")).sendKeys("abfgreenville1");
+            
+           driver7.findElement(By.xpath("//*[@id=\"sbBtn\"]")).click();
+           */
+           
+           //driver7.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
+           //*[@id="nav3i"]
+           //Finding new App page
+           Thread.sleep(2000);
+            
+           driver7.findElement(By.id("WPFNAME")).sendKeys(firstName);
+           driver7.findElement(By.xpath("//*[@id='WPMNAME']")).sendKeys(middleName);
+           driver7.findElement(By.id("WPLNAME")).sendKeys(lastName);
+           driver7.findElement(By.xpath("//*[@id=\"WPTIN\"]")).sendKeys(ssN);
+           driver7.findElement(By.xpath("//*[@id=\"WPBDATE\"]")).sendKeys(dOb);
+           driver7.findElement(By.xpath("//*[@id=\"WPADDR1\"]")).sendKeys(streetAddress);
+           driver7.findElement(By.xpath("//*[@id=\"WPADDR2\"]")).sendKeys(unitN);
+           driver7.findElement(By.xpath("//*[@id=\"WPCITY\"]")).sendKeys(cityN);
+           driver7.findElement(By.xpath("//*[@id=\"WPSTATE\"]")).sendKeys(stateN);
+           driver7.findElement(By.xpath("//*[@id=\"WPZIP\"]")).sendKeys(zipN);
+           driver7.findElement(By.xpath("//*[@id=\"WPHPHON\"]")).sendKeys(phoneN1);
+           driver7.findElement(By.xpath("//*[@id=\"WPCPHON\"]")).sendKeys(phoneN2);
+           driver7.findElement(By.xpath("//*[@id=\"WPDLNO\"]")).sendKeys(dlN);
+           driver7.findElement(By.xpath("//*[@id=\"WPDLST\"]")).sendKeys(stateK);
+           driver7.findElement(By.xpath("//*[@id=\"WPEMAIL\"]")).sendKeys(emailN);
+           //TODO:RENT OR OWN
+           
+           driver7.findElement(By.xpath("//*[@id=\"CEENA1\"]")).sendKeys(employerN);
+           driver7.findElement(By.xpath("//*[@id=\"CETITLE\"]")).sendKeys(postHold);
+           driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(hireD);
+           driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(incomeN);
+           
+           driver7.findElement(By.xpath("//*[@id=\"CEPHONE\"]")).sendKeys(workPhone);
+           //TODO DIRECT DEPOSIT YES/NO
+           //TODO: How are you paid
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPD1\"]")).sendKeys(recentPay);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPD2\"]")).sendKeys(nextPay);
+           
+           
+            //TODO: Reference Relationship
+           
+           driver7.findElement(By.xpath("//*[@id=\"1CRNAME\"]")).sendKeys(reference1 + " " + reference1Last);
+           driver7.findElement(By.xpath("//*[@id=\"1CRPHONE\"]")).sendKeys(refPhone1);
+           
+           //TODO: Reference Relationship
+           
+           //driver7.findElement(By.xpath("//*[@id=\"WPAPPD2\"]")).sendKeys(nextPay);
+           driver7.findElement(By.xpath("//*[@id=\"2CRNAME\"]")).sendKeys(reference2 + " " + reference2Last);
+           driver7.findElement(By.xpath("//*[@id=\"2CRPHONE\"]")).sendKeys(refPhone2);
+           
+           
+           driver7.findElement(By.xpath("//*[@id=\"WPACHBANK\"]")).sendKeys(bankName);
+           driver7.findElement(By.xpath("//*[@id=\"WPACHACCT\"]")).sendKeys(accountNumber);
+           driver7.findElement(By.xpath("//*[@id=\"WPACHABA\"]")).sendKeys(routingNumber);
+           
+           //TODO: Date Account open - year and months open
+           
+           driver7.findElement(By.xpath("//*[@id=\"WPCCCACCT\"]")).sendKeys(cardNumber);
+           driver7.findElement(By.xpath("//*[@id=\"EXPDAT\"]")).sendKeys( "02" + "/20" + expYear );
+            
+        
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA3\"]")).sendKeys(cardHolderName.split("\\s+"));
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA5\"]")).sendKeys(lastName);
+           
+           //*[@id="WPAPPA1"]
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA1\"]")).sendKeys(streetAddress);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA2\"]")).sendKeys(cityN);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA11\"]")).sendKeys(stateN);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPN1\"]")).sendKeys(zipN);
+           
+            
+         }
+        catch(Exception e){
+        System.out.println("Element not Found on Westcreek  page" + "\n" + e);
+        }
+         
     }
 
     public int editExpMonth(String expMonth){
