@@ -24,7 +24,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.util.Random;
-import java.util.logging.Level;
+import java.util.logging.Level;       
 import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -129,12 +129,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(true);
+        snapEnabled.setEnabled(false);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(true);
-       tempoeEnabled.setEnabled(true);
-       debugAutoFill.setVisible(true);  
+        okinusEnabled.setEnabled(false);
+        merchantsEnabled.setEnabled(false);
+       tempoeEnabled.setEnabled(false);
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);      
   
        
@@ -1093,23 +1093,22 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(crestEnabled))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(merchantsEnabled)
-                                    .addComponent(okinusEnabled)
-                                    .addComponent(simpleEnabled)
-                                    .addComponent(snapEnabled))))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tempoeEnabled)))
+                            .addComponent(okinusEnabled))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(merchantsEnabled)
+                                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(snapEnabled, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(simpleEnabled))
+                                .addComponent(crestEnabled))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(progressiveEnabled)))
+                        .addComponent(tempoeEnabled)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -1125,13 +1124,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 .addGap(20, 20, 20)
                 .addComponent(crestEnabled)
                 .addGap(10, 10, 10)
-                .addComponent(simpleEnabled)
-                .addGap(10, 10, 10)
                 .addComponent(progressiveEnabled)
-                .addGap(10, 10, 10)
-                .addComponent(merchantsEnabled)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(snapEnabled)
+                .addGap(10, 10, 10)
+                .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(okinusEnabled)
                 .addGap(10, 10, 10)
@@ -1586,14 +1585,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Apply/oasis_tire_wheels");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/pricebusters_furniture_baltimore_2");
             firstThread.CrestFinance(driver);
         
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=06B3E4");
+            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=5E80D7");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1605,14 +1604,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/oasistireandwheel/32860#/marketing");
+            driver3.get("https://approve.me/s/pricebusters/38995#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=m%2fZcVE6DK6g%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -2496,6 +2495,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver.findElement(By.id("NextPayDate")).sendKeys(nextPay);
         }
         Thread.sleep(100);
+        /*
         driver.findElement(By.id("RoutingNumber")).sendKeys(routingNumber); 
         if(!driver.findElement(By.id("RoutingNumber")).getText().equals(routingNumber)){
            driver.findElement(By.id("RoutingNumber")).clear();
@@ -2503,7 +2503,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
            Thread.sleep(100);
            driver.findElement(By.id("RoutingNumber")).sendKeys(routingNumber);
         }
-        driver.findElement(By.id("AccountNumberEntry")).sendKeys(accountNumber);
+        */
+        SetText(driver,"//*[@id=\"RoutingNumber\"]",routingNumber,true);
+        
+        //driver.findElement(By.id("AccountNumberEntry")).sendKeys(accountNumber);
+        
+        SetText(driver,"//*[@id=\"AccountNumberEntry\"]",accountNumber,true);
         driver.findElement(By.id("BankName")).sendKeys("");//TODO CHECK IF IT IS EMPTY THEN FILL IT OR REDO ROUTING
         driver.findElement(By.id("AccountType")).sendKeys("Checking");// is a toggle from checkingbox
         System.out.println(yearAccountOpen);
@@ -2517,8 +2522,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         dropdown.selectByIndex(monthsaccountopen.getSelectedIndex() + 1);
          */
         Thread.sleep(100);
-        driver.findElement(By.id("CardholderName")).sendKeys(cardHolderName);  // TODO: MAKE FIELD ON FORM
-        driver.findElement(By.id("CardNumberEntry")).sendKeys(cardNumber); // TODO: MAKE FIELD ON FORM
+        
+        //driver.findElement(By.id("CardholderName")).sendKeys(cardHolderName);  // TODO: MAKE FIELD ON FORM
+         SetText(driver,"//*[@id=\"CardholderName\"]",cardHolderName,true);
+        SetText(driver,"//*[@id=\"CardNumberEntry\"]",cardNumber,true);
+        //driver.findElement(By.id("CardNumberEntry")).sendKeys(cardNumber); // TODO: MAKE FIELD ON FORM
          driver.findElement(By.id("ExpirationMonth")).sendKeys(expMonth); // TODO: MAKE FIELD ON FORM
         Thread.sleep(100);
          driver.findElement(By.id("ExpirationYear")).sendKeys(expYear); // TODO: MAKE FIELD ON FORM
@@ -2528,8 +2536,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         dropdown = new Select(driver.findElement(By.id("ExpirationYear")));
         dropdown.selectByIndex(yearExp.getSelectedIndex());
-        */Thread.sleep(100);
+        */
+        Thread.sleep(100);
         driver.findElement(By.id("Reference1Name")).sendKeys(reference1 + " " + reference1Last); 
+        SetText(driver,"//*[@id=\"Reference1PhoneNumber\"]",refPhone1,true);
+        /*
         driver.findElement(By.id("Reference1PhoneNumber")).sendKeys(refPhone1);
         
          if(!driver.findElement(By.id("Reference1PhoneNumber")).getText().equals(refPhone1)){
@@ -2537,7 +2548,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
            System.out.println("Trying again");
            Thread.sleep(100);
            driver.findElement(By.id("Reference1PhoneNumber")).sendKeys(refPhone1);
-        }
+        }*/
+        
         Thread.sleep(1000);
         
         
@@ -2585,6 +2597,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }else if (driver.findElements(By.id("Reference2Name")).size() != 0){
             System.out.println("Crest finance DOES have the second reference");
         driver.findElement(By.id("Reference2Name")).sendKeys(reference2 + " " + reference2Last);
+        
+        SetText(driver,"//*[@id=\"Reference2PhoneNumber\"]",refPhone2,true);
+        /*
         driver.findElement(By.id("Reference2PhoneNumber")).sendKeys(refPhone2);
            
         if(!driver.findElement(By.id("Reference2PhoneNumber")).getText().equals(refPhone2)){
@@ -2592,7 +2607,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            System.out.println("Trying again");
            Thread.sleep(100);
            driver.findElement(By.id("Reference2PhoneNumber")).sendKeys(refPhone2);
-        }
+        }*/
         
         }else{
         //do nothing
@@ -2680,14 +2695,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
    
    
    }
-   
-   
+    
    public void SnapFinance(WebDriver driver2){
     
           try{
                Thread.sleep(500);
-        driver2.findElement(By.name("username")).sendKeys("oasisjoe");
-        driver2.findElement(By.name("password")).sendKeys("Oasis2110");
+        driver2.findElement(By.name("username")).sendKeys("payfurn");
+        driver2.findElement(By.name("password")).sendKeys("Payless2");
         driver2.findElement(By.id("btn-login")).click();
         
         Thread.sleep(4500);
@@ -2841,8 +2855,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver3.findElement(By.name("Customer_DateOfBirth")).sendKeys(dOb);
         driver3.findElement(By.name("Customer_SSN")).sendKeys(ssN);
         driver3.findElement(By.id("MoveNext")).click();
-        Thread.sleep(2000);
-        driver3.findElement(By.name("Customer_Email")).sendKeys(emailN);
+        //Thread.sleep(2000);
+        
+        WebElement secondPageProgressive = (new WebDriverWait(driver3, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Customer_Email\"]")));
+        
+        
+        SetText(driver3,"//*[@id=\"Customer_Email\"]",emailN,true);
+        //driver3.findElement(By.name("Customer_Email")).sendKeys(emailN);
         
         Select dropdown41 = new Select(driver3.findElement(By.name("PrimaryPhone_Type"))); //TODO: Make if statment
         dropdown41.selectByIndex(1);
