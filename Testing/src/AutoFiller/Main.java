@@ -130,12 +130,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(false);
+        snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(false);
-        merchantsEnabled.setEnabled(false);
+        okinusEnabled.setEnabled(true);
+        merchantsEnabled.setEnabled(true);
         westEnabled.setEnabled(true);
-       tempoeEnabled.setEnabled(false);
+       tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -1602,7 +1602,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/pricebusters_furniture_baltimore_2");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/vg_closeout");
             firstThread.CrestFinance(driver);
         
         }
@@ -1628,7 +1628,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=ZDfzOYo%2fzBY%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -1783,32 +1783,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         nextPaydayDay.setSelectedIndex(0);          
                 
     }//GEN-LAST:event_clearFieldsActionPerformed
-
-    private void crestEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crestEnabledActionPerformed
-        // TODO add your handling code here: 
-        if(odd1 == 0){
-        crestEnabled.setBackground(Color.green);
-        odd1 ++; 
-        } else if(odd1 == 1){
-        
-        crestEnabled.setBackground(Color.LIGHT_GRAY);
-        odd1 --;
-        } 
-       
-        
-    }//GEN-LAST:event_crestEnabledActionPerformed
-
-    private void snapEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snapEnabledActionPerformed
-        // TODO add your handling code here:
-         if(odd3 == 0){
-        snapEnabled.setBackground(Color.green);
-        odd3 ++; 
-        } else if(odd3 == 1){
-        
-        snapEnabled.setBackground(Color.LIGHT_GRAY);
-        odd3 --;
-        } 
-    }//GEN-LAST:event_snapEnabledActionPerformed
 
     private void progressiveEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressiveEnabledActionPerformed
         // TODO add your handling code here:
@@ -1965,16 +1939,29 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
     }//GEN-LAST:event_simpleEnabledActionPerformed
 
-    private void tempoeEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempoeEnabledActionPerformed
+    private void westEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westEnabledActionPerformed
         // TODO add your handling code here:
-        if(odd7 == 0){
-            tempoeEnabled.setBackground(Color.green);
-            odd7 ++;
-        } else if(odd7 == 1){
-            tempoeEnabled.setBackground(Color.LIGHT_GRAY);
-            odd7 --;
+         if(odd8 == 0){
+            westEnabled.setBackground(Color.green);
+            odd8 ++;
+        } else if(odd5 == 1){
+
+            westEnabled.setBackground(Color.LIGHT_GRAY);
+            odd8 --;
         }
-    }//GEN-LAST:event_tempoeEnabledActionPerformed
+    }//GEN-LAST:event_westEnabledActionPerformed
+
+    private void snapEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_snapEnabledActionPerformed
+        // TODO add your handling code here:
+        if(odd3 == 0){
+            snapEnabled.setBackground(Color.green);
+            odd3 ++;
+        } else if(odd3 == 1){
+
+            snapEnabled.setBackground(Color.LIGHT_GRAY);
+            odd3 --;
+        }
+    }//GEN-LAST:event_snapEnabledActionPerformed
 
     private void merchantsEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_merchantsEnabledActionPerformed
         // TODO add your handling code here:
@@ -1999,17 +1986,29 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
     }//GEN-LAST:event_okinusEnabledActionPerformed
 
-    private void westEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westEnabledActionPerformed
+    private void tempoeEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempoeEnabledActionPerformed
         // TODO add your handling code here:
-         if(odd8 == 0){
-            westEnabled.setBackground(Color.green);
-            odd8 ++;
-        } else if(odd5 == 1){
-
-            westEnabled.setBackground(Color.LIGHT_GRAY);
-            odd8 --;
+        if(odd7 == 0){
+            tempoeEnabled.setBackground(Color.green);
+            odd7 ++;
+        } else if(odd7 == 1){
+            tempoeEnabled.setBackground(Color.LIGHT_GRAY);
+            odd7 --;
         }
-    }//GEN-LAST:event_westEnabledActionPerformed
+    }//GEN-LAST:event_tempoeEnabledActionPerformed
+
+    private void crestEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crestEnabledActionPerformed
+        // TODO add your handling code here:
+        if(odd1 == 0){
+            crestEnabled.setBackground(Color.green);
+            odd1 ++;
+        } else if(odd1 == 1){
+
+            crestEnabled.setBackground(Color.LIGHT_GRAY);
+            odd1 --;
+        }
+
+    }//GEN-LAST:event_crestEnabledActionPerformed
     
     Random r = new Random();
     
@@ -2296,7 +2295,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JCheckBox checkingbox;
     public javax.swing.JTextField city;
     private javax.swing.JButton clearFields;
-    public javax.swing.JToggleButton crestEnabled;
+    private javax.swing.JToggleButton crestEnabled;
     private javax.swing.JTextField csvCode;
     private javax.swing.JButton debugAutoFill;
     public javax.swing.JTextField dl;
@@ -2372,14 +2371,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private javax.swing.JComboBox<String> lastPaydayMonth;
     private javax.swing.JComboBox<String> lastPaydayYear;
     public javax.swing.JTextField lastname;
-    public javax.swing.JToggleButton merchantsEnabled;
+    private javax.swing.JToggleButton merchantsEnabled;
     public javax.swing.JTextField middlename;
     private javax.swing.JComboBox<String> monthExp;
     private javax.swing.JComboBox<String> monthsaccountopen;
     private javax.swing.JComboBox<String> nextPaydayDay;
     private javax.swing.JComboBox<String> nextPaydayMonth;
     private javax.swing.JComboBox<String> nextPaydayYear;
-    public javax.swing.JToggleButton okinusEnabled;
+    private javax.swing.JToggleButton okinusEnabled;
     public javax.swing.JRadioButton own;
     private javax.swing.JComboBox<String> pay;
     public javax.swing.JTextField phone1;
@@ -2396,13 +2395,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JRadioButton rent;
     public javax.swing.JTextField routing;
     public javax.swing.JToggleButton simpleEnabled;
-    public javax.swing.JToggleButton snapEnabled;
+    private javax.swing.JToggleButton snapEnabled;
     private javax.swing.JFormattedTextField ssn;
     public javax.swing.JComboBox<String> states;
     public javax.swing.JTextField streetaddress;
     private javax.swing.JButton submitButton;
     public javax.swing.JTextField supername;
-    public javax.swing.JToggleButton tempoeEnabled;
+    private javax.swing.JToggleButton tempoeEnabled;
     public javax.swing.JComboBox<String> title;
     public javax.swing.JTextField unit;
     public javax.swing.JToggleButton westEnabled;
