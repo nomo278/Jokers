@@ -130,12 +130,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(false);
-        progressiveEnabled.setEnabled(false);
+        snapEnabled.setEnabled(true);
+        progressiveEnabled.setEnabled(true);
         okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(false);
-        westEnabled.setEnabled(false);
-       tempoeEnabled.setEnabled(false);77
+        merchantsEnabled.setEnabled(true);
+        westEnabled.setEnabled(true);
+       tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -1241,8 +1241,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addGap(20, 20, 20)
                         .addComponent(crestEnabled)
                         .addGap(10, 10, 10)
+                        .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
                         .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(10, 10, 10)
                         .addComponent(okinusEnabled)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -1381,8 +1383,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(lastPaydayYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(westEnabled)
                         .addGap(10, 10, 10)
@@ -1615,7 +1615,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/vg_closeout");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/kaufmans_furniture_gallery_grand_rapids");
             firstThread.CrestFinance(driver);
         
         }
@@ -1647,7 +1647,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(tempoeEnabled.isSelected()) {
             WebDriver driver5 = new ChromeDriver();
-            driver5.get("https://pulse.tempoe.com/onlinewebapp-intempoe.aspx");
+            driver5.get("https://pulse.tempoe.com/webapp.aspx?StoID=7280fc4d-d251-465d-b799-b1a041a64793");
             System.out.println("loading tempoe");
             firstThread.TempoeFinance(driver5);
         }
@@ -2491,7 +2491,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
        driver.findElement(By.id("OwnershipTypeID")).sendKeys("Own");
        }
         
-        driver.findElement(By.id("EmployerName")).sendKeys(employerN);
+        //driver.findElement(By.id("EmployerName")).sendKeys(employerN);
+        SetText(driver,"//*[@id=\"EmployerName\"]",employerN,true);
+        
         //driver.findElement(By.id("EmployerPhone")).sendKeys(employerPhone);
         SetText(driver,"//*[@id='EmployerPhone']",employerPhone,true);
         //driver.findElement(By.id("MonthlyIncome")).sendKeys(incomeN);
@@ -3064,6 +3066,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             //Select company
             WebElement firstpage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")));
             
+            
+            //*[@id="dealerGrid"]/div[2]/table/tbody/tr[1]/td[1]/label
+            driver4.findElement(By.xpath("//*[@id=\"dealerGrid\"]/div[2]/table/tbody/tr[1]/td[1]/label")).click();
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")).sendKeys(addYears);
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input[1]")).sendKeys(addMonths);
 
