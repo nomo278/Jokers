@@ -129,12 +129,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(true);
+        simpleEnabled.setEnabled(false);
+        snapEnabled.setEnabled(false);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(true);
+        okinusEnabled.setEnabled(false);
         merchantsEnabled.setEnabled(true);
-        westEnabled.setEnabled(true);
+        westEnabled.setEnabled(false);
        tempoeEnabled.setEnabled(true);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
@@ -389,6 +389,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         lastPaydayYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000" }));
         lastPaydayYear.setSelectedIndex(1);
+        lastPaydayYear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastPaydayYearActionPerformed(evt);
+            }
+        });
 
         jLabel52.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(201, 174, 30));
@@ -1480,7 +1485,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         int tempMonthIndex = tempDate.get(Calendar.MONTH);  //getting index for month      
         lastPaydayDay.setSelectedIndex(tempDayIndex);
         lastPaydayMonth.setSelectedIndex(tempMonthIndex);
-        lastPaydayYear.setSelectedIndex(1);
+        lastPaydayYear.setSelectedIndex(0);
         // recentpay.setText("09" + "30" + "2016");(int)r.nextInt(15)+today
 //        nextPaydayMonth.setSelectedIndex((int)r.nextInt(2) + month);
         
@@ -1496,7 +1501,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 //        tempIndex = 15;
 //        }
         nextPaydayDay.setSelectedIndex(tempDayIndex);
-        nextPaydayYear.setSelectedIndex(1);
+        nextPaydayYear.setSelectedIndex(0);
 
 /*
         lastPaydayDay.setSelectedIndex((int)r.nextInt(15));
@@ -2022,6 +2027,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
 
     }//GEN-LAST:event_crestEnabledActionPerformed
+
+    private void lastPaydayYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastPaydayYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastPaydayYearActionPerformed
     
     Random r = new Random();
     
@@ -3217,8 +3226,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         tempMerchant.sendKeys(incomeN);
             */
            // driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[4]/div/div/div/span[1]/span/span[2]/span")).click();
+            //*[@id="pDirectDipositDiv"]/label[1]
             
-           
+            System.out.println(employmentPayment);
+           if(employmentPayment == "Direct Deposit from Employer"){
+               driver4.findElement(By.xpath("//*[@id=\"pDirectDipositDiv\"]/label[1]")).click();
+           }
              
               
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[7]/div/div/div/span[1]/span/span[2]/span")).click();
@@ -3238,7 +3251,29 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcNumberTextBox")).sendKeys(cardNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcCvvTextBox")).sendKeys(cardCode);
+            //Checkpoint Put card finder here
+            //Decode Card Type by number
+           //  VISA("^4[0-9]{12}(?:[0-9]{3})?$"),
+            //MASTERCARD("^5[1-5][0-9]{14}$"),
+            //AMERICAN_EXPRESS("^3[47][0-9]{13}$"),
+     
+            // DISCOVER("^6(?:011|5[0-9]{2})[0-9]{12}$"),
+       
             
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/div[1]/div[1]/div[2]/div/div/div/span[1]/span/span[2]/span")).click();
+            if (cardNumber.startsWith("4")){          
+           driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[4]")).click();
+            }
+                    else if (cardNumber.startsWith("5")){
+           driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[3]")).click();
+            } 
+                    else if (cardNumber.startsWith("6")){                    
+           driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[2]")).click();} 
+                    else if (cardNumber.startsWith("37")){                    
+           driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[1]")).click();
+           }  
+             //Same as physical address
+             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Fieldset1\"]/div[1]/div/div/label[1]")).click();
             //*[@id="ContentPlaceHolder1_UC_Step3_step3Div"]/div[1]/div[1]/div[3]/div/div[1]/div/span[1]/span/span[2]/span
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/div[1]/div[1]/div[3]/div/div[1]/div/span[1]/span/span[2]/span")).click();
             Thread.sleep(500);
@@ -3476,6 +3511,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            if(Pay == "Weekly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[2]/a")).click();
            if(Integer.valueOf(incomeN)<= 2000){
+           System.out.println(Integer.valueOf(incomeN) / 4);
            tempIncome = Integer.valueOf(incomeN) / 4;
            System.out.println(tempIncome);
            }
@@ -3530,9 +3566,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
            
               
-       } catch (InterruptedException ex) {
-           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-       }
+       } catch(Exception e){
+        System.out.println("Element not Found on Okinus  page" + "\n" + e);
+        }
     }
     
       private void WestCreekFinance(WebDriver driver7) {
