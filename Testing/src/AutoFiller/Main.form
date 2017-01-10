@@ -420,7 +420,6 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="merchantsEnabled" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="crestEnabled" min="-2" max="-2" attributes="0"/>
-                                      <Component id="simpleEnabled" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -435,14 +434,17 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="okinusEnabled" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="progressiveEnabled" min="-2" max="-2" attributes="0"/>
+                              <Component id="snapEnabled" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="progressiveEnabled" min="-2" max="-2" attributes="0"/>
-                          <Component id="snapEnabled" min="-2" max="-2" attributes="0"/>
+                          <Component id="simpleEnabled" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="okinusEnabled" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -458,15 +460,15 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="crestEnabled" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="simpleEnabled" min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="okinusEnabled" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="merchantsEnabled" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="snapEnabled" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="progressiveEnabled" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="simpleEnabled" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="okinusEnabled" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="westEnabled" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>

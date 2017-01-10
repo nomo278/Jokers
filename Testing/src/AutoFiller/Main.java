@@ -129,14 +129,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(false);
-        snapEnabled.setEnabled(true);
-        progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(false);
-        merchantsEnabled.setEnabled(true);
+        simpleEnabled.setEnabled(true);
+        snapEnabled.setEnabled(false);
+        progressiveEnabled.setEnabled(false);
+        okinusEnabled.setEnabled(true);
+        merchantsEnabled.setEnabled(false);
         westEnabled.setEnabled(false);
        tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(true);  
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);      
   
        
@@ -1120,8 +1120,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                     .addGap(10, 10, 10)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(merchantsEnabled)
-                                        .addComponent(crestEnabled)
-                                        .addComponent(simpleEnabled)))
+                                        .addComponent(crestEnabled)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(tempoeEnabled)))
@@ -1130,12 +1129,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addComponent(westEnabled)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(okinusEnabled)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(progressiveEnabled)
+                                .addComponent(snapEnabled))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(progressiveEnabled)
-                            .addComponent(snapEnabled))))
+                            .addComponent(simpleEnabled)
+                            .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1146,15 +1147,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addGap(20, 20, 20)
                         .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
+                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(okinusEnabled)
+                        .addGap(10, 10, 10)
                         .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(snapEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(okinusEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(westEnabled)
                         .addGap(10, 10, 10)
@@ -1610,14 +1611,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/3888");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
             firstThread.CrestFinance(driver);
         
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=7C0F35");
+            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=644781");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -3478,7 +3479,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-personal-driver-lic']")).sendKeys(dlN);
            //DL State
            driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[2]/div[2]/div[2]/a/span[2]")).click();
-          // ClickState1(driver6, stateK);
+           ClickState1(driver6, stateK);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-home-phone']")).sendKeys(phoneN1);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-cell-phone']")).sendKeys(phoneN2);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email']")).sendKeys(emailN);
@@ -3534,9 +3535,24 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-bank-name']")).sendKeys(bankName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-checking-account']")).sendKeys(accountNumber);
-//           String tempDate = (month - Integer.parseInt(monthsAccountOpen.getSelectedItem().toString())) + "30" + year;
-  //         System.out.println(tempDate);
-    //       driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
+          // Date today = new Date();
+          String tempMonthS = "01";
+          String tempDayS = "01";
+          int tempMonth = Integer.parseInt(monthAccountOpen) - month;
+          int tempYear = year;
+          if(tempMonth < 0){
+          tempYear = -- year ;
+          }          
+          if(tempMonth > 10){
+          tempMonthS = "0" + tempMonth;
+          }
+          if(today < 10){
+          tempDayS = "0" + today;
+          }
+          
+           String tempDate = tempMonthS + tempDayS + tempYear;
+           System.out.println(tempDate);
+           driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-number']")).sendKeys(cardNumber);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-bank-name']")).sendKeys(bankName);
            //Decode Card Type by number
@@ -3790,7 +3806,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
     public void ClickState1(WebDriver driver,String stateK){
        if(stateK == "AL"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[5]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[5]/a")).click();
        }else if(stateK == "AK"){
        driver.findElement(By.xpath("html/body/ul[3]/li[6]/a")).click();
        }else if(stateK == "AZ"){
@@ -3895,6 +3911,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
        driver.findElement(By.xpath("html/body/ul[3]/li[56]/a")).click();
        }else if(stateK == "VI"){
        driver.findElement(By.xpath("html/body/ul[3]/li[57]/a")).click();
+       } else{
+       driver.findElement(By.xpath("html/body/ul[3]/li[15]/a")).click();
        }        
     }
     
