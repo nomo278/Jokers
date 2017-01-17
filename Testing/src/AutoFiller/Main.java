@@ -106,6 +106,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String Title;
    public static String cardCode;
    public static String CrestChecker;
+   public static String RelationRef;
+   public static String RelationRef1;
    
    
    public static int odd1 = 0;
@@ -130,13 +132,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(false);
-        progressiveEnabled.setEnabled(false);
+        snapEnabled.setEnabled(true);
+        progressiveEnabled.setEnabled(true);
         okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(false);
-        westEnabled.setEnabled(false);
-       tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(false);  
+        merchantsEnabled.setEnabled(true);
+        westEnabled.setEnabled(true);
+       tempoeEnabled.setEnabled(true);
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
        
@@ -279,6 +281,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         cardCode1 = new javax.swing.JLabel();
         LangToggle = new javax.swing.JToggleButton();
         westEnabled = new javax.swing.JToggleButton();
+        RelationShipComboBox = new javax.swing.JComboBox<>();
+        RelationShipComboBox1 = new javax.swing.JComboBox<>();
 
         jInternalFrame1.setVisible(true);
 
@@ -708,7 +712,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(201, 174, 30));
-        jLabel27.setText("First & Last Name");
+        jLabel27.setText("First Name     Last Name");
 
         ref5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -732,7 +736,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(201, 174, 30));
-        jLabel3.setText("First & Last Name");
+        jLabel3.setText("First Name     Last Name");
 
         ref1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -846,6 +850,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         });
 
+        RelationShipComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter" }));
+
+        RelationShipComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -865,118 +873,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(streetaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel12))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel13)
-                                                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel14)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(156, 156, 156)
-                                                        .addComponent(jLabel15)))
-                                                .addGap(65, 65, 65)
-                                                .addComponent(jLabel16))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(24, 24, 24)
-                                                .addComponent(states, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(zip, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(ssn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel20)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(phone1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel23))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel24)
-                                                    .addComponent(phone2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel34)
-                                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(middlename, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel10))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel11)
-                                            .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(dl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel21)
-                                            .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ref1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ref3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel27))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
-                                    .addComponent(refphone1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel28)
-                                    .addComponent(refphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rent)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(own)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel25)
-                                    .addComponent(email))
-                                .addGap(292, 292, 292))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1041,9 +937,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                     .addComponent(recentopen)
                                     .addComponent(checkingbox)))
                             .addComponent(jSeparator5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -1111,55 +1004,164 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(clearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(streetaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel12))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel13)
+                                                        .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel14)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addGap(156, 156, 156)
+                                                            .addComponent(jLabel15)))
+                                                    .addGap(65, 65, 65)
+                                                    .addComponent(jLabel16))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(24, 24, 24)
+                                                    .addComponent(states, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(27, 27, 27)
+                                                    .addComponent(zip, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(ssn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel20)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                            .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                            .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(phone1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel23))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel24)
+                                                        .addComponent(phone2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel34)
+                                                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(firstname, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel9))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(middlename, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel10))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel11)
+                                                .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(dl, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel21)
+                                                .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel17)
+                                                .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel18)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(rent)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(own)))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel25)
+                                                .addComponent(email))
+                                            .addGap(18, 18, 18)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(185, 185, 185)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel3)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(ref1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(ref3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel26)
+                                            .addComponent(refphone1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(RelationShipComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(RelationShipComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel27)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel28)
+                                            .addComponent(refphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(merchantsEnabled)
-                                        .addComponent(crestEnabled)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(merchantsEnabled)
+                                            .addComponent(crestEnabled)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tempoeEnabled)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tempoeEnabled)))
+                                    .addComponent(westEnabled)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(westEnabled)))
+                                .addComponent(snapEnabled)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(progressiveEnabled)
-                                .addComponent(snapEnabled))))
+                                .addComponent(simpleEnabled)
+                                .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(simpleEnabled)
-                            .addComponent(okinusEnabled, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(progressiveEnabled)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(okinusEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(snapEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(westEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(tempoeEnabled))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -1170,78 +1172,94 @@ public class Main extends javax.swing.JFrame implements Runnable{
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel26)
-                                .addGap(10, 10, 10)
-                                .addComponent(refphone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel28)
-                                .addGap(10, 10, 10)
-                                .addComponent(refphone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel34)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(middlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel34)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel22)
-                                            .addComponent(jLabel21)
-                                            .addComponent(jLabel10))
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel13))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(firstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(middlename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(dl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(dlstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel12)
-                                                    .addComponent(jLabel13))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(streetaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel19)
-                                                    .addComponent(jLabel20))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addComponent(ssn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(1, 1, 1)))))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel14)
-                                                    .addComponent(jLabel15)
-                                                    .addComponent(jLabel16))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(zip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(states, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel23)
-                                                    .addComponent(jLabel24))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(phone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(phone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(streetaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel19)
+                                            .addComponent(jLabel20))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(ssn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel14)
+                                            .addComponent(jLabel15)
+                                            .addComponent(jLabel16))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(zip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(states, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel24))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(phone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(phone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel18))
+                                        .addGap(1, 1, 1)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel4)
+                                            .addComponent(rent)
+                                            .addComponent(own)
+                                            .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel25)
+                                        .addGap(1, 1, 1)
+                                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel26)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(refphone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel3)
@@ -1250,31 +1268,22 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                             .addComponent(ref1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(ref3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
+                                        .addComponent(RelationShipComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel28)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(refphone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel27)
                                         .addGap(10, 10, 10)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(ref4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addGap(1, 1, 1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(rent)
-                                    .addComponent(own)
-                                    .addComponent(addressMonths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addressYears, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel25)
-                                .addGap(1, 1, 1)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(ref5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(RelationShipComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)))
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1388,7 +1397,24 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addGap(8, 8, 8)
                                 .addComponent(debugAutoFill, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(okinusEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(merchantsEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(snapEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(westEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(tempoeEnabled)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1503,6 +1529,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         nextPaydayDay.setSelectedIndex((int)r.nextInt(15)+today);
         nextPaydayYear.setSelectedIndex(1);
   */      
+        
+        
+        hireDateMonth.setSelectedIndex((int)r.nextInt(11));
+        hireDateYear.setSelectedIndex(1);
 // nextpay.setText("10" + "07" + "2016");
         dlstate.setSelectedIndex(r.nextInt(49));
        // Title.set
@@ -1600,7 +1630,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         cardNumber = this.cardnumber.getText();
         cardCode = csvCode.getText();
         Title = title.getSelectedItem().toString();
-
+        RelationRef =  RelationShipComboBox.getSelectedItem().toString();
+        RelationRef1 =  RelationShipComboBox1.getSelectedItem().toString();
+        
         System.out.println("on the button " + firstName);
 
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
@@ -1611,14 +1643,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio");
             firstThread.CrestFinance(driver);
         
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=644781");
+            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=7C0F35");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1630,14 +1662,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/paylessfurniture2/32918#/marketing");
+            driver3.get("https://approve.me/s/royalfurnitureandbedding/33052#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -2295,6 +2327,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JToggleButton LangToggle;
+    public javax.swing.JComboBox<String> RelationShipComboBox;
+    public javax.swing.JComboBox<String> RelationShipComboBox1;
     public javax.swing.JTextField accountnumber;
     private javax.swing.JComboBox<String> addressMonths;
     private javax.swing.JComboBox<String> addressYears;
@@ -2564,7 +2598,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver.findElement(By.id("AccountType")).sendKeys("Checking");// is a toggle from checkingbox
         System.out.println(yearAccountOpen);
          driver.findElement(By.id("YearsAccountOpen")).sendKeys(yearAccountOpen);// TODO: MAKE FIELD ON FORM
-         driver.findElement(By.id("MonthsAccountOpen")).sendKeys(monthAccountOpen);// TODO: MAKE FIELD ON FORM
+         driver.findElement(By.id("MonthsAccountOpen")).sendKeys(monthAccountOpen + 1);// TODO: MAKE FIELD ON FORM
         /*
          dropdown = new Select(driver.findElement(By.id("YearsAccountOpen")));
         //dropdown.selectByIndex(yearsaccountopen.getSelectedIndex() + 1);
@@ -2751,16 +2785,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
           try{
                Thread.sleep(500);
-        driver2.findElement(By.name("username")).sendKeys("payfurn");
-        driver2.findElement(By.name("password")).sendKeys("Payless2");
+        driver2.findElement(By.name("username")).sendKeys("jokersaudio");
+        driver2.findElement(By.name("password")).sendKeys("Awadsquad1");
         driver2.findElement(By.id("btn-login")).click();
         
-        Thread.sleep(4500);
-        
+        WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
+                
         driver2.findElement(By.cssSelector("a.btn.btn-success.pull-right.toolbtns")).click();
         
-           Thread.sleep(4500);
-           
+        WebElement SecondPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"selectSalesPerson\"]/div[2]/div/form/div[2]/div/div[1]/input")));
+          
+               Thread.sleep(1000);
          Select dropdown = new Select(driver2.findElement(By.cssSelector(".salespeople"))); 
          dropdown.selectByIndex(2); 
          driver2.findElement(By.name("ssn")).sendKeys(ssN); 
@@ -2768,26 +2803,29 @@ public class Main extends javax.swing.JFrame implements Runnable{
          
          driver2.findElement(By.cssSelector("button.btn.btn-success.btn-lg")).click();
          System.out.println("We logged in");
-           Thread.sleep(5000);
+           Thread.sleep(1000);
+         WebElement ThirdPageSnap = (new WebDriverWait(driver2, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[1]/div[1]/input")));
          //driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[3]/div[3]/div/input")).sendKeys("jokersaudio");
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[1]/input")).sendKeys(firstName);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[2]/input")).sendKeys(middleName);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[2]/input")).sendKeys(lastName);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[3]/div[1]/div/input")).sendKeys(phoneN1);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[3]/div[2]/div/input")).sendKeys(phoneN2);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[3]/div[3]/div/input")).sendKeys(emailN);
-         //Todo Select english
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[4]/div[2]/input")).sendKeys(ssN);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[5]/div[1]/input")).sendKeys(streetAddress);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[5]/div[2]/input")).sendKeys(unitN);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[6]/div[1]/input")).sendKeys(cityN);
-         //TODO: Select State
-          driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[6]/div[2]/select")).sendKeys(stateN);
          
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[6]/div[3]/input")).sendKeys(zipN);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[1]/div[1]/input")).sendKeys(firstName);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[1]/div[2]/input")).sendKeys(middleName);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[2]/input")).sendKeys(lastName);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[3]/div[1]/div/input")).sendKeys(phoneN1);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[3]/div[2]/div/input")).sendKeys(phoneN2);
+         driver2.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(emailN);
+         //Todo Select english
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[4]/div[1]/input")).sendKeys(ssN);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[4]/div[2]/input")).sendKeys(ssN);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[5]/div[1]/input")).sendKeys(streetAddress);
+         driver2.findElement(By.xpath("//*[@id=\"addressUnit\"]")).sendKeys(unitN);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[6]/div[1]/input")).sendKeys(cityN);
+         //TODO: Select State
+          driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[6]/div[2]/select")).sendKeys(stateN);
+         
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[6]/div[3]/input")).sendKeys(zipN);
          //TODO: Select Years dropdown
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[1]/select")).sendKeys(addYears);
-        dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[1]/select")));
+        dropdown = new Select(driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[1]/select")));
         System.out.println("This is the amount of years " + addressYears.getSelectedItem().toString() + "/" + addYears);
         int selectedIndexOfYear = Integer.parseInt(addYears);
         if(selectedIndexOfYear > 5){
@@ -2797,13 +2835,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
             dropdown.selectByIndex(selectedIndexOfYear+1);
         }
         
-         dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
+         dropdown = new Select(driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
         int selectedIndexOfMonth = Integer.parseInt(addMonths);
         dropdown.selectByIndex(selectedIndexOfMonth+1); 
         //dropdown.selectByIndex(tempAddressYears); //TODO addressYears.getSelectedIndex()
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")).sendKeys(addMonths);
-        dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
-        dropdown.selectByIndex(3);
+        //dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
+        //dropdown.selectByIndex(3);
          //TODO: Rent or own addressStatus  addressMonths.getSelectedIndex()
          if(Rent == "Rent"){         
          Select dropdown30 = new Select(driver2.findElement(By.name("addressStatus"))); 
@@ -2815,64 +2853,89 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
          }
          
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[8]/div[2]/input")).sendKeys(dlN);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[8]/div[2]/input")).sendKeys(dlN);
          //TODO: Driver License State Dropdown
          driver2.findElement(By.name("dLicenseState")).sendKeys(stateK);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[1]/input")).sendKeys(reference1);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[2]/input")).sendKeys(reference1Last);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[3]/input")).sendKeys(refPhone1);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[5]/input")).sendKeys(reference2);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[6]/input")).sendKeys(reference2Last);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[1]/input")).sendKeys(reference1);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[2]/input")).sendKeys(reference1Last);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[3]/input")).sendKeys(refPhone1);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[5]/input")).sendKeys(reference2);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[6]/input")).sendKeys(reference2Last);
          //TODO: LAST NAME REFERENCES  /html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[7]/input
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[9]/div[2]/div[7]/input")).sendKeys(refPhone2);
+         driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[9]/div[2]/div[7]/input")).sendKeys(refPhone2);
          
          driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[11]/div/div/label[1]")).click();
          driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[12]/button")).click();
          
            Thread.sleep(4500);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[1]/div/div[1]/div/input")).sendKeys(routingNumber);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input")).sendKeys(accountNumber);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[1]/div/div[3]/input")).sendKeys(accountNumber);
+         driver2.findElement(By.xpath("//*[@id=\"bankNumbers\"]/div/div[1]/div/input")).sendKeys(routingNumber);
+         driver2.findElement(By.xpath("//*[@id=\"bankNumbers\"]/div/div[2]/input")).sendKeys(accountNumber);
+         driver2.findElement(By.xpath("//*[@id=\"bankNumbers\"]/div/div[3]/input")).sendKeys(accountNumber);
          //driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[2]/input")).sendKeys(bankName);
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[3]/input")).sendKeys(bankCity);
          //TODO: State dropdown
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[2]/input")).sendKeys(bankState);
          Thread.sleep(500);
          driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[1]/label[2]/input")).click();
-         driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[1]/label[2]/input")).sendKeys(Keys.SPACE);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[2]/div[1]/label[2]/input")).click();
-        Thread.sleep(500);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[2]/div[2]/div[2]/button")).click();
-         //Click on next page
+         System.out.println("Snap page two");
          
-         Thread.sleep(4500);
+         driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[2]/div[2]/button")).sendKeys(Keys.SPACE);
+          
+        Thread.sleep(500);
+         //Click on next page
+         WebElement FourthPageSnap = (new WebDriverWait(driver2, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[1]/div[1]/select")));
+        
+         Thread.sleep(800);
           
         Select dropdown3 = new Select(driver2.findElement(By.name("incomeType"))); //TODO: Make if statment
+        if(employmentPayment == "Direct Deposit from Employer" || employmentPayment == "Paychecks from Employer" ){
         dropdown3.selectByIndex(1);
+        SnapSelectWeek(driver2);
         
-         Thread.sleep(500);
-         //TODO PUT THE OTHER VERIATION OF INCOME TYPES
-        Select dropdown31 = new Select(driver2.findElement(By.name("frequency"))); //TODO: Make if statment
-        dropdown31.selectByIndex(1);
-        //String payRecent = lastPaydayMonth.getSelectedItem().toString() + lastPaydayDay.getSelectedIndex().toString() + lastPaydayYear.getSelectedItem().toString();
-        //String payNext = nextPaydayMonth.getSelectedItem().toString() + "04" + nextPaydayYear.getSelectedItem().toString();
-        driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[2]/div/div[1]/div/input")).sendKeys(recentPay);
-        driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/input")).sendKeys(nextPay);
-        Thread.sleep(500);           //*[@id="incomeInfo"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[2]/div/div/input
-        //driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[1]/div/div[2]/a[1]")).click();
-         
         
-        ////*[@id="incomeInfo"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[2]/div/div/input
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[2]/div/div/input")).sendKeys(incomeN);
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[1]/input")).sendKeys(employerN);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[2]/input")).sendKeys(superName);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[3]/input")).sendKeys(postHold);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[4]/input")).sendKeys(workPhone);
+         driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[2]/input")).sendKeys(superName);
+         driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[3]/input")).sendKeys(postHold);
+         driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[4]/input")).sendKeys(workPhone);
+         
+        
          String hireDate = hireDateMonth.getSelectedItem().toString() + "01" + hireDateYear.getSelectedItem().toString();
          System.out.println("hireDate: " + hireDate);
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[5]/div/input")).sendKeys(hireDate);
+         
+        }else if(employmentPayment == "Self-Employment"){
+        dropdown3.selectByIndex(3);
+        SnapSelectWeek(driver2);
+        
+        driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[1]/input")).sendKeys(employerN);
+        driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[1]/input")).sendKeys(postHold);
+        driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[3]/div/div[4]/div/div[1]/input")).sendKeys(yearsAtJob); 
+        driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[3]/div/div[4]/div/div[2]/input")).sendKeys(monthsAtJob);
+        //*[@id="incomeInfo"]/div[2]/div[3]/div/div/form/div[3]/div[3]/div/div[4]/div/div[1]/input years
+        //*[@id="incomeInfo"]/div[2]/div[3]/div/div/form/div[3]/div[3]/div/div[4]/div/div[2]/input  months
+        
+        
+        }else if(employmentPayment == "Social Security"){
+        dropdown3.selectByIndex(4);
+        SnapSelectWeek(driver2);
+        }else{
+        dropdown3.selectByIndex(5);
+        SnapSelectWeek(driver2);
+        }
+        
+        
+        
+        
+        
          Thread.sleep(500);
-         driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div[3]/div/div/form/div[3]/div[6]/div[2]/button[1]")).click();
+         //TODO PUT THE OTHER VERIATION OF INCOME TYPES
+         
+        //driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[1]/div/div[2]/a[1]")).click();
+         
+         
+         Thread.sleep(500);
+         driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[6]/div[2]/button[1]")).click();
          System.out.println("Finished");
          Thread.sleep(1500);
         // if(0 != driver2.FindElements(By.cssSelector("a.btn.btn-success.btn-mega")).Count){
@@ -2884,7 +2947,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            
            }
         catch(Exception e){
-        System.out.println("Element not Found on third page");
+        System.out.println("Element not Found on third page" + e );
         }
    
        
@@ -3168,11 +3231,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
              
             
             WebElement secondPage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.id("ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox")));
-             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox")).sendKeys(routingNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReRoutingNumTextBox")).sendKeys(routingNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pAccountNumTextBox")).sendKeys(accountNumber);
-            driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox")).sendKeys(accountNumber);
-
+            //*[@id="ContentPlaceHolder1_UC_Step2_pReRoutingNumTextBox"]
+         
+            SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step2_pRoutingNumTextBox\"]",routingNumber,true); 
+            SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step2_pReRoutingNumTextBox\"]",routingNumber,true); 
+            SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step2_pAccountNumTextBox\"]",accountNumber,true); 
+            SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step2_pReAccountNumTextBox\"]",accountNumber,true); 
             
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step2_pBankNameTextBox")).sendKeys(bankName);
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_Step2RadPageView\"]/div/fieldset/div/div/div[4]/div/div[1]/div/span[1]/span/span[2]")).click();
@@ -3292,7 +3356,35 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2FnameTextBox")).sendKeys(reference2);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2LnameTextBox")).sendKeys(reference2Last);
             //driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
-            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Fieldset2\"]/div/div/div[3]/div/span[1]/span/span[2]")).click();
+            Thread.sleep(500);
+            if(RelationRef == "Aunt" || RelationRef == "Uncle"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[1]")).click();
+            }else if(RelationRef == "Brother" || RelationRef == "Sister"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[2]")).click();
+            }else if(RelationRef == "Grand Parent"){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[3]")).click();
+            }else if(RelationRef == "Parent"){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[4]")).click();
+            }else if(RelationRef == "Son" || RelationRef == "Daughter"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[5]")).click();
+            }
+             Thread.sleep(500);
+             
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Fieldset3\"]/div/div/div[3]/div/span[1]/span/span[2]")).click();
+            Thread.sleep(500);
+            if(RelationRef1 == "Aunt" || RelationRef1 == "Uncle"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[1]")).click();
+            }else if(RelationRef1 == "Brother" || RelationRef1 == "Sister"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[2]")).click();
+            }else if(RelationRef1 == "Grand Parent"){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[3]")).click();
+            }else if(RelationRef1 == "Parent"){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[4]")).click();
+            }else if(RelationRef1 == "Son" || RelationRef1 == "Daughter"  ){
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[5]")).click();
+            }
+             Thread.sleep(500);
             
         SetText(driver4,"//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox\"]",refPhone2,true);
             
@@ -3509,11 +3601,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[4]/a/span[2]")).click();
            if(Pay == "Weekly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[2]/a")).click();
-           if(Integer.valueOf(incomeN)<= 2000){
+           
            System.out.println(Integer.valueOf(incomeN) / 4);
            tempIncome = Integer.valueOf(incomeN) / 4;
            System.out.println(tempIncome);
-           }
            }else if(Pay == "Bi weekly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[3]/a")).click();
            
@@ -3526,6 +3617,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("/html/body/ul[5]/li[5]/a")).click();
            
            }
+           
            String tempIncomeString = String.valueOf(tempIncome);
          //  driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[4]/div/div[1]/div[4]/a/span[1]")).sendKeys(Pay);
          
@@ -3634,13 +3726,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
            
            driver7.findElement(By.xpath("//*[@id=\"1CRNAME\"]")).sendKeys(reference1 + " " + reference1Last);
            driver7.findElement(By.xpath("//*[@id=\"1CRPHONE\"]")).sendKeys(refPhone1);
+           driver7.findElement(By.xpath("//*[@id=\"1CRRELAT\"]")).sendKeys(RelationRef);
+                   
            
            //TODO: Reference Relationship
            
            //driver7.findElement(By.xpath("//*[@id=\"WPAPPD2\"]")).sendKeys(nextPay);
            driver7.findElement(By.xpath("//*[@id=\"2CRNAME\"]")).sendKeys(reference2 + " " + reference2Last);
            driver7.findElement(By.xpath("//*[@id=\"2CRPHONE\"]")).sendKeys(refPhone2);
-           
+           driver7.findElement(By.xpath("//*[@id=\"2CRRELAT\"]")).sendKeys(RelationRef1);
            
            driver7.findElement(By.xpath("//*[@id=\"WPACHBANK\"]")).sendKeys(bankName);
            driver7.findElement(By.xpath("//*[@id=\"WPACHACCT\"]")).sendKeys(accountNumber);
@@ -3929,6 +4023,29 @@ public class Main extends javax.swing.JFrame implements Runnable{
             Thread.sleep(100);
             element.sendKeys(value);
         }
+    }
+    
+    private void SnapSelectWeek(WebDriver driver2){
+     Select dropdown4 = new Select(driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[1]/select")));
+     if(Pay == "Weekly"){ 
+     dropdown4.selectByIndex(1);
+     }else if(Pay == "Bi weekly"){
+     dropdown4.selectByIndex(2);
+     }else if(Pay == "Twice Monthly"){
+     dropdown4.selectByIndex(3);
+     }else if(Pay == "Monthly"){
+     dropdown4.selectByIndex(4);
+     } 
+     
+     try {
+     driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[2]/div/div[1]/div/input")).sendKeys(recentPay);
+       
+           Thread.sleep(250);
+      
+     driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[1]/div[1]/div[2]/div/div[2]/div/input")).sendKeys(nextPay);
+      } catch (InterruptedException ex) {
+           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     @Override
