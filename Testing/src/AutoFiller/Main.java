@@ -26,6 +26,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Random;
 import java.util.logging.Level;       
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -84,6 +85,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String employerPhone;     
    public static String incomeN;     
    public static String hireD;    
+   public static String hireDate;
    public static String recentPay;    
    public static String nextPay;    
    public static String Pay;    
@@ -108,7 +110,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String CrestChecker;
    public static String RelationRef;
    public static String RelationRef1;
-   
+   public static String uRent;
+   public static String uOwn;   
+   public static String employerState;
    
    public static int odd1 = 0;
    public static int odd2 = 0;
@@ -157,6 +161,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         jScrollPane1 = new javax.swing.JScrollPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jSeparator3 = new javax.swing.JSeparator();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel7 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel41 = new javax.swing.JLabel();
@@ -283,6 +288,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         westEnabled = new javax.swing.JToggleButton();
         RelationShipComboBox = new javax.swing.JComboBox<>();
         RelationShipComboBox1 = new javax.swing.JComboBox<>();
+        dlstate1 = new javax.swing.JComboBox<>();
+        jLabel48 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -623,7 +630,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         own.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         own.setForeground(new java.awt.Color(201, 174, 30));
         own.setText("Own");
+        own.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ownActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(rent);
         rent.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rent.setForeground(new java.awt.Color(201, 174, 30));
         rent.setSelected(true);
@@ -854,6 +867,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         RelationShipComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter" }));
 
+        dlstate1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY" }));
+
+        jLabel48.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(201, 174, 30));
+        jLabel48.setText("Employer State");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -965,7 +984,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(income, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(income, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(dlstate1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1346,6 +1369,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel48)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(dlstate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1486,7 +1513,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
          //monthsatjob.setText(getRandomNumber(1));
         supername.setText("Jeb Jackson");
         workphone.setText("770" + randInt(300, 900) + getRandomNumber(4));
-
+        dlstate1.setSelectedIndex(randInt(1,10));
+        uRent = "True";
+        
         Calendar tempDate = Calendar.getInstance(); //getting current date
         //int dayOfYear = Integer.parseInt(getRandomDay());
        // tempDate.set(Calendar.DAY_OF_YEAR, dayOfYear);
@@ -1582,6 +1611,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         stateK = this.dlstate.getSelectedItem().toString();
         stateKMP = this.dlstate.getSelectedIndex();
+        
+        employerState = stateToFullState[dlstate1.getSelectedIndex()];
+        
         dlN = this.dl.getText();
         phoneN1 = this.phone1.getText();
         phoneN2 = this.phone2.getText();
@@ -1632,6 +1664,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Title = title.getSelectedItem().toString();
         RelationRef =  RelationShipComboBox.getSelectedItem().toString();
         RelationRef1 =  RelationShipComboBox1.getSelectedItem().toString();
+        hireDate = hireDateMonth.getSelectedItem().toString() + "01" + hireDateYear.getSelectedItem().toString();
         
         System.out.println("on the button " + firstName);
 
@@ -1742,6 +1775,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
     private void rentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentActionPerformed
         // TODO add your handling code here:
+        uRent = "True";
+        uOwn = "False";
     }//GEN-LAST:event_rentActionPerformed
 
     private void zipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipActionPerformed
@@ -1821,7 +1856,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         lastPaydayDay.setSelectedIndex(0);
         nextPaydayYear.setSelectedIndex(0);
         nextPaydayMonth.setSelectedIndex(0);
-        nextPaydayDay.setSelectedIndex(0);          
+        nextPaydayDay.setSelectedIndex(0);  
+        dlstate1.setSelectedIndex(0);
+        rent.setSelected(false);
                 
     }//GEN-LAST:event_clearFieldsActionPerformed
 
@@ -2054,6 +2091,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private void lastPaydayYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastPaydayYearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lastPaydayYearActionPerformed
+
+    private void ownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownActionPerformed
+        // TODO add your handling code here:
+        uOwn = "True";
+        uRent = "False";
+    }//GEN-LAST:event_ownActionPerformed
     
     Random r = new Random();
     
@@ -2280,6 +2323,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         }
     }
+    
+    
     /**
      * @param args the command line arguments
      */ 
@@ -2336,6 +2381,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JTextField bankname;
     public javax.swing.JTextField bankstate;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     public javax.swing.JLabel cardCode1;
     private javax.swing.JTextField cardholdername;
     private javax.swing.JTextField cardnumber;
@@ -2347,6 +2393,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton debugAutoFill;
     public javax.swing.JTextField dl;
     private javax.swing.JComboBox<String> dlstate;
+    private javax.swing.JComboBox<String> dlstate1;
     private javax.swing.JComboBox<String> dobDay;
     private javax.swing.JComboBox<String> dobMonth;
     private javax.swing.JComboBox<String> dobYear;
@@ -2401,6 +2448,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -2900,7 +2948,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[4]/input")).sendKeys(workPhone);
          
         
-         String hireDate = hireDateMonth.getSelectedItem().toString() + "01" + hireDateYear.getSelectedItem().toString();
+         
          System.out.println("hireDate: " + hireDate);
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[2]/div/div[5]/div/input")).sendKeys(hireDate);
          
@@ -3538,7 +3586,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
            //TODO: Male and Female
            
              driver6.manage().window().maximize();
-           Thread.sleep(2500);
+           Thread.sleep(500);  
+             
+           WebElement FirstPageOkinus = (new WebDriverWait(driver6, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[1]/div[1]/a/span[2]")));
+           
+           driver6.findElement(By.xpath("//*[@id=\"off-app-open-yes\"]")).click();
+           //2017-1998
+           int tempBOD = year - dObY;
+           if(tempBOD <= 18){
+           driver6.findElement(By.xpath("//*[@id=\"off-app-open-no\"]")).click();
+           }
+           System.out.println("TempBOD " + tempBOD);
            driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[1]/div[1]/a/span[2]")).click();
            if(Title == "Mr"){
           
@@ -3577,6 +3635,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email']")).sendKeys(emailN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email-confirm']")).sendKeys(emailN);
              
+           driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click();
+           
            Select dropdown60 = new Select(driver6.findElement(By.name("income_type")));
            //TODO Different types of income Direct Deposit from Employer, Paychecks from Employer, Self-Employment, Social Security, Long Term Disability, Military, Alimony
            Thread.sleep(200);
@@ -3709,15 +3769,48 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver7.findElement(By.xpath("//*[@id=\"WPDLST\"]")).sendKeys(stateK);
            driver7.findElement(By.xpath("//*[@id=\"WPEMAIL\"]")).sendKeys(emailN);
            //TODO:RENT OR OWN
+           //CheckpointRent
+           //*[@id="WPHOMEO"]
+           Select dropdown71 = new Select(driver7.findElement(By.xpath("//*[@id=\"WPHOMEO\"]"))); 
+         
+           if(uRent == "True"){
+           
+         dropdown71.selectByIndex(1);
+           }else if (uOwn == "True"){
+         dropdown71.selectByIndex(2);  
+           }else{
+         dropdown71.selectByIndex(3);    
+           }
+           
            
            driver7.findElement(By.xpath("//*[@id=\"CEENA1\"]")).sendKeys(employerN);
            driver7.findElement(By.xpath("//*[@id=\"CETITLE\"]")).sendKeys(postHold);
-           driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(hireD);
-           driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(incomeN);
-           
+           driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(hireDate);
+           driver7.findElement(By.xpath("//*[@id=\"CENET\"]")).sendKeys(incomeN);
+        // Employer state dropdown /\
+           driver7.findElement(By.xpath("//*[@id=\"CEEST\"]")).sendKeys(employerState);
            driver7.findElement(By.xpath("//*[@id=\"CEPHONE\"]")).sendKeys(workPhone);
-           //TODO DIRECT DEPOSIT YES/NO
+           
+            Select dropdown72 = new Select(driver7.findElement(By.xpath("//*[@id=\"CEPMTTYPE\"]")));
+            if(employmentPayment == "Direct Deposit from Employer"){
+            dropdown72.selectByIndex(1);
+            }else {
+            dropdown72.selectByIndex(2);
+            }
            //TODO: How are you paid
+           
+           
+           Select dropdown73 = new Select(driver7.findElement(By.xpath("//*[@id=\"CEPMTFREQ\"]")));
+            if(PayMP == 0){
+            dropdown72.selectByIndex(1);
+            }else if(PayMP == 1){
+            dropdown72.selectByIndex(2);
+            }else if(PayMP == 2){
+            dropdown72.selectByIndex(3);
+            }else if(PayMP == 3){
+            dropdown72.selectByIndex(4);
+            }
+           
            driver7.findElement(By.xpath("//*[@id=\"WPAPPD1\"]")).sendKeys(recentPay);
            driver7.findElement(By.xpath("//*[@id=\"WPAPPD2\"]")).sendKeys(nextPay);
            

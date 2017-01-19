@@ -40,6 +40,8 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -203,6 +205,11 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel44" min="-2" pref="114" max="-2" attributes="0"/>
                                               <Component id="income" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel48" max="32767" attributes="0"/>
+                                              <Component id="dlstate1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -713,6 +720,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="dlstate1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -1755,12 +1767,18 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Own"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ownActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rent">
       <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
@@ -2637,6 +2655,79 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="dlstate1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="51">
+            <StringItem index="0" value="AK"/>
+            <StringItem index="1" value="AL"/>
+            <StringItem index="2" value="AR"/>
+            <StringItem index="3" value="AZ"/>
+            <StringItem index="4" value="CA"/>
+            <StringItem index="5" value="CO"/>
+            <StringItem index="6" value="CT"/>
+            <StringItem index="7" value="DC"/>
+            <StringItem index="8" value="DE"/>
+            <StringItem index="9" value="FL"/>
+            <StringItem index="10" value="GA"/>
+            <StringItem index="11" value="HI"/>
+            <StringItem index="12" value="IA"/>
+            <StringItem index="13" value="ID"/>
+            <StringItem index="14" value="IL"/>
+            <StringItem index="15" value="IN"/>
+            <StringItem index="16" value="KS"/>
+            <StringItem index="17" value="KY"/>
+            <StringItem index="18" value="LA"/>
+            <StringItem index="19" value="MA"/>
+            <StringItem index="20" value="MD"/>
+            <StringItem index="21" value="ME"/>
+            <StringItem index="22" value="MI"/>
+            <StringItem index="23" value="MN"/>
+            <StringItem index="24" value="MO"/>
+            <StringItem index="25" value="MS"/>
+            <StringItem index="26" value="MT"/>
+            <StringItem index="27" value="NC"/>
+            <StringItem index="28" value="ND"/>
+            <StringItem index="29" value="NE"/>
+            <StringItem index="30" value="NH"/>
+            <StringItem index="31" value="NJ"/>
+            <StringItem index="32" value="NM"/>
+            <StringItem index="33" value="NV"/>
+            <StringItem index="34" value="NY"/>
+            <StringItem index="35" value="OH"/>
+            <StringItem index="36" value="OK"/>
+            <StringItem index="37" value="OR"/>
+            <StringItem index="38" value="PA"/>
+            <StringItem index="39" value="RI"/>
+            <StringItem index="40" value="SC"/>
+            <StringItem index="41" value="SD"/>
+            <StringItem index="42" value="TN"/>
+            <StringItem index="43" value="TX"/>
+            <StringItem index="44" value="UT"/>
+            <StringItem index="45" value="VA"/>
+            <StringItem index="46" value="VT"/>
+            <StringItem index="47" value="WA"/>
+            <StringItem index="48" value="WI"/>
+            <StringItem index="49" value="WV"/>
+            <StringItem index="50" value="WY"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel48">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="1e" green="ae" red="c9" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Employer State"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
