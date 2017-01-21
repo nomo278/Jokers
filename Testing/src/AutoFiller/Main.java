@@ -1672,7 +1672,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         Main firstThread = new Main();
         //Crest
-         
+        
+        this.setVisible(false);
+        new Results().setVisible(true);
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
@@ -1726,6 +1728,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("loading West Creek...");
             firstThread.WestCreekFinance(driver7);
         } 
+        
+        
+        
           
     }//GEN-LAST:event_submitButtonActionPerformed
 

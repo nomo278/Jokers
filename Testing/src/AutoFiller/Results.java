@@ -36,6 +36,13 @@ public class Results extends javax.swing.JFrame {
         jProgressBar3 = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
         jProgressBar4 = new javax.swing.JProgressBar();
+        jProgressBar5 = new javax.swing.JProgressBar();
+        jLabel6 = new javax.swing.JLabel();
+        jProgressBar6 = new javax.swing.JProgressBar();
+        jLabel7 = new javax.swing.JLabel();
+        jProgressBar7 = new javax.swing.JProgressBar();
+        jLabel8 = new javax.swing.JLabel();
+        BackPortal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,17 +52,31 @@ public class Results extends javax.swing.JFrame {
 
         jProgressBar1.setStringPainted(true);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Crest.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Simple.png"))); // NOI18N
 
         jProgressBar2.setStringPainted(true);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Crest.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/progressive.png"))); // NOI18N
 
         jProgressBar3.setStringPainted(true);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Crest.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/okinus.png"))); // NOI18N
 
         jProgressBar4.setStringPainted(true);
+
+        jProgressBar5.setStringPainted(true);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/merchantPreferred.png"))); // NOI18N
+
+        jProgressBar6.setStringPainted(true);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Snap-150.png"))); // NOI18N
+
+        jProgressBar7.setStringPainted(true);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/wcf_logo-150.png"))); // NOI18N
+
+        BackPortal.setText("Back To Portal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,8 +105,24 @@ public class Results extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))))
+                                .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))))
                 .addContainerGap(150, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(207, 207, 207)
+                .addComponent(BackPortal)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +145,21 @@ public class Results extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(BackPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -147,17 +198,26 @@ public class Results extends javax.swing.JFrame {
                 new Results().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackPortal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JProgressBar jProgressBar3;
     private javax.swing.JProgressBar jProgressBar4;
+    private javax.swing.JProgressBar jProgressBar5;
+    private javax.swing.JProgressBar jProgressBar6;
+    private javax.swing.JProgressBar jProgressBar7;
     // End of variables declaration//GEN-END:variables
 }
