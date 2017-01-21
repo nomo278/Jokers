@@ -366,7 +366,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         hireDateMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         hireDateYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000" }));
-        hireDateYear.setSelectedIndex(1);
         hireDateYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hireDateYearActionPerformed(evt);
@@ -627,6 +626,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         jLabel25.setForeground(new java.awt.Color(201, 174, 30));
         jLabel25.setText("Email Address");
 
+        buttonGroup1.add(own);
         own.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         own.setForeground(new java.awt.Color(201, 174, 30));
         own.setText("Own");
@@ -1582,7 +1582,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private void ref3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ref3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ref3ActionPerformed
-    private String[] stateToFullState = {"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"};
+    private String[] stateToFullState = {"Alaska", "Alabama", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia",  "Delaware", "Florida", "Georgia", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana",  "Kansas", "Kentucky", "Louisiana", "Massachusetts",  "Maryland", "Maine", "Michigan", "Minnesota", "Missouri",  "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         firstName = this.firstname.getText();
@@ -1609,7 +1609,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         dObD = dobDay.getSelectedIndex();
         dObY = dobYear.getSelectedIndex();
         
-        stateK = this.dlstate.getSelectedItem().toString();
+        stateK = stateToFullState[dlstate.getSelectedIndex()];
         stateKMP = this.dlstate.getSelectedIndex();
         
         employerState = stateToFullState[dlstate1.getSelectedIndex()];
@@ -1652,7 +1652,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         // This is redudent startDate  = this.startdate.getText();
         yearsAtJob = Integer.toString(year - Integer.parseInt(hireDateYear.getSelectedItem().toString()));//yearAtJob.getSelectedItem().toString();
         monthsAtJob = Integer.toString(month - Integer.parseInt(hireDateMonth.getSelectedItem().toString())); //monthAtJob.getSelectedItem().toString();
-        yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace("Yr", "").replace(" Yrs", "");
+        yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "").replace("+", "").replaceAll("s", "").replaceAll("\\s", "");
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
         cardHolderName = this.cardholdername.getText();
         expYear = yearExp.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "");
@@ -2022,7 +2022,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
          if(odd8 == 0){
             westEnabled.setBackground(Color.green);
             odd8 ++;
-        } else if(odd5 == 1){
+        } else if(odd8 == 1){
 
             westEnabled.setBackground(Color.LIGHT_GRAY);
             odd8 --;
@@ -2564,7 +2564,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         //driver.findElement(By.id("DriversLicenseNumber")).sendKeys(dlN);
         SetText(driver,"//*[@id='DriversLicenseNumber']",dlN,true);
-        driver.findElement(By.id("DriversLicenseState")).sendKeys(stateN);
+        driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
          
        if(Rent == "Rent"){ 
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
@@ -2831,6 +2831,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
    public void SnapFinance(WebDriver driver2){
     
+               driver2.manage().window().maximize(); 
           try{
                Thread.sleep(500);
         driver2.findElement(By.name("username")).sendKeys("jokersaudio");
@@ -2923,11 +2924,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[3]/input")).sendKeys(bankCity);
          //TODO: State dropdown
          // driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[1]/div[2]/input")).sendKeys(bankState);
-         Thread.sleep(500);
+         
+         Thread.sleep(700);
          driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[1]/label[2]/input")).click();
          System.out.println("Snap page two");
          
-         driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[2]/div[2]/button")).sendKeys(Keys.SPACE);
+         driver2.findElement(By.xpath("//*[@id=\"bankInfo\"]/div[2]/form/div[2]/div[2]/div[2]/div[2]/button")).click();
           
         Thread.sleep(500);
          //Click on next page
@@ -2984,14 +2986,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
          
          Thread.sleep(500);
          driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[6]/div[2]/button[1]")).click();
-         System.out.println("Finished");
-         Thread.sleep(1500);
+         System.out.println("Finished page three snap ");
+         Thread.sleep(2500);
         // if(0 != driver2.FindElements(By.cssSelector("a.btn.btn-success.btn-mega")).Count){
-        if(true){     
-        //driver2.findElement(By.cssSelector("a.btn.btn-success.btn-mega")).click();
-        }else{
-        
-        }
+        driver2.findElement(By.xpath("//*[@id=\"submitInfo\"]/div[2]/form/div[2]/label[1]/input")).click();
+       driver2.findElement(By.xpath("//*[@id=\"submitInfo\"]/div[2]/form/div[2]/label[2]/input")).click();
            
            }
         catch(Exception e){
@@ -3072,11 +3071,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
                
         driver3.findElement(By.id("MoveNext")).click();
             Thread.sleep(2000);
-            
-            driver3.findElement(By.id("IncomeSource_IncomeType")).sendKeys("Employed Full-Time");
-        //Select dropdown44 = new Select(driver3.findElement(By.id("IncomeSource_IncomeType"))); //TODO: Make if statment
-       // dropdown44.selectByIndex(1); 
-        driver3.findElement(By.id("MoveNext")).click();
+           
+            //Checkpoint
+           
+         if(employmentPayment == "Direct Deposit from Employer" || employmentPayment == "Paychecks from Employer" ){
+         driver3.findElement(By.id("IncomeSource_IncomeType")).sendKeys("Employed Full-Time");
+         
+          driver3.findElement(By.id("MoveNext")).click();
             Thread.sleep(2000);
                     
         driver3.findElement(By.id("IncomeSource_EmployerLookup")).sendKeys(employerN);
@@ -3088,10 +3089,39 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver3.findElement(By.id("IncomeSource_Zip")).sendKeys(zipN); 
         driver3.findElement(By.id("MoveNext")).click();
         Thread.sleep(2000);   
+        }else if(employmentPayment == "Self-Employment"){
+         driver3.findElement(By.id("IncomeSource_IncomeType")).sendKeys("Self-Employed");
+         
+              driver3.findElement(By.id("MoveNext")).click();
+            Thread.sleep(2000);
+                    
+        driver3.findElement(By.id("IncomeSource_EmployerLookup")).sendKeys(employerN);
+        driver3.findElement(By.id("MoveNext")).click();
+            Thread.sleep(2000);
+                    
+        driver3.findElement(By.id("IncomeSource_EmployerName")).sendKeys(superName); 
+        driver3.findElement(By.id("IncomeSource_EmployerPhone")).sendKeys(workPhone); 
+        driver3.findElement(By.id("IncomeSource_Zip")).sendKeys(zipN); 
+        driver3.findElement(By.id("MoveNext")).click();
+        Thread.sleep(2000); 
+        }else if(employmentPayment == "Social Security"){ 
+            driver3.findElement(By.id("IncomeSource_IncomeType")).sendKeys("Social Security");
+            
+                 driver3.findElement(By.id("MoveNext")).click();
+            Thread.sleep(2000);
+                     
+        }else{ 
+            driver3.findElement(By.id("IncomeSource_IncomeType")).sendKeys("Other");
+            
+                 driver3.findElement(By.id("MoveNext")).click();
+            Thread.sleep(2000); 
+        }
+             
+       
         
         
-        driver3.findElement(By.id("IncomeSource_EmployedYears")).sendKeys(addYears); 
-        driver3.findElement(By.id("IncomeSource_EmployedMonths")).sendKeys(addMonths); 
+        driver3.findElement(By.id("IncomeSource_EmployedYears")).sendKeys(yearsAtJob); 
+        driver3.findElement(By.id("IncomeSource_EmployedMonths")).sendKeys(monthsAtJob); 
         driver3.findElement(By.id("IncomeSource_MonthlyIncome")).sendKeys(incomeN); 
         driver3.findElement(By.id("MoveNext")).click();
         Thread.sleep(2000); 
@@ -3180,14 +3210,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             //*[@id="dealerGrid"]/div[2]/table/tbody/tr[1]/td[1]/label
             driver4.findElement(By.xpath("//*[@id=\"dealerGrid\"]/div[2]/table/tbody/tr[1]/td[1]/label")).click();
-            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")).sendKeys(addYears);
-            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input[1]")).sendKeys(addMonths);
-
             
+            //SetText(driver4, "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input", addYears, true);
+            //SetText(driver4, "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input", addMonths, true);
+            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input")).sendKeys(addYears);
+            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input")).sendKeys(addMonths);
             
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[1]/div/div[1]/div/div/input")).sendKeys(firstName);
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[1]/div/div[2]/div/div/input")).sendKeys(lastName);
-            driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[1]/div/div/input")).sendKeys(ssN);
+            
+            SetText(driver4, "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[1]/div/div/input", ssN,true);
+            
             //Pasing DOB to have 04/08/1982
             //Might not need to be here
             //String s = dOb; 
@@ -3199,7 +3232,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
             //driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[1]/span/input")).sendKeys(tokens[0] + "/" + tokens[1] + "/" +tokens[2]+tokens[3]);
 //Figure out new MP Select DOB Checkpoint
-            
+                                             
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_Step1RadPageView\"]/div/fieldset[2]/div/div/div[2]/div/div[2]/div/span[1]/span/span[2]/span")).click();
             //Click on month
             Thread.sleep(500);
@@ -3362,6 +3395,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcNumberTextBox")).sendKeys(cardNumber);
             driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_CcCvvTextBox")).sendKeys(cardCode);
+            
+            
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_TwelveTermRadioLabel\"]")).click();
+            
             //Checkpoint Put card finder here
             //Decode Card Type by number
            //  VISA("^4[0-9]{12}(?:[0-9]{3})?$"),
@@ -3372,6 +3409,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        
             
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/div[1]/div[1]/div[2]/div/div/div/span[1]/span/span[2]/span")).click();
+           Thread.sleep(500);
             if (cardNumber.startsWith("4")){          
            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[4]")).click();
             }
@@ -3380,7 +3418,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             } 
                     else if (cardNumber.startsWith("6")){                    
            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[2]")).click();} 
-                    else if (cardNumber.startsWith("37")){                    
+                    else if (cardNumber.startsWith("3")){                    
            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_CcTypeSelect_listbox\"]/li[1]")).click();
            }  
              //Same as physical address
@@ -3422,15 +3460,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Fieldset3\"]/div/div/div[3]/div/span[1]/span/span[2]")).click();
             Thread.sleep(500);
             if(RelationRef1 == "Aunt" || RelationRef1 == "Uncle"  ){
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[1]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[1]")).click();
             }else if(RelationRef1 == "Brother" || RelationRef1 == "Sister"  ){
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[2]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[2]")).click();
             }else if(RelationRef1 == "Grand Parent"){
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[3]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[3]")).click();
             }else if(RelationRef1 == "Parent"){
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[4]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[4]")).click();
             }else if(RelationRef1 == "Son" || RelationRef1 == "Daughter"  ){
-            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[5]")).click();
+            driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[5]")).click();
             }
              Thread.sleep(500);
             
@@ -3690,7 +3728,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
           // Date today = new Date();
           String tempMonthS = "01";
           String tempDayS = "01";
-          int tempMonth = Integer.parseInt(monthAccountOpen) - month;
+          int tempMonth = month - Integer.parseInt(monthAccountOpen);
           int tempYear = year;
           if(tempMonth < 0){
           tempYear = -- year ;
@@ -3784,6 +3822,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
            
            
            driver7.findElement(By.xpath("//*[@id=\"CEENA1\"]")).sendKeys(employerN);
+           
+           
+           
+           
+           
            driver7.findElement(By.xpath("//*[@id=\"CETITLE\"]")).sendKeys(postHold);
            driver7.findElement(By.xpath("//*[@id=\"CEDATE\"]")).sendKeys(hireDate);
            driver7.findElement(By.xpath("//*[@id=\"CENET\"]")).sendKeys(incomeN);
@@ -3800,16 +3843,33 @@ public class Main extends javax.swing.JFrame implements Runnable{
            //TODO: How are you paid
            
            
-           Select dropdown73 = new Select(driver7.findElement(By.xpath("//*[@id=\"CEPMTFREQ\"]")));
-            if(PayMP == 0){
-            dropdown72.selectByIndex(1);
+           Select dropdown73 = new Select(driver7.findElement(By.name("CEPMTFREQ")));
+             
+           if(PayMP == 0){ 
+            dropdown73.selectByIndex(1);
             }else if(PayMP == 1){
-            dropdown72.selectByIndex(2);
+            dropdown73.selectByIndex(2);
             }else if(PayMP == 2){
-            dropdown72.selectByIndex(3);
+            dropdown73.selectByIndex(3);
             }else if(PayMP == 3){
-            dropdown72.selectByIndex(4);
+            dropdown73.selectByIndex(4);
             }
+           
+            Select dropdown74 = new Select(driver7.findElement(By.name("CEOCCU")));
+            
+            if(employmentPayment == "Direct Deposit from Employer" || employmentPayment == "Paychecks from Employer" ){
+             dropdown74.selectByIndex(2);
+            }else if(employmentPayment == "Self-Employment" ){
+             dropdown74.selectByIndex(3);
+            }else if(employmentPayment == "Social Security" ){
+             dropdown74.selectByIndex(4);
+            }else if(employmentPayment == "Long Term Disability" ){
+             dropdown74.selectByIndex(8);
+            }else if(employmentPayment == "Alimony" ){
+             dropdown74.selectByIndex(5);
+            }
+            
+           
            
            driver7.findElement(By.xpath("//*[@id=\"WPAPPD1\"]")).sendKeys(recentPay);
            driver7.findElement(By.xpath("//*[@id=\"WPAPPD2\"]")).sendKeys(nextPay);
@@ -3834,6 +3894,36 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver7.findElement(By.xpath("//*[@id=\"WPACHABA\"]")).sendKeys(routingNumber);
            
            //TODO: Date Account open - year and months open
+           
+           String tempDayS = "01";
+           String tempMonthS = "01";
+           String tempYearS = "01";
+           
+           System.out.println("Checkpoint :" + yearAccountOpen + " " + monthAccountOpen);
+           int tempYear = year - Integer.parseInt(yearAccountOpen);
+           int tempMonth = month - Integer.parseInt(monthAccountOpen);
+           System.out.println("Checkpoint 1; " + tempYear + " " + tempMonth);
+           
+           if(tempMonth < 10){
+           tempMonthS = "0" + tempMonth;
+           }
+           if(tempMonth < 0){
+           tempYear = -- year ;
+           }
+           if(today < 10){
+           tempDayS = "0" + today;
+           }
+           
+           String tempDate = tempMonthS + tempDayS + tempYear;
+           System.out.println("Temp Date: " + tempDate);
+           
+           driver7.findElement(By.xpath("//*[@id=\"DOPEN\"]")).sendKeys(tempDate);
+            
+           //WebElement tempWestCreek = driver7.findElement(By.xpath("//*[@id=\"WPACHABA\"]"));
+           //tempWestCreek.sendKeys(Keys.TAB);
+           //tempWestCreek.sendKeys(tempDate);
+           
+           
            
            driver7.findElement(By.xpath("//*[@id=\"WPCCCACCT\"]")).sendKeys(cardNumber);
            driver7.findElement(By.xpath("//*[@id=\"EXPDAT\"]")).sendKeys( "02" + "/20" + expYear );
@@ -3992,113 +4082,113 @@ public class Main extends javax.swing.JFrame implements Runnable{
     }
     
     public void ClickState1(WebDriver driver,String stateK){
-       if(stateK == "AL"){
+       if(stateK == "Alabama"){
        driver.findElement(By.xpath("/html/body/ul[3]/li[5]/a")).click();
-       }else if(stateK == "AK"){
+       }else if(stateK == "Alaska"){
        driver.findElement(By.xpath("html/body/ul[3]/li[6]/a")).click();
-       }else if(stateK == "AZ"){
+       }else if(stateK == "Arizona"){
        driver.findElement(By.xpath("html/body/ul[3]/li[7]/a")).click();
-       }else if(stateK == "AR"){
+       }else if(stateK == "Arkansas"){
        driver.findElement(By.xpath("html/body/ul[3]/li[8]/a")).click();
-       }else if(stateK == "CA"){
+       }else if(stateK == "California"){
        driver.findElement(By.xpath("html/body/ul[3]/li[9]/a")).click();
-       }else if(stateK == "CO"){
+       }else if(stateK == "Colorado"){
        driver.findElement(By.xpath("html/body/ul[3]/li[10]/a")).click();
-       }else if(stateK == "CT"){
+       }else if(stateK == "Connecticut"){
        driver.findElement(By.xpath("html/body/ul[3]/li[11]/a")).click();
-       }else if(stateK == "DE"){
+       }else if(stateK == "Delaware"){
        driver.findElement(By.xpath("html/body/ul[3]/li[12]/a")).click();
-       }else if(stateK == "DC"){
+       }else if(stateK == "District of Columbia"){
        driver.findElement(By.xpath("html/body/ul[3]/li[13]/a")).click();
-       }else if(stateK == "FL"){
+       }else if(stateK == "Florida"){
        driver.findElement(By.xpath("html/body/ul[3]/li[14]/a")).click();
-       }else if(stateK == "GA"){
+       }else if(stateK == "Georgia"){
        driver.findElement(By.xpath("html/body/ul[3]/li[15]/a")).click();
-       }else if(stateK == "HI"){
+       }else if(stateK == "Hawaii"){
        driver.findElement(By.xpath("html/body/ul[3]/li[16]/a")).click();
-       }else if(stateK == "ID"){
+       }else if(stateK == "Idaho"){
        driver.findElement(By.xpath("html/body/ul[3]/li[17]/a")).click();
-       }else if(stateK == "IL"){
+       }else if(stateK == "Illinois"){
        driver.findElement(By.xpath("html/body/ul[3]/li[18]/a")).click();
-       }else if(stateK == "IN"){
+       }else if(stateK == "Indiana"){
        driver.findElement(By.xpath("html/body/ul[3]/li[19]/a")).click();
-       }else if(stateK == "IA"){
+       }else if(stateK == "Iowa"){
        driver.findElement(By.xpath("html/body/ul[3]/li[20]/a")).click();
-       }else if(stateK == "KS"){
+       }else if(stateK == "Kansas"){
        driver.findElement(By.xpath("html/body/ul[3]/li[21]/a")).click();
-       }else if(stateK == "KY"){
+       }else if(stateK == "Kentucky"){
        driver.findElement(By.xpath("html/body/ul[3]/li[22]/a")).click();
-       }else if(stateK == "LA"){
+       }else if(stateK == "Louisiana"){
        driver.findElement(By.xpath("html/body/ul[3]/li[23]/a")).click();
-       }else if(stateK == "ME"){
+       }else if(stateK == "Maine"){
        driver.findElement(By.xpath("html/body/ul[3]/li[24]/a")).click();
-       }else if(stateK == "MD"){
+       }else if(stateK == "Maryland"){
        driver.findElement(By.xpath("html/body/ul[3]/li[25]/a")).click();
-       }else if(stateK == "MA"){
+       }else if(stateK == "Massachusetts"){
        driver.findElement(By.xpath("html/body/ul[3]/li[26]/a")).click();
-       }else if(stateK == "MI"){
+       }else if(stateK == "Michigan"){
        driver.findElement(By.xpath("html/body/ul[3]/li[27]/a")).click();
-       }else if(stateK == "MN"){
+       }else if(stateK == "Minnesota"){
        driver.findElement(By.xpath("html/body/ul[3]/li[28]/a")).click();
-       }else if(stateK == "MS"){
+       }else if(stateK == "Massachusetts"){
        driver.findElement(By.xpath("html/body/ul[3]/li[29]/a")).click();
-       }else if(stateK == "MO"){
+       }else if(stateK == "Missouri"){
        driver.findElement(By.xpath("html/body/ul[3]/li[30]/a")).click();
-       }else if(stateK == "MT"){
+       }else if(stateK == "Montana"){
        driver.findElement(By.xpath("html/body/ul[3]/li[31]/a")).click();
-       }else if(stateK == "NE"){
+       }else if(stateK == "Nebraska"){
        driver.findElement(By.xpath("html/body/ul[3]/li[32]/a")).click();
-       }else if(stateK == "NV"){
+       }else if(stateK == "Nevada"){
        driver.findElement(By.xpath("html/body/ul[3]/li[33]/a")).click();
-       }else if(stateK == "NH"){
+       }else if(stateK == "New Hampshire"){
        driver.findElement(By.xpath("html/body/ul[3]/li[34]/a")).click();
-       }else if(stateK == "NJ"){
+       }else if(stateK == "New Jersey"){
        driver.findElement(By.xpath("html/body/ul[3]/li[35]/a")).click();
-       }else if(stateK == "NM"){
+       }else if(stateK == "New Mexico"){
        driver.findElement(By.xpath("html/body/ul[3]/li[36]/a")).click();
-       }else if(stateK == "NY"){
+       }else if(stateK == "New York"){
        driver.findElement(By.xpath("html/body/ul[3]/li[37]/a")).click();
-       }else if(stateK == "NC"){
+       }else if(stateK == "North Carolina"){
        driver.findElement(By.xpath("html/body/ul[3]/li[38]/a")).click();
-       }else if(stateK == "ND"){
+       }else if(stateK == "North Dakota"){
        driver.findElement(By.xpath("html/body/ul[3]/li[39]/a")).click();
-       }else if(stateK == "OH"){
+       }else if(stateK == "Ohio"){
        driver.findElement(By.xpath("html/body/ul[3]/li[40]/a")).click();
-       }else if(stateK == "OK"){
+       }else if(stateK == "Oklahoma"){
        driver.findElement(By.xpath("html/body/ul[3]/li[41]/a")).click();
-       }else if(stateK == "OR"){
+       }else if(stateK == "Oregon"){
        driver.findElement(By.xpath("html/body/ul[3]/li[42]/a")).click();
-       }else if(stateK == "PA"){
+       }else if(stateK == "Pennsylvania"){
        driver.findElement(By.xpath("html/body/ul[3]/li[43]/a")).click();
-       }else if(stateK == "PR"){
+       }/*else if(stateK == "PR"){
        driver.findElement(By.xpath("html/body/ul[3]/li[44]/a")).click();
-       }else if(stateK == "RI"){
+       }*/else if(stateK == "Rhode Island"){
        driver.findElement(By.xpath("html/body/ul[3]/li[45]/a")).click();
-       }else if(stateK == "SC"){
+       }else if(stateK == "South Carolina"){
        driver.findElement(By.xpath("html/body/ul[3]/li[46]/a")).click();
-       }else if(stateK == "SD"){
+       }else if(stateK == "South Dakota"){
        driver.findElement(By.xpath("html/body/ul[3]/li[47]/a")).click();
-       }else if(stateK == "TN"){
+       }else if(stateK == "Tennessee"){
        driver.findElement(By.xpath("html/body/ul[3]/li[48]/a")).click();
-       }else if(stateK == "TX"){
+       }else if(stateK == "Texas"){
        driver.findElement(By.xpath("html/body/ul[3]/li[49]/a")).click();
-       }else if(stateK == "UT"){
+       }else if(stateK == "Utah"){
        driver.findElement(By.xpath("html/body/ul[3]/li[50]/a")).click();
-       }else if(stateK == "VT"){
+       }else if(stateK == "Vermont"){
        driver.findElement(By.xpath("html/body/ul[3]/li[51]/a")).click();
-       }else if(stateK == "VA"){
+       }else if(stateK == "Virginia"){
        driver.findElement(By.xpath("html/body/ul[3]/li[52]/a")).click();
-       }else if(stateK == "WA"){
+       }else if(stateK == "Washington"){
        driver.findElement(By.xpath("html/body/ul[3]/li[53]/a")).click();
-       }else if(stateK == "WV"){
+       }else if(stateK == "West Virginia"){
        driver.findElement(By.xpath("html/body/ul[3]/li[54]/a")).click();
-       }else if(stateK == "WI"){
+       }else if(stateK == "Wisconsin"){
        driver.findElement(By.xpath("html/body/ul[3]/li[55]/a")).click();
-       }else if(stateK == "WY"){
+       }else if(stateK == "Wyoming"){
        driver.findElement(By.xpath("html/body/ul[3]/li[56]/a")).click();
-       }else if(stateK == "VI"){
+       }/*else if(stateK == "VI"){
        driver.findElement(By.xpath("html/body/ul[3]/li[57]/a")).click();
-       } else{
+       } */else{
        driver.findElement(By.xpath("html/body/ul[3]/li[15]/a")).click();
        }        
     }
