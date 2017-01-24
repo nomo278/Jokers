@@ -5,6 +5,11 @@
  */
 package AutoFiller;
 
+import java.awt.Color;
+import javax.swing.JProgressBar;
+import javax.swing.UIManager;
+import org.openqa.selenium.WebDriver;
+
 /**
  *
  * @author Mohammed
@@ -14,8 +19,18 @@ public class Results extends javax.swing.JFrame {
     /**
      * Creates new form Results
      */
+    
+    public static int  BarValue; 
+    private WebDriver driver;
+    
     public Results() {
-        initComponents();
+        initComponents(); 
+          
+        
+        //setValueCR(10);
+        
+        errorButton.setVisible(false);
+        
     }
 
     /**
@@ -43,6 +58,13 @@ public class Results extends javax.swing.JFrame {
         jProgressBar7 = new javax.swing.JProgressBar();
         jLabel8 = new javax.swing.JLabel();
         BackPortal = new javax.swing.JButton();
+        errorButton = new javax.swing.JButton();
+        errorButton1 = new javax.swing.JButton();
+        errorButton2 = new javax.swing.JButton();
+        errorButton3 = new javax.swing.JButton();
+        errorButton4 = new javax.swing.JButton();
+        errorButton5 = new javax.swing.JButton();
+        errorButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +99,67 @@ public class Results extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/wcf_logo-150.png"))); // NOI18N
 
         BackPortal.setText("Back To Portal");
+        BackPortal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackPortalActionPerformed(evt);
+            }
+        });
+
+        errorButton.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton.setText("Error");
+        errorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButtonActionPerformed(evt);
+            }
+        });
+
+        errorButton1.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton1.setText("Error");
+        errorButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton1ActionPerformed(evt);
+            }
+        });
+
+        errorButton2.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton2.setText("Error");
+        errorButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton2ActionPerformed(evt);
+            }
+        });
+
+        errorButton3.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton3.setText("Error");
+        errorButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton3ActionPerformed(evt);
+            }
+        });
+
+        errorButton4.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton4.setText("Error");
+        errorButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton4ActionPerformed(evt);
+            }
+        });
+
+        errorButton5.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton5.setText("Error");
+        errorButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton5ActionPerformed(evt);
+            }
+        });
+
+        errorButton6.setForeground(new java.awt.Color(255, 0, 51));
+        errorButton6.setText("Error");
+        errorButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                errorButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,7 +168,7 @@ public class Results extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(150, Short.MAX_VALUE)
+                        .addContainerGap(258, Short.MAX_VALUE)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
@@ -93,7 +176,7 @@ public class Results extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                                .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -101,24 +184,33 @@ public class Results extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                                .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                                .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                                .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                                .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
-                                .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))))
-                .addContainerGap(150, Short.MAX_VALUE))
+                                .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorButton)
+                    .addComponent(errorButton1)
+                    .addComponent(errorButton2)
+                    .addComponent(errorButton3)
+                    .addComponent(errorButton4)
+                    .addComponent(errorButton5)
+                    .addComponent(errorButton6))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(207, 207, 207)
                 .addComponent(BackPortal)
@@ -130,33 +222,53 @@ public class Results extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                    .addComponent(errorButton))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                    .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                    .addComponent(jLabel3)))
+                                                            .addComponent(errorButton1))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                            .addComponent(jLabel4)))
+                                                    .addComponent(errorButton2))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel5)))
+                                            .addComponent(errorButton3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel6)))
+                                    .addComponent(errorButton4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jProgressBar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7)))
+                            .addComponent(errorButton5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8)))
+                    .addComponent(errorButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(BackPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -165,6 +277,64 @@ public class Results extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BackPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackPortalActionPerformed
+        // TODO add your handling code here:
+        
+        
+        this.setVisible(false);
+        new Main().setVisible(true);
+    }//GEN-LAST:event_BackPortalActionPerformed
+
+    public void showButton(){
+    errorButton.setVisible(true);
+    }
+    
+    private void errorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Main.openErrorCS(driver);
+        
+    }//GEN-LAST:event_errorButtonActionPerformed
+
+    private void errorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton1ActionPerformed
+
+    private void errorButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton2ActionPerformed
+
+    private void errorButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton3ActionPerformed
+
+    private void errorButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton4ActionPerformed
+
+    private void errorButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton5ActionPerformed
+
+    private void errorButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_errorButton6ActionPerformed
+
+    
+    public int setValueCR(int BarValue){
+    
+       jProgressBar1.setValue(BarValue);
+        
+        return BarValue;
+    }
+    
+    public int setValueSM(int BarValue){
+    
+        jProgressBar2.setValue(BarValue);
+        
+        return BarValue;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -191,6 +361,19 @@ public class Results extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Results.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+          try {
+            //here you can put the selected theme class name in JTattoo
+            UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+            
+            Results temp = new Results();
+            temp.showButton();
+            
+ 
+        }catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -199,11 +382,20 @@ public class Results extends javax.swing.JFrame {
             }
         });
         
+       
+        
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackPortal;
+    private javax.swing.JButton errorButton;
+    private javax.swing.JButton errorButton1;
+    private javax.swing.JButton errorButton2;
+    private javax.swing.JButton errorButton3;
+    private javax.swing.JButton errorButton4;
+    private javax.swing.JButton errorButton5;
+    private javax.swing.JButton errorButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -212,12 +404,14 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JProgressBar jProgressBar4;
-    private javax.swing.JProgressBar jProgressBar5;
-    private javax.swing.JProgressBar jProgressBar6;
-    private javax.swing.JProgressBar jProgressBar7;
+    public javax.swing.JProgressBar jProgressBar1;
+    public javax.swing.JProgressBar jProgressBar2;
+    public javax.swing.JProgressBar jProgressBar3;
+    public javax.swing.JProgressBar jProgressBar4;
+    public javax.swing.JProgressBar jProgressBar5;
+    public javax.swing.JProgressBar jProgressBar6;
+    public javax.swing.JProgressBar jProgressBar7;
     // End of variables declaration//GEN-END:variables
+
+ 
 }

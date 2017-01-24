@@ -32,6 +32,7 @@ import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import static org.openqa.selenium.Keys.SHIFT;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -127,6 +128,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 
+ 
    public int toggleLang = 0;
     /**
      * Creates new form Main
@@ -1670,17 +1672,20 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
         System.setProperty("webdriver.chrome.driver", "C://chromedriver.exe");
         
-        Main firstThread = new Main();
-        //Crest
         
         this.setVisible(false);
         new Results().setVisible(true);
+        Main firstThread = new Main();
+        //Crest
+        
+        Results value = new Results();
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
             driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio");
+ 
+            value.setValueCR(10);
             firstThread.CrestFinance(driver);
-        
         }
         
         if(simpleEnabled.isSelected()) {
@@ -1729,6 +1734,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
             firstThread.WestCreekFinance(driver7);
         } 
         
+        
+        odd1 = 0;
+        odd2 = 0;
+        odd3 = 0;
+        odd4 = 0;
+        odd5 = 0;
+        odd6 = 0;
+        odd7 = 0;
+        odd8 = 0;
         
         
           
@@ -2328,6 +2342,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         }
     }
+         
+    public static void openErrorCS(WebDriver driver){
+     
+       // Main.openErrorCS();
+        //new Main().setVisible(true);
+       
+       driver.manage().window().maximize();
+//       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+    }
     
     
     /**
@@ -2338,6 +2362,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Main obj = new Main();
         Thread tobj = new Thread(obj);
         tobj.start();
+        
+       // Thread tobj1 = new Thread(obj);
+       // tobj1.start();
 //        tobj.CrestFinance(driver);
        // new Thread((Runnable) new Main()).start();
        // Main firstThread = new Main();
@@ -2533,6 +2560,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         System.out.println("I started Crest");
         
         try{
+            
+            driver.manage().window().setPosition(new Point(-2000, 0));;
             
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
@@ -2736,7 +2765,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("Crest finance DOES have the second reference");
         driver.findElement(By.id("Reference2Name")).sendKeys(reference2 + " " + reference2Last);
         
-        SetText(driver,"//*[@id=\"Reference2PhoneNumber\"]",refPhone2,true);
+        SetText(driver,"//*[@id=\"Reference2PhoneNumber\"]11",refPhone2,true);
         /*
         driver.findElement(By.id("Reference2PhoneNumber")).sendKeys(refPhone2);
            
@@ -2752,13 +2781,18 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
         //driver.findElement(By.id("form-submit")).sendKeys(Keys.RETURN);
         
+
+        
         System.out.println("I Typed 1");
         }catch(Exception e){
         System.out.println("Element not Found in Crest Financial: " + e.getMessage());
-        }
-    
         
-    
+        Results temp = new Results();
+        temp.setValueCR(10);
+        openErrorCS(driver);
+                
+        }
+        
     }
 
    
@@ -2769,14 +2803,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
        System.out.println("I started Simple");
        //driver1.findElement(By.id("lease_location_id_4710")).click();
                 
-        driver1.findElement(By.id("lease_applicant_attributes_first_name")).sendKeys(Main.firstName);
-        driver1.findElement(By.id("lease_applicant_attributes_middle_name")).sendKeys(Main.middleName);
-        driver1.findElement(By.id("lease_applicant_attributes_last_name")).sendKeys(Main.lastName);
-        driver1.findElement(By.id("lease_applicant_attributes_address_1")).sendKeys(Main.streetAddress);
-        driver1.findElement(By.id("lease_applicant_attributes_address_2")).sendKeys(Main.unitN);
-        driver1.findElement(By.id("lease_applicant_attributes_city")).sendKeys(Main.cityN);
-        driver1.findElement(By.id("lease_applicant_attributes_state")).sendKeys(Main.stateN);
-        driver1.findElement(By.id("lease_applicant_attributes_zip")).sendKeys(Main.zipN);
+        driver1.findElement(By.id("lease_applicant_attributes_first_name")).sendKeys(firstName);
+        driver1.findElement(By.id("lease_applicant_attributes_middle_name")).sendKeys(middleName);
+        driver1.findElement(By.id("lease_applicant_attributes_last_name")).sendKeys(lastName);
+        driver1.findElement(By.id("lease_applicant_attributes_address_1")).sendKeys(streetAddress);
+        driver1.findElement(By.id("lease_applicant_attributes_address_2")).sendKeys(unitN);
+        driver1.findElement(By.id("lease_applicant_attributes_city")).sendKeys(cityN);
+        driver1.findElement(By.id("lease_applicant_attributes_state")).sendKeys(stateN);
+        driver1.findElement(By.id("lease_applicant_attributes_zip")).sendKeys(zipN);
         Thread.sleep(100); 
         driver1.findElement(By.id("lease_applicant_attributes_ssn")).sendKeys(Main.ssN);
         driver1.findElement(By.id("lease_applicant_attributes_dob")).sendKeys(Main.dOb);
