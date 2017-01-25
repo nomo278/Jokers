@@ -1734,7 +1734,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             firstThread.WestCreekFinance(driver7);
         } 
         
-        
+        /*
         odd1 = 0;
         odd2 = 0;
         odd3 = 0;
@@ -1743,7 +1743,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         odd6 = 0;
         odd7 = 0;
         odd8 = 0;
-        
+        */
         
           
     }//GEN-LAST:event_submitButtonActionPerformed
@@ -2561,7 +2561,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         try{
             
-            driver.manage().window().setPosition(new Point(-2000, 0));;
+            //driver.manage().window().setPosition(new Point(-2000, 0));;
             
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
@@ -2817,7 +2817,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver1.findElement(By.id("lease_applicant_attributes_ssn")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applicant_attributes_dob")).sendKeys(dOb);
         driver1.findElement(By.id("lease_applicant_attributes_dl_number")).sendKeys(dlN);
-        driver1.findElement(By.id("lease_applicant_attributes_dl_state")).sendKeys(stateK);
+         Select dropdownDLState = new Select(driver1.findElement(By.id("lease_applicant_attributes_dl_state")));
+        ClickStateDLSimple(driver1, stateK);
+        //driver1.findElement(By.id("lease_applicant_attributes_dl_state")).sendKeys(stateK);
+        
         driver1.findElement(By.id("lease_applicant_attributes_main_phone")).sendKeys(phoneN1);
         driver1.findElement(By.id("lease_applicant_attributes_alt_phone")).sendKeys(phoneN2);
         driver1.findElement(By.id("lease_applicant_attributes_email")).sendKeys(emailN);
@@ -3969,7 +3972,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver7.findElement(By.xpath("//*[@id=\"WPCCCACCT\"]")).sendKeys(cardNumber);
            driver7.findElement(By.xpath("//*[@id=\"EXPDAT\"]")).sendKeys( "02" + "/20" + expYear );
                        
-           driver7.findElement(By.xpath("//*[@id=\"WPAPPA3\"]")).sendKeys(firstName + " " + middleName.substring(0, 1) +  " " + lastName);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA3\"]")).sendKeys(firstName);
+           driver7.findElement(By.xpath("//*[@id=\"WPAPPA4\"]")).sendKeys(middleName.substring(0, 1));
            driver7.findElement(By.xpath("//*[@id=\"WPAPPA5\"]")).sendKeys(lastName);
            
            //*[@id="WPAPPA1"]
@@ -4281,7 +4285,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        }else if(stateN == "Michigan"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[24]")).click();
        }else if(stateN == "Minnesota"){
-       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[25]")).click();
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[24]")).click();
        }else if(stateN == "Mississippi"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[25]")).click();
        }else if(stateN == "Missouri"){
@@ -4295,7 +4299,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        }else if(stateN == "New Hampshire"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[30]")).click();
        }else if(stateN == "New Jersey"){
-       driver.findElement(By.xpath("html/body/ul[2]/li[32]/a")).click();
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[32]")).click();
        }else if(stateN == "New Mexico"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[31]")).click();
        }else if(stateN == "New York"){
@@ -4313,7 +4317,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        }else if(stateN == "Pennsylvania"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[38]")).click();
        }else if(stateN == "Puerto Rico"){
-       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[39]")).click();
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[11]")).click();
        }else if(stateN == "Rhode Island"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[39]")).click();
        }else if(stateN == "South Carolina"){
@@ -4335,11 +4339,121 @@ public class Main extends javax.swing.JFrame implements Runnable{
        }else if(stateN == "West Virginia"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[48]")).click();
        }else if(stateN == "Wisconsin"){
-       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[49]")).click();
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[24]")).click();
        }else if(stateN == "Wyoming"){
        driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[49]")).click();
        }else if(stateN == "Virgin Islands"){
-       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[49]")).click();
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_state\"]/option[11]")).click();
+       }        
+    }
+    
+    public void ClickStateDLSimple(WebDriver driver,String stateK){
+       if(stateK == "Alabama"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[2]")).click();
+       }else if(stateK == "Alaska"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[3]")).click();
+       }else if(stateK == "Arizona"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[4]")).click();
+       }else if(stateK == "Arkansas"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[5]")).click();
+       }else if(stateK == "California"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[6]")).click();
+       }else if(stateK == "Colorado"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[7]")).click();
+       }else if(stateK == "Connecticut"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[8]")).click();
+       }else if(stateK == "Delaware"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[9]")).click();
+       }else if(stateK == "D.C."){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[10]")).click();
+       }else if(stateK == "Florida"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[11]")).click();
+       }else if(stateK == "Georgia"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[12]")).click();
+       }else if(stateK == "Hawaii"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[13]")).click();
+       }else if(stateK == "Idaho"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[14]")).click();
+       }else if(stateK == "Illinois"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[15]")).click();
+       }else if(stateK == "Indiana"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[16]")).click();
+       }else if(stateK == "Iowa"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[17]")).click();
+       }else if(stateK == "Kansas"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[18]")).click();
+       }else if(stateK == "Kentucky"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[19]")).click();
+       }else if(stateK == "Louisiana"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[20]")).click();
+       }else if(stateK == "Maine"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[21]")).click();
+       }else if(stateK == "Maryland"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[22]")).click();
+       }else if(stateK == "Massachusetts"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[23]")).click();
+       }else if(stateK == "Michigan"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[24]")).click();
+       }else if(stateK == "Minnesota"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[25]")).click();
+       }else if(stateK == "Mississippi"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[26]")).click();
+       }else if(stateK == "Missouri"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[27]")).click();
+       }else if(stateK == "Montana"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[28]")).click();
+       }else if(stateK == "Nebraska"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[29]")).click();
+       }else if(stateK == "Nevada"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[30]")).click();
+       }else if(stateK == "New Hampshire"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[31]")).click();
+       }else if(stateK == "New Jersey"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[32]")).click();
+       }else if(stateK == "New Mexico"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[33]")).click();
+       }else if(stateK == "New York"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[34]")).click();
+       }else if(stateK == "North Carolina"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[35]")).click();
+       }else if(stateK == "North Dakota"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[36]")).click();
+       }else if(stateK == "Ohio"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[37]")).click();
+       }else if(stateK == "Oklahoma"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[38]")).click();
+       }else if(stateK == "Oregon"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[39]")).click();
+       }else if(stateK == "Pennsylvania"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[40]")).click();
+       }else if(stateK == "Puerto Rico"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[40]")).click();
+       }else if(stateK == "Rhode Island"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[41]")).click();
+       }else if(stateK == "South Carolina"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[42]")).click();
+       }else if(stateK == "South Dakota"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[43]")).click();
+       }else if(stateK == "Tennessee"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[44]")).click();
+       }else if(stateK == "Texas"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[45]")).click();
+       }else if(stateK == "Utah"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[46]")).click();
+       }else if(stateK == "Vermont"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[47]")).click();
+       }else if(stateK == "Virginia"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[48]")).click();
+       }else if(stateK == "Washington"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[49]")).click();
+       }else if(stateK == "West Virginia"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[50]")).click();
+       }else if(stateK == "Wisconsin"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[51]")).click();
+       }else if(stateK == "Wyoming"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[52]")).click();
+       }else if(stateK == "Virgin Islands"){
+       driver.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_dl_state\"]/option[52]")).click();
        }        
     }
     
