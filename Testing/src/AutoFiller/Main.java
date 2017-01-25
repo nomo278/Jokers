@@ -98,6 +98,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    //public static String startDate;  
    public static String yearsAtJob;
    public static String monthsAtJob;
+   public static String monthsAtJobCR;
    public static String yearAccountOpen;
    public static String monthAccountOpen;
    public static String cardHolderName;
@@ -1653,6 +1654,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
         PayMP = this.pay.getSelectedIndex();
         // This is redudent startDate  = this.startdate.getText();
         yearsAtJob = Integer.toString(year - Integer.parseInt(hireDateYear.getSelectedItem().toString()));//yearAtJob.getSelectedItem().toString();
+        int tempMonths = month - Integer.parseInt(hireDateMonth.getSelectedItem().toString());
+        if (tempMonths < 0){
+        yearsAtJob = Integer.toString(Integer.parseInt(yearsAtJob) - 1);
+        System.out.println("This is the current Years " + yearsAtJob);
+        monthsAtJobCR = Integer.toString(Math.abs(Integer.parseInt(monthsAtJob)));
+        
+        System.out.println("This is the current Months at the job " + monthsAtJobCR);
+        }
+        
         monthsAtJob = Integer.toString(month - Integer.parseInt(hireDateMonth.getSelectedItem().toString())); //monthAtJob.getSelectedItem().toString();
         yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "").replace("+", "").replaceAll("s", "").replaceAll("\\s", "");
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
@@ -1709,7 +1719,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -2617,7 +2627,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver.findElement(By.id("YearsAtJob")).sendKeys(yearsAtJob); 
        // dropdown = new Select(driver.findElement(By.id("YearsAtJob")));
        // dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
-         driver.findElement(By.id("MonthsAtJob")).sendKeys(monthsAtJob); //TODO MAKE FIELD ON FORM
+         driver.findElement(By.id("MonthsAtJob")).sendKeys(monthsAtJobCR); //TODO MAKE FIELD ON FORM
         
         //dropdown = new Select(driver.findElement(By.id("MonthsAtJob")));
         //dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
