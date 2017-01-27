@@ -98,7 +98,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    //public static String startDate;  
    public static String yearsAtJob;
    public static String monthsAtJob;
-   public static int monthsAtJobCR;
+   public static String monthsAtJobCR;
    public static String yearAccountOpen;
    public static String monthAccountOpen;
    public static String cardHolderName;
@@ -137,15 +137,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setEnabled(false);
+        crestEnabled.setEnabled(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(false);
+        snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(false);
-        merchantsEnabled.setEnabled(false);
+        okinusEnabled.setEnabled(true);
+        merchantsEnabled.setEnabled(true);
         westEnabled.setEnabled(true);
-       tempoeEnabled.setEnabled(false);
-       debugAutoFill.setVisible(false);  
+       tempoeEnabled.setEnabled(true);
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
        
@@ -1170,10 +1170,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                                 .addComponent(merchantsEnabled)))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(okinusEnabled)))
+                                            .addComponent(simpleEnabled)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(simpleEnabled)))
+                                        .addComponent(snapEnabled)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(crestEnabled)))
@@ -1185,7 +1185,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                             .addComponent(westEnabled)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(snapEnabled)))
+                        .addComponent(okinusEnabled)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1433,16 +1433,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(westEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
                         .addComponent(okinusEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(westEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(merchantsEnabled)
                         .addGap(10, 10, 10)
@@ -1658,18 +1658,20 @@ public class Main extends javax.swing.JFrame implements Runnable{
         PayMP = this.pay.getSelectedIndex();
         // This is redudent startDate  = this.startdate.getText();
         yearsAtJob = Integer.toString(year - Integer.parseInt(hireDateYear.getSelectedItem().toString()));//yearAtJob.getSelectedItem().toString();
+        
+     
+        
+        monthsAtJob = Integer.toString(month - Integer.parseInt(hireDateMonth.getSelectedItem().toString())); //monthAtJob.getSelectedItem().toString();
         int tempMonths = month - Integer.parseInt(hireDateMonth.getSelectedItem().toString());
-        if (tempMonths < 0){
-            tempMonths = 12 + tempMonths;
+           if (tempMonths < 0){
+            tempMonths = tempMonths + 12;
         yearsAtJob = Integer.toString(Integer.parseInt(yearsAtJob) - 1);
         System.out.println("This is the current Years " + yearsAtJob);
         //Integer.toString(Math.abs(Integer.parseInt(monthsAtJob))
-        monthsAtJobCR = tempMonths;
+        monthsAtJobCR = Integer.toString(tempMonths);
         
         System.out.println("This is the current Months at the job " + monthsAtJobCR);
         }
-        
-        monthsAtJob = Integer.toString(month - Integer.parseInt(hireDateMonth.getSelectedItem().toString())); //monthAtJob.getSelectedItem().toString();
         yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "").replace("+", "").replaceAll("s", "").replaceAll("\\s", "");
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
         cardHolderName = this.cardholdername.getText();
@@ -1698,8 +1700,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
- 
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/co-z_furniture_interiors");
             value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
@@ -1718,7 +1719,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/atlanticbeddingandfurniture/39680#/marketing");
+            driver3.get("https://approve.me/s/stylelinefurniture/47610#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
@@ -1738,7 +1739,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://app.okinus.com/applicationStart?storeguid=f2b9b394-6b2d-4567-8466-f7c90d0eee96&sel=true");
+            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=Co-ZFurnitureandInteriorsLLC");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
@@ -2633,7 +2634,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver.findElement(By.id("YearsAtJob")).sendKeys(yearsAtJob); 
        // dropdown = new Select(driver.findElement(By.id("YearsAtJob")));
        // dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
-         driver.findElement(By.id("MonthsAtJob")).sendKeys(Integer.toString(monthsAtJobCR)); //TODO MAKE FIELD ON FORM
+         driver.findElement(By.id("MonthsAtJob")).sendKeys(monthsAtJobCR); //TODO MAKE FIELD ON FORM
         
         //dropdown = new Select(driver.findElement(By.id("MonthsAtJob")));
         //dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
@@ -3548,7 +3549,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         tempMerchant.sendKeys(Keys.chord(Keys.TAB, Keys.SHIFT));
         tempMerchant.sendKeys(monthsAtJob);
           */   //*[@id="ContentPlaceHolder1_UC_Step3_step3Div"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/span/span[2]/span
-          
+//*[@id="ContentPlaceHolder1_UC_Step3_step3Div"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/input[1]
+
+driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpYearsTextBox")).sendKeys(yearsAtJob);
+driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBox")).sendKeys(monthsAtJobCR);          
+
           System.out.println("Clicking last things to make adjustments");
              driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/span/span[1]/span")).click();
              driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_step3Div\"]/fieldset[1]/div/div[2]/div[2]/div/div[2]/div/span[1]/span/span/span[2]/span")).click();
@@ -3686,9 +3691,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
            
            //Select dropdown60 = new Select(driver6.findElement(By.name("personal_title")));
            //dropdown60.selectByIndex(1);
-           //TODO: Male and Female
+            
            
              driver6.manage().window().maximize();
+             
+           Thread.sleep(2500);
+           driver6.findElement(By.xpath("//*[@id='chkHaveRead']")).click();
+           driver6.findElement(By.xpath("//*[@id='MainContent_btnSubmit']")).click();
+           
            Thread.sleep(500);  
              
            WebElement FirstPageOkinus = (new WebDriverWait(driver6, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[1]/div[1]/a/span[2]")));
