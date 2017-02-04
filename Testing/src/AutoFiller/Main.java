@@ -141,10 +141,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         simpleEnabled.setEnabled(true);
         snapEnabled.setEnabled(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setEnabled(true);
-        merchantsEnabled.setEnabled(true);
+        okinusEnabled.setVisible(true);
+        merchantsEnabled.setVisible(false);
         westEnabled.setEnabled(true);
-       tempoeEnabled.setEnabled(true);
+       tempoeEnabled.setVisible(false);
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
@@ -495,7 +495,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Simple.png"))); // NOI18N
+        simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
         simpleEnabled.setMargin(new java.awt.Insets(14, 14, 14, 14));
         simpleEnabled.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1161,28 +1161,26 @@ public class Main extends javax.swing.JFrame implements Runnable{
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tempoeEnabled))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(merchantsEnabled)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(tempoeEnabled))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(simpleEnabled)))
+                                            .addComponent(snapEnabled)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(snapEnabled)))
+                                        .addComponent(crestEnabled)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(crestEnabled)))
+                                    .addComponent(progressiveEnabled)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(progressiveEnabled)))
+                                .addComponent(westEnabled)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(westEnabled)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(simpleEnabled)
+                                .addComponent(merchantsEnabled))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(okinusEnabled)))
@@ -1436,17 +1434,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addGap(36, 36, 36)
                         .addComponent(crestEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
                         .addComponent(okinusEnabled)
-                        .addGap(10, 10, 10)
-                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(westEnabled)
                         .addGap(10, 10, 10)
                         .addComponent(merchantsEnabled)
                         .addGap(10, 10, 10)
-                        .addComponent(snapEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(simpleEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(progressiveEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(westEnabled)
+                        .addGap(10, 10, 10)
+                        .addComponent(snapEnabled, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(tempoeEnabled)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1672,6 +1670,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         System.out.println("This is the current Months at the job " + monthsAtJobCR);
         }
+            monthsAtJobCR = Integer.toString(tempMonths);
         yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "").replace("+", "").replaceAll("s", "").replaceAll("\\s", "");
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
         cardHolderName = this.cardholdername.getText();
@@ -1700,14 +1699,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/co-z_furniture_interiors");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio");
             value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.gosimplefinance.com/customer/leases/new?location_id=D6EA08");
+            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=7C0F35");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1719,14 +1718,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/stylelinefurniture/47610#/marketing");
+            driver3.get("https://approve.me/s/paylessfurniture2/32918#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=rbrE5ZbpS9I%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -1739,7 +1738,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=Co-ZFurnitureandInteriorsLLC");
+            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=WhitbyEnterprisesInc");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
@@ -3750,20 +3749,25 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
              
            driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click();
            
-           Select dropdown60 = new Select(driver6.findElement(By.name("income_type")));
+           /*
+           Select dropdown60 = new Select(driver6.findElement(By.id("off-app-prim-income-pay-type")));
            //TODO Different types of income Direct Deposit from Employer, Paychecks from Employer, Self-Employment, Social Security, Long Term Disability, Military, Alimony
            Thread.sleep(200);
            System.out.println("Started"); 
-           driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[1]/a/span[2]")).click();
+           //driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[1]/a/span[2]")).click();
            if(employmentPayment == "Direct Deposit from Employer"){
-           driver6.findElement(By.xpath("/html/body/ul[4]/li[2]/a")).click();
+               dropdown60.selectByIndex(1);
+           //driver6.findElement(By.xpath("/html/body/ul[4]/li[2]/a")).click();
            System.out.println("Clicked Direct Deposit");
            }else if(employmentPayment == "Social Security"){ 
-           driver6.findElement(By.xpath("html/body/ul[4]/li[3]/a")).click();
+                 dropdown60.selectByIndex(2);
+           //driver6.findElement(By.xpath("html/body/ul[4]/li[3]/a")).click();
            }else if(employmentPayment == "Long Term Disability"){ 
-           driver6.findElement(By.xpath("html/body/ul[4]/li[4]/a")).click();
+                 dropdown60.selectByIndex(3);
+           //driver6.findElement(By.xpath("html/body/ul[4]/li[4]/a")).click();
            }else if(employmentPayment == "Self-Employment"){ 
-           driver6.findElement(By.xpath("html/body/ul[4]/li[7]/a")).click();
+                 dropdown60.selectByIndex(6);
+           //driver6.findElement(By.xpath("html/body/ul[4]/li[7]/a")).click();
            
            }
            
@@ -3791,6 +3795,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            
            }
            
+          
            String tempIncomeString = String.valueOf(tempIncome);
          //  driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[4]/div/div[1]/div[4]/a/span[1]")).sendKeys(Pay);
          
@@ -3826,7 +3831,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             //AMERICAN_EXPRESS("^3[47][0-9]{13}$"),
      
             // DISCOVER("^6(?:011|5[0-9]{2})[0-9]{12}$"),
-       
+        */
             driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[5]/div/div[2]/div[3]/a/span[2]")).click();
             if (cardNumber.startsWith("4")){          
            driver6.findElement(By.xpath("/html/body/ul[6]/li[2]/a")).click();
