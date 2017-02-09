@@ -137,15 +137,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setEnabled(true);
-        simpleEnabled.setEnabled(true);
-        snapEnabled.setEnabled(true);
-        progressiveEnabled.setEnabled(true);
+        crestEnabled.setVisible(true);
+        simpleEnabled.setEnabled(false);
+        snapEnabled.setVisible(true);
+        progressiveEnabled.setEnabled(false);
         okinusEnabled.setVisible(true);
         merchantsEnabled.setVisible(false);
-        westEnabled.setEnabled(true);
+        westEnabled.setEnabled(false);
        tempoeEnabled.setVisible(false);
-       debugAutoFill.setVisible(true);  
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);      
   
        
@@ -1699,14 +1699,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/same_athens");
             value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=7C0F35");
+            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=06B3E4");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1718,14 +1718,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/paylessfurniture2/32918#/marketing");
+            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d");
+          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=ZDfzOYo%2fzBY%3d");
            firstThread.PerferredFinance(driver4);
         }
         
@@ -1738,14 +1738,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=WhitbyEnterprisesInc");
+            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=JordanFurnitureAndMattressGalleryInc");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
         
         if(westEnabled.isSelected()) {
             WebDriver driver7 = new ChromeDriver();
-            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=abfgreenville&mdlrl=1");
+            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=abfathens&mdlrl=1");
             System.out.println("loading West Creek...");
             firstThread.WestCreekFinance(driver7);
         } 
@@ -2893,9 +2893,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
                driver2.manage().window().maximize(); 
           try{
-               Thread.sleep(500);
-        driver2.findElement(By.name("username")).sendKeys("jokersaudio");
-        driver2.findElement(By.name("password")).sendKeys("Awadsquad1");
+               Thread.sleep(500); 
+        driver2.findElement(By.name("username")).sendKeys("jordanfurngallery");
+        driver2.findElement(By.name("password")).sendKeys("3190Atlanta");
         driver2.findElement(By.id("btn-login")).click();
         
         WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
@@ -3615,7 +3615,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
              
             System.out.println("Started Tempo");
             
-           // driver5.findElement(By.id("txtConsumerFirstName")).sendKeys(firstName);
+            driver5.findElement(By.xpath("//*[@id=\"txtConsumerFirstName\"]")).sendKeys(firstName);
             driver5.findElement(By.xpath("//*[@id=\"txtConsumerFirstName\"]")).sendKeys(lastName);
             driver5.findElement(By.id("txtConsumerMiddleInitial")).sendKeys(middleName);
             
@@ -3747,28 +3747,30 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email']")).sendKeys(emailN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email-confirm']")).sendKeys(emailN);
              
-           driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click();
+           //driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click(); Dont know what this is on Okinus
+                      
+           driver6.findElement(By.xpath("//*[@id=\"off-app-prim-income-yes\"]")).click();
            
-           /*
-           Select dropdown60 = new Select(driver6.findElement(By.id("off-app-prim-income-pay-type")));
+           driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[1]/a/span[2]")).click();
+           
+           //Select dropdown60 = new Select(driver6.findElement(By.id("off-app-prim-income-pay-type")));
            //TODO Different types of income Direct Deposit from Employer, Paychecks from Employer, Self-Employment, Social Security, Long Term Disability, Military, Alimony
            Thread.sleep(200);
            System.out.println("Started"); 
            //driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[4]/div/div[1]/div[1]/a/span[2]")).click();
            if(employmentPayment == "Direct Deposit from Employer"){
-               dropdown60.selectByIndex(1);
-           //driver6.findElement(By.xpath("/html/body/ul[4]/li[2]/a")).click();
+          //     dropdown60.selectByIndex(1);
+           driver6.findElement(By.xpath("/html/body/ul[4]/li[2]/a")).click();
            System.out.println("Clicked Direct Deposit");
            }else if(employmentPayment == "Social Security"){ 
-                 dropdown60.selectByIndex(2);
-           //driver6.findElement(By.xpath("html/body/ul[4]/li[3]/a")).click();
+               //  dropdown60.selectByIndex(2);
+           driver6.findElement(By.xpath("html/body/ul[4]/li[3]/a")).click();
            }else if(employmentPayment == "Long Term Disability"){ 
-                 dropdown60.selectByIndex(3);
-           //driver6.findElement(By.xpath("html/body/ul[4]/li[4]/a")).click();
+             //    dropdown60.selectByIndex(3);
+           driver6.findElement(By.xpath("html/body/ul[4]/li[4]/a")).click();
            }else if(employmentPayment == "Self-Employment"){ 
-                 dropdown60.selectByIndex(6);
-           //driver6.findElement(By.xpath("html/body/ul[4]/li[7]/a")).click();
-           
+            //     dropdown60.selectByIndex(6);
+           driver6.findElement(By.xpath("html/body/ul[4]/li[7]/a")).click();
            }
            
            driver6.findElement(By.xpath("//*[@id='off-app-personal-emp-name']")).sendKeys(employerN);
@@ -3831,7 +3833,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             //AMERICAN_EXPRESS("^3[47][0-9]{13}$"),
      
             // DISCOVER("^6(?:011|5[0-9]{2})[0-9]{12}$"),
-        */
+       
             driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[5]/div/div[2]/div[3]/a/span[2]")).click();
             if (cardNumber.startsWith("4")){          
            driver6.findElement(By.xpath("/html/body/ul[6]/li[2]/a")).click();
