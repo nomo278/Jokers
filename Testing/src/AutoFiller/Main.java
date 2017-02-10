@@ -137,14 +137,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setVisible(true);
-        simpleEnabled.setEnabled(false);
-        snapEnabled.setVisible(true);
-        progressiveEnabled.setEnabled(false);
-        okinusEnabled.setVisible(true);
+        crestEnabled.setVisible(false);
+        simpleEnabled.setEnabled(true);
+        snapEnabled.setVisible(false);
+        progressiveEnabled.setEnabled(true);
+        okinusEnabled.setVisible(false);
         merchantsEnabled.setVisible(false);
-        westEnabled.setEnabled(false);
-       tempoeEnabled.setVisible(false);
+        westEnabled.setEnabled(true);
+        tempoeEnabled.setVisible(false);
        debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);      
   
@@ -1706,7 +1706,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=06B3E4");
+            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=107A84");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1718,7 +1718,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/jordanfurnituregallery/49964#/marketing");
+            driver3.get("https://approve.me/s/atlanticbeddingandfurniture/39675#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
@@ -1745,7 +1745,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(westEnabled.isSelected()) {
             WebDriver driver7 = new ChromeDriver();
-            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=abfathens&mdlrl=1");
+            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=Sykes&mdlrl=1");
             System.out.println("loading West Creek...");
             firstThread.WestCreekFinance(driver7);
         } 
