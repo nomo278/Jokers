@@ -55,8 +55,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String zipN;    
    public static String addYears;    
    public static String addMonths;    
-   public static String Rent; 
-   public static String Own;      
+   public static boolean Rent; 
+   public static boolean Own;      
    public static String ssN;
    public static String dOb; 
    public static int dObM; 
@@ -112,8 +112,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String CrestChecker;
    public static String RelationRef;
    public static String RelationRef1;
-   public static String uRent;
-   public static String uOwn;   
+   public static boolean uRent;
+   public static boolean uOwn;   
    public static String employerState;
    
    public static int odd1 = 0;
@@ -1519,7 +1519,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         supername.setText("Jeb Jackson");
         workphone.setText("770" + randInt(300, 900) + getRandomNumber(4));
         dlstate1.setSelectedIndex(randInt(1,10));
-        uRent = "True";
+        uRent = true;
         
         Calendar tempDate = Calendar.getInstance(); //getting current date
         //int dayOfYear = Integer.parseInt(getRandomDay());
@@ -1604,8 +1604,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         addMonths = addressMonths.getSelectedIndex() < 9 ? 
                 "0" + (addressMonths.getSelectedIndex() + 1) : 
                 "" + (addressMonths.getSelectedIndex() + 1);
-        Rent = this.rent.getText();
-        Own = this.own.getText();
+        Rent = this.rent.isSelected();
+        Own = this.own.isSelected();
         ssN = this.ssn.getText();
         dOb = dobMonth.getSelectedItem().toString() + 
                 dobDay.getSelectedItem().toString() + 
@@ -1810,8 +1810,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
     private void rentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentActionPerformed
         // TODO add your handling code here:
-        uRent = "True";
-        uOwn = "False";
+        uRent = true;
+        uOwn = false;
     }//GEN-LAST:event_rentActionPerformed
 
     private void zipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipActionPerformed
@@ -2129,8 +2129,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
     private void ownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownActionPerformed
         // TODO add your handling code here:
-        uOwn = "True";
-        uRent = "False";
+        uOwn = true;
+        uRent = false;
     }//GEN-LAST:event_ownActionPerformed
     
     Random r = new Random();
@@ -2616,10 +2616,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         SetText(driver,"//*[@id='DriversLicenseNumber']",dlN,true);
         driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
          System.out.println(Main.Rent + "This is where we are at ");
-       if(Rent == "Rent"){ 
+       if(Rent){ 
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
-       } 
-       if(Own == "Own"){
+       } else if(Own){
        driver.findElement(By.id("OwnershipTypeID")).sendKeys("Own");
        }
         
@@ -2952,11 +2951,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
         //dropdown.selectByIndex(3);
          //TODO: Rent or own addressStatus  addressMonths.getSelectedIndex()
-         if(Rent == "Rent"){         
+         if(Rent){         
          Select dropdown30 = new Select(driver2.findElement(By.name("addressStatus"))); 
         dropdown30.selectByIndex(1);
         
-         }else if(Own == "Own"){
+         }else if(Own){
            Select dropdown30 = new Select(driver2.findElement(By.name("addressStatus"))); 
         dropdown30.selectByIndex(2);
         
@@ -3115,11 +3114,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver3.findElement(By.xpath("//*[@id='MoveNext']")).click();
         //    Thread.sleep(2000);
         //Rent or Own
-        if(Rent == "Rent"){
+        if(Rent){
           driver3.findElement(By.id("Residence_HousingStatus_Rent")).click();
         }
-        else if(Own == "Own"){
-        
+        else if(Own){
         driver3.findElement(By.id("Residence_HousingStatus_Own")).click();
         }
             Thread.sleep(2000);
@@ -3893,10 +3891,10 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            //*[@id="WPHOMEO"]
            Select dropdown71 = new Select(driver7.findElement(By.xpath("//*[@id=\"WPHOMEO\"]"))); 
          
-           if(uRent == "True"){
+           if(uRent){
            
          dropdown71.selectByIndex(1);
-           }else if (uOwn == "True"){
+           }else if (uOwn){
          dropdown71.selectByIndex(2);  
            }else{
          dropdown71.selectByIndex(3);    
