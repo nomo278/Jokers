@@ -138,14 +138,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         crestEnabled.setVisible(true);
-        simpleEnabled.setEnabled(false);
+        simpleEnabled.setEnabled(true);
         snapEnabled.setVisible(true);
-        progressiveEnabled.setEnabled(false);
+        progressiveEnabled.setEnabled(true);
         okinusEnabled.setVisible(true);
-        merchantsEnabled.setVisible(false);
-        westEnabled.setEnabled(false);
-       tempoeEnabled.setVisible(false);
-       debugAutoFill.setVisible(false);  
+        merchantsEnabled.setVisible(true);
+        westEnabled.setEnabled(true);
+       tempoeEnabled.setVisible(true);
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
   
        
@@ -2615,7 +2615,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver.findElement(By.id("DriversLicenseNumber")).sendKeys(dlN);
         SetText(driver,"//*[@id='DriversLicenseNumber']",dlN,true);
         driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
-         
+         System.out.println(Main.Rent + "This is where we are at ");
        if(Rent == "Rent"){ 
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
        } 
