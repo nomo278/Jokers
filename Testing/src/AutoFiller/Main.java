@@ -55,8 +55,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String zipN;    
    public static String addYears;    
    public static String addMonths;    
-   public static String Rent; 
-   public static String Own;      
+   public static boolean Rent; 
+   public static boolean Own;      
    public static String ssN;
    public static String dOb; 
    public static int dObM; 
@@ -112,8 +112,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String CrestChecker;
    public static String RelationRef;
    public static String RelationRef1;
-   public static String uRent;
-   public static String uOwn;   
+   public static boolean uRent;
+   public static boolean uOwn;   
    public static String employerState;
    
    public static int odd1 = 0;
@@ -137,18 +137,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setVisible(false);
+        crestEnabled.setVisible(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setVisible(false);
+        snapEnabled.setVisible(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setVisible(false);
-        merchantsEnabled.setVisible(false);
+        okinusEnabled.setVisible(true);
+        merchantsEnabled.setVisible(true);
         westEnabled.setEnabled(true);
-        tempoeEnabled.setVisible(false);
-       debugAutoFill.setVisible(false);  
+        tempoeEnabled.setVisible(true);
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
-  
-       
     }
 
     /**
@@ -1519,7 +1517,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         supername.setText("Jeb Jackson");
         workphone.setText("770" + randInt(300, 900) + getRandomNumber(4));
         dlstate1.setSelectedIndex(randInt(1,10));
-        uRent = "True";
+        uRent = true;
         
         Calendar tempDate = Calendar.getInstance(); //getting current date
         //int dayOfYear = Integer.parseInt(getRandomDay());
@@ -1604,8 +1602,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         addMonths = addressMonths.getSelectedIndex() < 9 ? 
                 "0" + (addressMonths.getSelectedIndex() + 1) : 
                 "" + (addressMonths.getSelectedIndex() + 1);
-        Rent = this.rent.getText();
-        Own = this.own.getText();
+        Rent = this.rent.isSelected();
+        Own = this.own.isSelected();
         ssN = this.ssn.getText();
         dOb = dobMonth.getSelectedItem().toString() + 
                 dobDay.getSelectedItem().toString() + 
@@ -1699,14 +1697,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/same_athens");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
             value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=107A84");
+            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=644781");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1718,7 +1716,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/atlanticbeddingandfurniture/39675#/marketing");
+            driver3.get("https://approve.me/s/adamscustomwheelsandaccessories/31580#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
@@ -1738,7 +1736,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=JordanFurnitureAndMattressGalleryInc");
+            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=RyanickEnterprisesInc");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
@@ -1810,8 +1808,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
     private void rentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentActionPerformed
         // TODO add your handling code here:
-        uRent = "True";
-        uOwn = "False";
+        uRent = true;
+        uOwn = false;
     }//GEN-LAST:event_rentActionPerformed
 
     private void zipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipActionPerformed
@@ -2129,8 +2127,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
 
     private void ownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ownActionPerformed
         // TODO add your handling code here:
-        uOwn = "True";
-        uRent = "False";
+        uOwn = true;
+        uRent = false;
     }//GEN-LAST:event_ownActionPerformed
     
     Random r = new Random();
@@ -2615,11 +2613,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver.findElement(By.id("DriversLicenseNumber")).sendKeys(dlN);
         SetText(driver,"//*[@id='DriversLicenseNumber']",dlN,true);
         driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
-         
-       if(Rent == "Rent"){ 
+
+         System.out.println(Main.Rent + "This is where we are at ");
+     
+       if(Rent){ 
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
-       } 
-       if(Own == "Own"){
+       } else if(Own){
        driver.findElement(By.id("OwnershipTypeID")).sendKeys("Own");
        }
         
@@ -2894,8 +2893,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                driver2.manage().window().maximize(); 
           try{
                Thread.sleep(500); 
-        driver2.findElement(By.name("username")).sendKeys("jordanfurngallery");
-        driver2.findElement(By.name("password")).sendKeys("3190Atlanta");
+        driver2.findElement(By.name("username")).sendKeys("adamsbuford");
+        driver2.findElement(By.name("password")).sendKeys("adams4721");
         driver2.findElement(By.id("btn-login")).click();
         
         WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
@@ -2952,11 +2951,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //dropdown = new Select(driver2.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/form/div[2]/div[7]/div/div[1]/div[2]/div[2]/select")));
         //dropdown.selectByIndex(3);
          //TODO: Rent or own addressStatus  addressMonths.getSelectedIndex()
-         if(Rent == "Rent"){         
+         if(Rent){         
          Select dropdown30 = new Select(driver2.findElement(By.name("addressStatus"))); 
         dropdown30.selectByIndex(1);
         
-         }else if(Own == "Own"){
+         }else if(Own){
            Select dropdown30 = new Select(driver2.findElement(By.name("addressStatus"))); 
         dropdown30.selectByIndex(2);
         
@@ -3115,11 +3114,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver3.findElement(By.xpath("//*[@id='MoveNext']")).click();
         //    Thread.sleep(2000);
         //Rent or Own
-        if(Rent == "Rent"){
+        if(Rent){
           driver3.findElement(By.id("Residence_HousingStatus_Rent")).click();
         }
-        else if(Own == "Own"){
-        
+        else if(Own){
         driver3.findElement(By.id("Residence_HousingStatus_Own")).click();
         }
             Thread.sleep(2000);
@@ -3893,10 +3891,10 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            //*[@id="WPHOMEO"]
            Select dropdown71 = new Select(driver7.findElement(By.xpath("//*[@id=\"WPHOMEO\"]"))); 
          
-           if(uRent == "True"){
+           if(uRent){
            
          dropdown71.selectByIndex(1);
-           }else if (uOwn == "True"){
+           }else if (uOwn){
          dropdown71.selectByIndex(2);  
            }else{
          dropdown71.selectByIndex(3);    
