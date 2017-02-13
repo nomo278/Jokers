@@ -137,18 +137,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setVisible(false);
+        crestEnabled.setVisible(true);
         simpleEnabled.setEnabled(true);
-        snapEnabled.setVisible(false);
+        snapEnabled.setVisible(true);
         progressiveEnabled.setEnabled(true);
-        okinusEnabled.setVisible(false);
-        merchantsEnabled.setVisible(false);
+        okinusEnabled.setVisible(true);
+        merchantsEnabled.setVisible(true);
         westEnabled.setEnabled(true);
-        tempoeEnabled.setVisible(false);
-       debugAutoFill.setVisible(false);  
+        tempoeEnabled.setVisible(true);
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
-  
-       
     }
 
     /**
@@ -1699,14 +1697,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/same_athens");
+            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/rooms_1-2-3_sandy_springs");
             value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=107A84");
+            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=644781");
             firstThread.SimpleFinance(driver1);
         } 
          
@@ -1718,7 +1716,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/atlanticbeddingandfurniture/39675#/marketing");
+            driver3.get("https://approve.me/s/adamscustomwheelsandaccessories/31580#/marketing");
             firstThread.ProgressFinance(driver3);
         } 
         
@@ -1738,7 +1736,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=JordanFurnitureAndMattressGalleryInc");
+            driver6.get("https://applications.okinus.com/disclaimer.aspx?dealer=RyanickEnterprisesInc");
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
@@ -2615,13 +2613,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver.findElement(By.id("DriversLicenseNumber")).sendKeys(dlN);
         SetText(driver,"//*[@id='DriversLicenseNumber']",dlN,true);
         driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
-<<<<<<< HEAD
+
          System.out.println(Main.Rent + "This is where we are at ");
+     
        if(Rent){ 
-=======
-         
-       if(Rent == "Rent"){ 
->>>>>>> 6aa4e6a030cb098f48f2551277174a2bf12ea718
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
        } else if(Own){
        driver.findElement(By.id("OwnershipTypeID")).sendKeys("Own");
@@ -2898,8 +2893,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                driver2.manage().window().maximize(); 
           try{
                Thread.sleep(500); 
-        driver2.findElement(By.name("username")).sendKeys("jordanfurngallery");
-        driver2.findElement(By.name("password")).sendKeys("3190Atlanta");
+        driver2.findElement(By.name("username")).sendKeys("adamsbuford");
+        driver2.findElement(By.name("password")).sendKeys("adams4721");
         driver2.findElement(By.id("btn-login")).click();
         
         WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
