@@ -128,6 +128,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int year = Calendar.getInstance().get(Calendar.YEAR) ;
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+   
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/jokers_audio";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=7C0F35";//AcimaCredit
+   public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
+   public static String ProgressiveLink = "";//Approve.me
+   public static String MerchantsLink = "https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=kwQEjm0TBz0%3d";
+   public static String TempoeLink = "";
+   public static String OkinusLink = "";
+   public static String WestLink = "";
+   
 
  
    public int toggleLang = 0;
@@ -137,14 +147,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
-        crestEnabled.setVisible(true);
-        simpleEnabled.setVisible(false);
-        snapEnabled.setVisible(false);
-        progressiveEnabled.setVisible(true);
-        okinusEnabled.setVisible(true);
-        merchantsEnabled.setVisible(false);
-        westEnabled.setVisible(false);
-        tempoeEnabled.setVisible(false);
+        if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
+        if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
+        if(SnapLink == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
+        if(ProgressiveLink == ""){progressiveEnabled.setVisible(false);}else{progressiveEnabled.setVisible(true);}
+        if(OkinusLink == ""){okinusEnabled.setVisible(false);}else{okinusEnabled.setVisible(true);}
+        if(MerchantsLink == ""){merchantsEnabled.setVisible(false);}else{merchantsEnabled.setVisible(true);}
+        if(WestLink == ""){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
+        if(TempoeLink == ""){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
+        
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);      
     }
@@ -1704,53 +1715,53 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
-            driver.get("https://dealers.crestfinancial.com/Applicants/CreateApplicant/3432");
+            driver.get(CrestLink);
            // value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
         if(simpleEnabled.isSelected()) {
             WebDriver driver1 = new ChromeDriver();
-            driver1.get("https://portal.acimacredit.com/customer/leases/new?location_id=AC5EB5");
+            driver1.get(SimpleLink);
             firstThread.SimpleFinance(driver1);
         } 
          
         if(snapEnabled.isSelected()) {
             WebDriver driver2 = new ChromeDriver();
-            driver2.get("https://merchant.snapfinance.com/#/dashboard");
+            driver2.get(SnapLink);
             firstThread.SnapFinance(driver2);
         } 
         
         if(progressiveEnabled.isSelected()) {
             WebDriver driver3 = new ChromeDriver();
-            driver3.get("https://approve.me/s/nulookfurniture/34122#/marketing");
+            driver3.get(ProgressiveLink);
             firstThread.ProgressFinance(driver3);
         } 
         
         
         if(merchantsEnabled.isSelected()) {
           WebDriver driver4 = new ChromeDriver();
-          driver4.get("https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=EU9vB4FtpD8%3d");
+          driver4.get(MerchantsLink);
            firstThread.PerferredFinance(driver4);
         }
         
         if(tempoeEnabled.isSelected()) {
             WebDriver driver5 = new ChromeDriver();
-            driver5.get("");
+            driver5.get(TempoeLink);
             System.out.println("loading tempoe");
             firstThread.TempoeFinance(driver5);
         }
         
         if(okinusEnabled.isSelected()) {
             WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://app.okinus.com/applicationStart?storeguid=2b74c4f1-1570-48c4-864e-9a3a6d3b8ce1&sel=true");
+            driver6.get(OkinusLink);
             System.out.println("loading okinus");
             firstThread.OkinusFinance(driver6);
         }  
         
         if(westEnabled.isSelected()) {
             WebDriver driver7 = new ChromeDriver();
-            driver7.get("https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=rooms123sandy&mdlrl=1");
+            driver7.get(WestLink);
             System.out.println("loading West Creek...");
             firstThread.WestCreekFinance(driver7);
         } 
@@ -2908,20 +2919,17 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
         catch(Exception e){
         System.out.println("Element not Found on second page" + e);
-        }
-         
-   
-   
-   
+        }  
+
    }
     
    public void SnapFinance(WebDriver driver2){
     
                driver2.manage().window().maximize(); 
           try{ 
-               Thread.sleep(500);   
-        driver2.findElement(By.name("username")).sendKeys("oasisjoe");
-        driver2.findElement(By.name("password")).sendKeys("Oasis2110");
+               Thread.sleep(500);  
+        driver2.findElement(By.name("username")).sendKeys("jokersaudio");
+        driver2.findElement(By.name("password")).sendKeys("Awadsquad1");
         driver2.findElement(By.id("btn-login")).click();
         
         WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
@@ -2931,8 +2939,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         WebElement SecondPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"selectSalesPerson\"]/div[2]/div/form/div[2]/div/div[1]/input")));
           
                Thread.sleep(1000);
-         Select dropdown = new Select(driver2.findElement(By.cssSelector(".salespeople"))); 
-         dropdown.selectByIndex(2); 
+         Select dropdown = new Select(driver2.findElement(By.xpath("//*[@id=\"selectSalesPerson\"]/div[2]/div/form/div[1]/div/select"))); 
+         dropdown.selectByIndex(1); 
          driver2.findElement(By.name("ssn")).sendKeys(ssN); 
          driver2.findElement(By.name("birthdate")).sendKeys(dOb); 
          
@@ -3293,7 +3301,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             
             //Thread.sleep(2000);
             //Select company
-            WebElement firstpage = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")));
+            WebElement firstpageMP = (new WebDriverWait(driver4, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input[1]")));
             
             
             //*[@id="dealerGrid"]/div[2]/table/tbody/tr[1]/td[1]/label
@@ -3302,6 +3310,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
             //SetText(driver4, "/html/body/form/div[5]/div/div[5]/div/div/div/divdiv[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input", addYears, true);
            
             //SetText(driver4, "/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input", addMonths, true);
+            WebElement firstpageMP1 = (new WebDriverWait(driver4, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input"))); 
+            
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[2]/span/span/input")).sendKeys(addYears);
              Thread.sleep(500);
             driver4.findElement(By.xpath("/html/body/form/div[5]/div/div[5]/div/div/div/div/div[2]/div/div[2]/div/div/fieldset[2]/div/div/div[8]/div/div/div[3]/span/span/input")).sendKeys(addMonths);
@@ -3751,12 +3761,16 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-personal-fname']")).sendKeys(firstName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-mid-ini']")).sendKeys(middleName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-lname']")).sendKeys(lastName);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-street']")).sendKeys(accountNumber);
+           driver6.findElement(By.xpath("//*[@id='off-app-personal-street']")).sendKeys(streetAddress);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-apt']")).sendKeys(unitN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-city']")).sendKeys(cityN);
+           try{
            //State
             driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[2]/div[4]/a/span[2]")).click();
             ClickState(driver6 ,stateN);
+            }catch(Exception e){
+        System.out.println("Element not Found on Okinus  page" + "\n" + e);
+        }
            driver6.findElement(By.xpath("//*[@id='off-app-personal-zip']")).sendKeys(zipN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-social-sec']")).sendKeys(ssN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-birthdate']")).sendKeys(dOb);
@@ -3772,7 +3786,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email']")).sendKeys(emailN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email-confirm']")).sendKeys(emailN);
              
-           //driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click(); Dont know what this is on Okinus
+           driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click(); //Dont know what this is on Okinus
                       
            driver6.findElement(By.xpath("//*[@id=\"off-app-prim-income-yes\"]")).click();
            
@@ -3819,7 +3833,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            tempIncome = Integer.valueOf(incomeN) / 2;
            }else if(Pay == "Monthly"){
            driver6.findElement(By.xpath("/html/body/ul[5]/li[5]/a")).click();
-           
+           tempIncome = Integer.valueOf(incomeN);
            }
            
           
@@ -3877,6 +3891,10 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
            
               
+           //State
+            driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[2]/div[4]/a/span[2]")).click();
+            ClickState(driver6 ,stateN);
+           
        } catch(Exception e){
         System.out.println("Element not Found on Okinus  page" + "\n" + e);
         }
