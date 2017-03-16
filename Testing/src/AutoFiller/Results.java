@@ -5,6 +5,14 @@
  */
 package AutoFiller;
 
+import static AutoFiller.Main.CrestLink;
+import static AutoFiller.Main.MerchantsLink;
+import static AutoFiller.Main.OkinusLink;
+import static AutoFiller.Main.ProgressiveLink;
+import static AutoFiller.Main.SimpleLink;
+import static AutoFiller.Main.SnapLink;
+import static AutoFiller.Main.TempoeLink;
+import static AutoFiller.Main.WestLink;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import javax.swing.UIManager;
@@ -20,17 +28,20 @@ public class Results extends javax.swing.JFrame {
      * Creates new form Results
      */
     
-    public static int  BarValue; 
+    public static int  BarValue = 100; 
     private WebDriver driver;
+    private WebDriver driver1;
+    private WebDriver driver2;
     
     public Results() {
         initComponents(); 
           
+        SetVisiable();
         
-        //setValueCR(10);
-        
+        setValueCR(100);
+        setValueOK(100);
+        setValuePR(100);
         errorButton.setVisible(false);
-        
     }
 
     /**
@@ -298,10 +309,14 @@ public class Results extends javax.swing.JFrame {
 
     private void errorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton1ActionPerformed
         // TODO add your handling code here:
+         this.setVisible(false);
+        Main.openErrorCS(driver1);
     }//GEN-LAST:event_errorButton1ActionPerformed
 
     private void errorButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton2ActionPerformed
         // TODO add your handling code here:
+         this.setVisible(false);
+        Main.openErrorCS(driver2);
     }//GEN-LAST:event_errorButton2ActionPerformed
 
     private void errorButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton3ActionPerformed
@@ -333,6 +348,75 @@ public class Results extends javax.swing.JFrame {
         jProgressBar2.setValue(BarValue);
         
         return BarValue;
+    }
+    
+      
+    public int setValueOK(int BarValue){
+    
+       jProgressBar4.setValue(BarValue);
+        
+        return BarValue;
+    }
+         
+    public int setValuePR(int BarValue){
+    
+       jProgressBar3.setValue(BarValue);
+        
+        return BarValue;
+    }
+    
+    public void SetVisiable(){
+        
+     if(CrestLink == ""){
+         jLabel2.setVisible(false);
+         jProgressBar1.setVisible(false);
+     }else{
+         jLabel2.setVisible(true);
+         jProgressBar1.setVisible(true);
+     }
+        if(SimpleLink == ""){
+            jLabel3.setVisible(false);
+            jProgressBar2.setVisible(false);
+        }else{
+            jLabel3.setVisible(true);
+        jProgressBar2.setVisible(true);
+        }
+        if(SnapLink == ""){
+            jLabel7.setVisible(false);
+            jProgressBar6.setVisible(false);
+        }else{
+            jLabel7.setVisible(true);
+            jProgressBar6.setVisible(true);
+        }
+        if(ProgressiveLink == ""){
+            jLabel4.setVisible(false);
+            jProgressBar3.setVisible(false);
+        }else{
+            jLabel4.setVisible(true);
+            jProgressBar3.setVisible(true);
+        }
+        if(OkinusLink == ""){
+            jLabel5.setVisible(false);
+            jProgressBar4.setVisible(false);
+        }else{
+            jLabel5.setVisible(true);
+            jProgressBar4.setVisible(true);
+        }
+        if(MerchantsLink == ""){
+            jLabel6.setVisible(false);
+            jProgressBar5.setVisible(false);
+        }else{
+            jLabel7.setVisible(true);
+            jProgressBar5.setVisible(true);
+        }
+        if(WestLink == ""){
+            jLabel8.setVisible(false);
+            jProgressBar7.setVisible(false);
+        }else{
+            jLabel8.setVisible(true);
+            jProgressBar7.setVisible(true);
+        }
+        //if(TempoeLink == ""){jLabel3.setVisible(false);}else{jLabel3.setVisible(true);}
     }
     
     /**
@@ -368,6 +452,8 @@ public class Results extends javax.swing.JFrame {
             
             Results temp = new Results();
             temp.showButton();
+             
+            
             
  
         }catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
@@ -379,6 +465,7 @@ public class Results extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Results().setVisible(true);
+                
             }
         });
         
@@ -389,21 +476,21 @@ public class Results extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackPortal;
-    private javax.swing.JButton errorButton;
-    private javax.swing.JButton errorButton1;
-    private javax.swing.JButton errorButton2;
-    private javax.swing.JButton errorButton3;
-    private javax.swing.JButton errorButton4;
-    private javax.swing.JButton errorButton5;
-    private javax.swing.JButton errorButton6;
+    public javax.swing.JButton errorButton;
+    public javax.swing.JButton errorButton1;
+    public javax.swing.JButton errorButton2;
+    public javax.swing.JButton errorButton3;
+    public javax.swing.JButton errorButton4;
+    public javax.swing.JButton errorButton5;
+    public javax.swing.JButton errorButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JLabel jLabel8;
     public javax.swing.JProgressBar jProgressBar1;
     public javax.swing.JProgressBar jProgressBar2;
     public javax.swing.JProgressBar jProgressBar3;
