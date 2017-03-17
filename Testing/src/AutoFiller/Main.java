@@ -130,15 +130,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/same_athens";
    public static String SimpleLink = "";//AcimaCredit
-   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="";
-   public static String SnapPassword="";
-   public static String ProgressiveLink = "https://approve.me/s/stricklandconsultingmanagement/31442#/marketing";//Approve.me
+   public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
+   public static String SnapUsername="jordanfurngallery";
+   public static String SnapPassword="3190Atlanta";
+   public static String ProgressiveLink = "https://approve.me/s/jordanfurnituregallery/49964#/marketing";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=TheUniquePiece";
+   public static String OkinusLink = "https://app.okinus.com/applicationStart?storeguid=a3806da4-1471-48a3-b1d2-4fcfff9f7fa6&sel=true";
    public static String WestLink = "";
    
 
@@ -159,7 +159,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         if(WestLink == ""){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
         if(TempoeLink == ""){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
         
-       debugAutoFill.setVisible(false);  
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
     }
 
