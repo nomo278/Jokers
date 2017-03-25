@@ -2603,9 +2603,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         try{
             if(ProgressBar){
-           driver.manage().window().setPosition(new Point(-2000, 0));;
+            //driver.manage().window().setPosition(new Point(-2000, 0));
+            driver.manage().window().setPosition(new Point(-2000, 0));
             }
-        Select dropdown = null;
+        // dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
         driver.findElement(By.id("LastName")).sendKeys(lastName);
         Thread.sleep(100);
@@ -2666,7 +2667,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
         //value="1" Every week, 2 every two weeks, 3 twice a month, 4 Once a month
         
-        dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
+        Select dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
         if(Pay == "Weekly"){
          dropdown.selectByIndex(0);
          System.out.println(Pay);
@@ -2833,10 +2834,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         Results temp = new Results();
         
-        if(ProgressBar){
+  /*      if(ProgressBar){
         temp.setValueCR(10);
         openErrorCS(driver);
-        }
+        }*/
         }
         
     }
@@ -2846,7 +2847,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
  
          try{
              if(ProgressBar){
-           driver1.manage().window().setPosition(new Point(-2000, 0));;
+           driver1.manage().window().setPosition(new Point(-2000, 0));
             }
        Thread.sleep(2500);
        System.out.println("I started Simple");
@@ -2939,11 +2940,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
    }
     
    public void SnapFinance(WebDriver driver2){
-    
-               driver2.manage().window().maximize(); 
           try{ 
+    
+//               driver2.manage().window().maximize(); 
               if(ProgressBar){
-           driver2.manage().window().setPosition(new Point(-2000, 0));;
+           driver2.manage().window().setPosition(new Point(-2000, 0));
             }
                Thread.sleep(500);    
         driver2.findElement(By.name("username")).sendKeys(SnapUsername);
@@ -3119,7 +3120,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
           try{
               if(ProgressBar){
-           driver3.manage().window().setPosition(new Point(-2000, 0));;
+           driver3.manage().window().setPosition(new Point(-2000, 0));
             }
                Thread.sleep(500);
         driver3.findElement(By.id("btn-content-apply")).click();
@@ -3320,7 +3321,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public void PerferredFinance(WebDriver driver4){
         try{
             if(ProgressBar){
-           driver4.manage().window().setPosition(new Point(-2000, 0));;
+           driver4.manage().window().setPosition(new Point(-2000, 0));
             }
             //Thread.sleep(2000);
             //Select company
@@ -3669,7 +3670,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
                driver5.manage().window().maximize(); 
                
                if(ProgressBar){
-           driver5.manage().window().setPosition(new Point(-2000, 0));;
+           driver5.manage().window().setPosition(new Point(-2000, 0));
             }
             Thread.sleep(2500);
             //Select company
@@ -3732,7 +3733,8 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
        try {
            
            if(ProgressBar){
-           driver6.manage().window().setPosition(new Point(-2000, 0));;
+               System.out.println("We are progress bar true");
+               driver6.manage().window().setPosition(new Point(-2000, 0));
             }
            int tempIncome = 0;
            /*
@@ -3947,7 +3949,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
       private void WestCreekFinance(WebDriver driver7) {
        try {
              if(ProgressBar){
-           driver7.manage().window().setPosition(new Point(-2000, 0));;
+           driver7.manage().window().setPosition(new Point(-2000, 0));
             }
            /*
            driver7.findElement(By.xpath("//*[@id=\"PDNO\"]")).sendKeys("abfgreenville");
