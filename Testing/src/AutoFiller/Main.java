@@ -131,6 +131,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    
    public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
+<<<<<<< HEAD
    public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=088E95";//AcimaCredit
    public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
@@ -139,6 +140,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
    public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=StricklandConsultingandManagementLLC";
+=======
+   public static String SimpleLink = "";//AcimaCredit
+   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
+   public static String SnapUsername="";
+   public static String SnapPassword="";
+   public static String ProgressiveLink = "https://approve.me/s/stricklandconsultingmanagement/31442#/marketing";//Approve.me
+   public static String MerchantsLink = "";
+   public static String TempoeLink = "";
+   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=TheUniquePiece";
+>>>>>>> e31aaf201e84f972af17cd0632f37e57f2056c74
    public static String WestLink = "";
    
 
@@ -2614,10 +2625,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         try{
             if(ProgressBar){
-            //driver.manage().window().setPosition(new Point(-2000, 0));
-            driver.manage().window().setPosition(new Point(-2000, 0));
+           driver.manage().window().setPosition(new Point(-2000, 0));
             }
-        // dropdown = null;
+        Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
         driver.findElement(By.id("LastName")).sendKeys(lastName);
         Thread.sleep(100);
@@ -2678,7 +2688,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
         //value="1" Every week, 2 every two weeks, 3 twice a month, 4 Once a month
         
-        Select dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
+        dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
         if(Pay == "Weekly"){
          dropdown.selectByIndex(0);
          System.out.println(Pay);
@@ -2845,10 +2855,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
        // Results temp = new Results();
         
-  /*      if(ProgressBar){
+        if(ProgressBar){
         temp.setValueCR(10);
         openErrorCS(driver);
-        }*/
+        }
         }
         
     }
@@ -2951,9 +2961,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
    }
     
    public void SnapFinance(WebDriver driver2){
-          try{ 
     
-//               driver2.manage().window().maximize(); 
+               driver2.manage().window().maximize(); 
+          try{ 
               if(ProgressBar){
            driver2.manage().window().setPosition(new Point(-2000, 0));
             }
@@ -3744,8 +3754,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
        try {
            
            if(ProgressBar){
-               System.out.println("We are progress bar true");
-               driver6.manage().window().setPosition(new Point(-2000, 0));
+           driver6.manage().window().setPosition(new Point(-2000, 0));
             }
            int tempIncome = 0;
            /*
