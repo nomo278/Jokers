@@ -115,7 +115,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static boolean uRent;
    public static boolean uOwn;   
    public static String employerState;
-   public static boolean ProgressBar = true;
+   public static boolean ProgressBar = false;
    
    public static int odd1 = 0;
    public static int odd2 = 0;
@@ -130,15 +130,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/same_athens";
-   public static String SimpleLink = "";//AcimaCredit
-   public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="jordanfurngallery";
-   public static String SnapPassword="3190Atlanta";
-   public static String ProgressiveLink = "https://approve.me/s/jordanfurnituregallery/49964#/marketing";//Approve.me
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=088E95";//AcimaCredit
+   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
+   public static String SnapUsername="";
+   public static String SnapPassword="";
+   public static String ProgressiveLink = "";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://app.okinus.com/applicationStart?storeguid=a3806da4-1471-48a3-b1d2-4fcfff9f7fa6&sel=true";
+   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=StricklandConsultingandManagementLLC";
    public static String WestLink = "";
    
 
@@ -150,6 +150,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public Main() {
         Login newLogin = new Login();
         initComponents(); 
+        this.setVisible(false);
+        
+        if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){
+            System.out.print("we made it");
+            
+           SignUp pageSignUp = new SignUp();
+           pageSignUp.setVisible(true); 
+           
+        }
+        
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
         if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
         if(SnapLink == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
@@ -161,6 +171,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
+        
     }
 
     /** 
@@ -1690,7 +1701,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         System.out.println("This is the current Months at the job " + monthsAtJobCR);
         }
-            monthsAtJobCR = Integer.toString(tempMonths);
+        monthsAtJobCR = Integer.toString(tempMonths);
         yearAccountOpen = this.yearsaccountopen.getSelectedItem().toString().replace(" Yr", "").replace(" Yrs", "").replace("+", "").replaceAll("s", "").replaceAll("\\s", "");
          monthAccountOpen = this.monthsaccountopen.getSelectedItem().toString().replace(" Mon", "");
         cardHolderName = this.cardholdername.getText();
@@ -1712,15 +1723,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
            //TODO: Progressive flip
            
         if(ProgressBar){
-           
            this.setVisible(false);
            new Results().setVisible(true);
         }
-        
+          
+        Results value = new Results();
+         
         Main firstThread = new Main();
         //Crest
-        
-        Results value = new Results();
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
@@ -2432,6 +2442,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {                
             System.out.println("Running RUN()");
+         
             new Main().setVisible(true);
            // new Main().setVisible(true);
            //     new NewJFrame().setVisible(true);
@@ -2832,7 +2843,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }catch(Exception e){
         System.out.println("Element not Found in Crest Financial: " + e.getMessage());
         
-        Results temp = new Results();
+       // Results temp = new Results();
         
   /*      if(ProgressBar){
         temp.setValueCR(10);
