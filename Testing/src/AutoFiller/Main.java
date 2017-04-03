@@ -130,26 +130,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
-<<<<<<< HEAD
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=088E95";//AcimaCredit
+   public static String CrestLink = "";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=AC5EB5";//AcimaCredit
    public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
    public static String SnapPassword="";
-   public static String ProgressiveLink = "";//Approve.me
+   public static String ProgressiveLink = "https://approve.me/s/atlanticbeddingandfurniture/59576#/marketing";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=StricklandConsultingandManagementLLC";
-=======
-   public static String SimpleLink = "";//AcimaCredit
-   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="";
-   public static String SnapPassword="";
-   public static String ProgressiveLink = "https://approve.me/s/stricklandconsultingmanagement/31442#/marketing";//Approve.me
-   public static String MerchantsLink = "";
-   public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=TheUniquePiece";
->>>>>>> e31aaf201e84f972af17cd0632f37e57f2056c74
+   public static String OkinusLink = "";
    public static String WestLink = "";
    
 
@@ -163,13 +152,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         this.setVisible(false);
         
-        if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){
+       /* if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){
             System.out.print("we made it");
             
            SignUp pageSignUp = new SignUp();
            pageSignUp.setVisible(true); 
            
-        }
+        }*/
         
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
         if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
@@ -2856,8 +2845,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
        // Results temp = new Results();
         
         if(ProgressBar){
-        temp.setValueCR(10);
-        openErrorCS(driver);
+      //  temp.setValueCR(10);
+      //  openErrorCS(driver);
         }
         }
         
