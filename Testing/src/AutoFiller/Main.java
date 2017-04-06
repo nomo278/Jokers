@@ -130,15 +130,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    
-   public static String CrestLink = "";
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=AC5EB5";//AcimaCredit
-   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=088E95";//AcimaCredit
+   public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
    public static String SnapPassword="";
-   public static String ProgressiveLink = "https://approve.me/s/atlanticbeddingandfurniture/59576#/marketing";//Approve.me
+   public static String ProgressiveLink = "";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "";
+   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=TheUniquePiece";
    public static String WestLink = "";
    
 
@@ -2951,7 +2951,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
    public void SnapFinance(WebDriver driver2){
     
-               driver2.manage().window().maximize(); 
+//               driver2.manage().window().maximize(); 
           try{ 
               if(ProgressBar){
            driver2.manage().window().setPosition(new Point(-2000, 0));
