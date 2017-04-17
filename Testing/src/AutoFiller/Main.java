@@ -27,6 +27,7 @@ import java.util.Random;
 import java.util.logging.Level;       
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -126,30 +127,20 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int odd7 = 0;
    public static int odd8 = 0;
    
-   public static int year = Calendar.getInstance().get(Calendar.YEAR) ;
+   public static int year = Calendar.getInstance().get(Calendar.YEAR);
    public static int month = Calendar.getInstance().get(Calendar.MONTH);
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+   public static int todayM = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/2847";
-<<<<<<< HEAD
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=088E95";//AcimaCredit
+   public static String CrestLink = "";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=AC5EB5";//AcimaCredit
    public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
    public static String SnapPassword="";
-   public static String ProgressiveLink = "";//Approve.me
+   public static String ProgressiveLink = "https://approve.me/s/atlanticbeddingandfurniture/59576#/marketing";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=StricklandConsultingandManagementLLC";
-=======
-   public static String SimpleLink = "";//AcimaCredit
-   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="";
-   public static String SnapPassword="";
-   public static String ProgressiveLink = "https://approve.me/s/stricklandconsultingmanagement/31442#/marketing";//Approve.me
-   public static String MerchantsLink = "";
-   public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=TheUniquePiece";
->>>>>>> e31aaf201e84f972af17cd0632f37e57f2056c74
+   public static String OkinusLink = "";
    public static String WestLink = "";
    
 
@@ -165,10 +156,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){
             System.out.print("we made it");
-            
+          /*  
            SignUp pageSignUp = new SignUp();
            pageSignUp.setVisible(true); 
-           
+           */
         }
         
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
@@ -180,7 +171,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         if(WestLink == ""){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
         if(TempoeLink == ""){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
         
-       debugAutoFill.setVisible(true);  
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);  
         
     }
@@ -2665,43 +2656,52 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver.findElement(By.id("DriversLicenseState")).sendKeys(stateK);
 
          System.out.println(Main.Rent + "This is where we are at ");
-     
+     /*
        if(Rent){ 
         driver.findElement(By.id("OwnershipTypeID")).sendKeys("Rent");
        } else if(Own){
        driver.findElement(By.id("OwnershipTypeID")).sendKeys("Own");
        }
-        
+        */
         //driver.findElement(By.id("EmployerName")).sendKeys(employerN);
         SetText(driver,"//*[@id=\"EmployerName\"]",employerN,true);
         
         //driver.findElement(By.id("EmployerPhone")).sendKeys(employerPhone);
         SetText(driver,"//*[@id='EmployerPhone']",employerPhone,true);
         //driver.findElement(By.id("MonthlyIncome")).sendKeys(incomeN);
-        SetText(driver,"//*[@id='MonthlyIncome']",incomeN,true);
-        driver.findElement(By.id("YearsAtJob")).sendKeys(yearsAtJob); 
+        
+        String tempincomeN = incomeN;
+        
+         dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
+        if(Pay == "Weekly"){
+         dropdown.selectByIndex(0);
+         tempincomeN = Integer.toString(Integer.valueOf(incomeN) / 4);
+         System.out.println(Pay);
+         System.out.println(tempincomeN);
+         }else if(Pay == "Bi weekly"){
+         dropdown.selectByIndex(1); 
+         tempincomeN = Integer.toString(Integer.valueOf(incomeN) / 2);
+         System.out.println(Pay);
+         }else if(Pay == "Twice Monthly"){
+         dropdown.selectByIndex(2);
+         System.out.println(Pay);  
+              Thread.sleep(500);
+      if(driver.findElements(By.id("LastPayDateDiv")).size() != 0){
+        driver.findElement(By.id("LastPayDate")).sendKeys(recentPay);
+      }
+      
+       // driver.findElement(By.id("YearsAtJob")).sendKeys(yearsAtJob); 
        // dropdown = new Select(driver.findElement(By.id("YearsAtJob")));
        // dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
-         driver.findElement(By.id("MonthsAtJob")).sendKeys(monthsAtJobCR); //TODO MAKE FIELD ON FORM
+        // driver.findElement(By.id("MonthsAtJob")).sendKeys(monthsAtJobCR); //TODO MAKE FIELD ON FORM
         
         //dropdown = new Select(driver.findElement(By.id("MonthsAtJob")));
         //dropdown.selectByIndex(yearAtJob.getSelectedIndex() + 1);
         //value="1" Every week, 2 every two weeks, 3 twice a month, 4 Once a month
         
-        dropdown = new Select(driver.findElement(By.id("PayPeriodTypeID"))); //TODO: Make if statment
-        if(Pay == "Weekly"){
-         dropdown.selectByIndex(0);
-         System.out.println(Pay);
-         }else if(Pay == "Bi weekly"){
-         dropdown.selectByIndex(1);
-         System.out.println(Pay);
-         }else if(Pay == "Twice Monthly"){
-         dropdown.selectByIndex(2);
-         System.out.println(Pay);
+       
          //Needs to show last pay date
-         Thread.sleep(500);
-       // if(driver.findElements(By.id("LastPayDateDiv")).size() != 0){
-        driver.findElement(By.id("LastPayDate")).sendKeys(recentPay);
+   
          if(!driver.findElement(By.id("LastPayDate")).getText().equals(recentPay)){
            driver.findElement(By.id("LastPayDate")).clear();
            System.out.println("Trying again");
@@ -2736,16 +2736,19 @@ public class Main extends javax.swing.JFrame implements Runnable{
            driver.findElement(By.id("RoutingNumber")).sendKeys(routingNumber);
         }
         */
+        
+      
+        SetText(driver,"//*[@id=\"LastPaycheck\"]",tempincomeN,true);
         SetText(driver,"//*[@id=\"RoutingNumber\"]",routingNumber,true);
         
         //driver.findElement(By.id("AccountNumberEntry")).sendKeys(accountNumber);
         
         SetText(driver,"//*[@id=\"AccountNumberEntry\"]",accountNumber,true);
         driver.findElement(By.id("BankName")).sendKeys("");//TODO CHECK IF IT IS EMPTY THEN FILL IT OR REDO ROUTING
-        driver.findElement(By.id("AccountType")).sendKeys("Checking");// is a toggle from checkingbox
+      //  driver.findElement(By.id("AccountType")).sendKeys("Checking");// is a toggle from checkingbox
         System.out.println(yearAccountOpen);
-         driver.findElement(By.id("YearsAccountOpen")).sendKeys(yearAccountOpen);// TODO: MAKE FIELD ON FORM
-         driver.findElement(By.id("MonthsAccountOpen")).sendKeys(monthAccountOpen + 1);// TODO: MAKE FIELD ON FORM
+        // driver.findElement(By.id("YearsAccountOpen")).sendKeys(yearAccountOpen);// TODO: MAKE FIELD ON FORM
+       //  driver.findElement(By.id("MonthsAccountOpen")).sendKeys(monthAccountOpen + 1);// TODO: MAKE FIELD ON FORM
         /*
          dropdown = new Select(driver.findElement(By.id("YearsAccountOpen")));
         //dropdown.selectByIndex(yearsaccountopen.getSelectedIndex() + 1);
@@ -2756,12 +2759,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Thread.sleep(100);
         
         //driver.findElement(By.id("CardholderName")).sendKeys(cardHolderName);  // TODO: MAKE FIELD ON FORM
-         SetText(driver,"//*[@id=\"CardholderName\"]",cardHolderName,true);
-        SetText(driver,"//*[@id=\"CardNumberEntry\"]",cardNumber,true);
+         //SetText(driver,"//*[@id=\"CardholderName\"]",cardHolderName,true);
+       // SetText(driver,"//*[@id=\"CardNumberEntry\"]",cardNumber,true);
         //driver.findElement(By.id("CardNumberEntry")).sendKeys(cardNumber); // TODO: MAKE FIELD ON FORM
-         driver.findElement(By.id("ExpirationMonth")).sendKeys(expMonth); // TODO: MAKE FIELD ON FORM
-        Thread.sleep(100);
-         driver.findElement(By.id("ExpirationYear")).sendKeys(expYear); // TODO: MAKE FIELD ON FORM
+        // driver.findElement(By.id("ExpirationMonth")).sendKeys(expMonth); // TODO: MAKE FIELD ON FORM
+       // Thread.sleep(100);
+        // driver.findElement(By.id("ExpirationYear")).sendKeys(expYear); // TODO: MAKE FIELD ON FORM
         /*
          dropdown = new Select(driver.findElement(By.id("ExpirationMonth")));
         dropdown.selectByIndex(expMonth);
@@ -2830,7 +2833,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             System.out.println("Crest finance DOES have the second reference");
         driver.findElement(By.id("Reference2Name")).sendKeys(reference2 + " " + reference2Last);
         
-        SetText(driver,"//*[@id=\"Reference2PhoneNumber\"]11",refPhone2,true);
+        SetText(driver,"//*[@id=\"Reference2PhoneNumber\"]",refPhone2,true);
         /*
         driver.findElement(By.id("Reference2PhoneNumber")).sendKeys(refPhone2);
            
@@ -2845,7 +2848,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //do nothing
         }
         
-        driver.findElement(By.id("form-submit")).sendKeys(Keys.RETURN);
+        //driver.findElement(By.id("form-submit")).sendKeys(Keys.RETURN);
         
 
         
@@ -2854,11 +2857,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         System.out.println("Element not Found in Crest Financial: " + e.getMessage());
         
        // Results temp = new Results();
-        
+       /* 
         if(ProgressBar){
         temp.setValueCR(10);
         openErrorCS(driver);
-        }
+        }*/
         }
         
     }
@@ -2909,7 +2912,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver1.findElement(By.id("lease_applicant_attributes_employer_phone")).sendKeys(employerPhone);
         driver1.findElement(By.id("lease_applicant_attributes_employment_net_monthly_income")).sendKeys(incomeN);
         driver1.findElement(By.id("lease_applicant_attributes_hired_on")).sendKeys(hireD); //TODO: change format to fit 
-         Select dropdown = new Select(driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/form/div[2]/div[2]/div[4]/fieldset/div[3]/div[1]/div/select"))); 
+         Select dropdown = new Select(driver1.findElement(By.xpath("//*[@id=\"lease_applicant_attributes_pay_frequency\"]"))); 
          //dropdown.selectByValue(Pay);
          if(Pay == "Weekly"){
          dropdown.selectByIndex(1);
@@ -2929,27 +2932,27 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver1.findElement(By.id("lease_applicant_attributes_next_payday_on")).click();
         sfSetNextPayDay(driver1);
         
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/button")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/button")).click();
         
         if(employmentPayment == "Direct Deposit from Employer"){  
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[1]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[1]/a/label/input")).click();
         }else if(employmentPayment == "Paychecks from Employer"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[2]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[2]/a/label/input")).click();
         }else if(employmentPayment == "Self-Employment"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[3]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[3]/a/label/input")).click();
         }else if(employmentPayment == "Social Security"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[4]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[4]/a/label/input")).click();
         }else if(employmentPayment == "Long Term Disability"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[5]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[5]/a/label/input")).click();
         }else if(employmentPayment == "Military"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[6]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[6]/a/label/input")).click();
         }else if(employmentPayment == "Alimony"){
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[7]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[7]/a/label/input")).click();
         }else if(employmentPayment == "Retirement"){//TODO: no retirement dropdown on employmentPayment
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[8]/a/label/input")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[4]/fieldset/div[3]/div[4]/div/div/ul/li[8]/a/label/input")).click();
         }
         
-        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div[2]/div[2]/div[7]/fieldset/div/div/p")).click();
+        driver1.findElement(By.xpath("//*[@id=\"lease_form\"]/div/div[2]/div[7]/fieldset/div/div/p")).click();
         //Direct Deposit from Employer, Paychecks from Employer, Self-Employment, Social Security, Long Term Disability, Military, Alimony
 
         //driver1.findElement(By.className("submit_button")).click();
@@ -2962,7 +2965,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
     
    public void SnapFinance(WebDriver driver2){
     
-               driver2.manage().window().maximize(); 
+//               driver2.manage().window().maximize(); 
           try{ 
               if(ProgressBar){
            driver2.manage().window().setPosition(new Point(-2000, 0));
@@ -3753,39 +3756,24 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
     private void OkinusFinance(WebDriver driver6) {
        try {
            
+       
            if(ProgressBar){
+                System.out.println("Element 123123 "); 
            driver6.manage().window().setPosition(new Point(-2000, 0));
-            }
-           int tempIncome = 0;
-           /*
-           Thread.sleep(2500);
-           driver6.findElement(By.xpath("//*[@id='menu-item-2994']/a")).click();
+           System.out.println("Element 321321 ");
+           }
+           int tempIncome = 0;           
            
-           Thread.sleep(2500);
-           driver6.findElement(By.xpath("//*[@id='content']/section[2]/div/div/div[2]/ul/li[1]/a[2]")).click();
-         
-          
-            
-           Thread.sleep(2500);
-           driver6.findElement(By.xpath("//*[@id='chkHaveRead']")).click();
-           driver6.findElement(By.xpath("//*[@id='MainContent_btnSubmit']")).click();
-           
-           Thread.sleep(2500);
-           driver6.findElement(By.xpath("//*[@id='off-app-open-yes']")).click();
-           */
-           
-           //Select dropdown60 = new Select(driver6.findElement(By.name("personal_title")));
-           //dropdown60.selectByIndex(1);
-            
-           
-             driver6.manage().window().maximize();
-             
-           Thread.sleep(500);
+            // driver6.manage().window().maximize();
+                    
+           Thread.sleep(1000);
            try{
-           driver6.findElement(By.xpath("//*[@id='chkHaveRead']")).click();
-           driver6.findElement(By.xpath("//*[@id='MainContent_btnSubmit']")).click();
+               
+        System.out.println("Element not Found in Okinus Financial: ");
+           driver6.findElement(By.xpath("//*[@id=\"chkHaveRead\"]")).click();
+           driver6.findElement(By.xpath("//*[@id=\"MainContent_btnSubmit\"]")).click();
            }catch(Exception e){
-        System.out.println("Element not Found in Crest Financial: ");
+        System.out.println("Element not Found in Okinus Financial two ");
         
            }
            Thread.sleep(500);  
@@ -3841,7 +3829,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             ClickState1(driver6 ,stateN);
             
              }catch(Exception e){
-        System.out.println("Element not Found in Crest Financial: " + e.getMessage());
+             System.out.println("Element not Found in Crest Financial: " + e.getMessage());
         
            }   
           
@@ -3911,36 +3899,49 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-base-pay']")).sendKeys(tempIncomeString);
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-last-pay']")).sendKeys(recentPay);
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-yes']")).click();
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber);
+           driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber); 
            driver6.findElement(By.xpath("//*[@id='off-app-personal-bank-name']")).sendKeys(bankName);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-checking-account']")).sendKeys(accountNumber);
           // Date today = new Date();
-          String tempMonthS = "01";
-          String tempDayS = "01";
-          int tempMonth = month - Integer.parseInt(monthAccountOpen);
-          int tempYear = year;
+           String tempMonthS = "01";
+           String tempDayS = "01"; 
+           String tempYearS = "2016";
+           
+           System.out.println("Checkpoint :" + yearAccountOpen + " " + monthAccountOpen );
+           int tempYear = year - Integer.parseInt(yearAccountOpen);
+           int tempMonth = month - Integer.parseInt(monthAccountOpen);
+           System.out.println("Checkpoint 1: " + tempYear + " " + tempMonth);
+            
           if(tempMonth < 0){
           tempYear = -- year ;
+          tempMonth = 12 + tempMonth ;
           }          
-          if(tempMonth > 10){
+          if(tempMonth < 10){
           tempMonthS = "0" + tempMonth;
-          }
-          if(today < 10){
-          tempDayS = "0" + today;
-          }
+          }          
+          if(tempMonth == 0){
+          tempMonthS = "12";
+          } 
+          if(todayM < 10){
+          tempDayS = "0" + todayM;
+          } 
+          tempDayS = Integer.toString(todayM);
+          tempYearS = String.valueOf(tempYear); 
           
-           String tempDate = tempMonthS + tempDayS + tempYear;
+           String tempDate =  tempMonthS + tempDayS + tempYearS;
            System.out.println(tempDate);
            driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-number']")).sendKeys(cardNumber);
+           driver6.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
+           Thread.sleep(400);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-bank-name']")).sendKeys(bankName);
+           
            //Decode Card Type by number
            //  VISA("^4[0-9]{12}(?:[0-9]{3})?$"),
             //MASTERCARD("^5[1-5][0-9]{14}$"),
             //AMERICAN_EXPRESS("^3[47][0-9]{13}$"),
      
-            // DISCOVER("^6(?:011|5[0-9]{2})[0-9]{12}$"),
-       
+            // DISCOVER("^6(?:011|5[0-9]{2})[0-9]{12}$"), 
             driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[5]/div/div[2]/div[3]/a/span[2]")).click();
             if (cardNumber.startsWith("4")){          
            driver6.findElement(By.xpath("/html/body/ul[6]/li[2]/a")).click();
@@ -3956,9 +3957,9 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-expire-date']")).sendKeys(editExpMonth(expMonth) + "/" + editExpYear(expYear));
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-code']")).sendKeys(cardCode);
-           driver6.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
            
-           driver6.findElement(By.xpath("//*[@id=\"submitButton\"]")).click();
+           
+           //driver6.findElement(By.xpath("//*[@id=\"submitButton\"]")).click();
           
            
        } catch(Exception e){
@@ -4675,6 +4676,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
 
     @Override
     public void run() {
+        JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
