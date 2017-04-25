@@ -133,14 +133,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int todayM = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
    
    public static String CrestLink = "";
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=AC5EB5";//AcimaCredit
+   public static String SimpleLink = "";//AcimaCredit
    public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
    public static String SnapPassword="";
-   public static String ProgressiveLink = "https://approve.me/s/atlanticbeddingandfurniture/59576#/marketing";//Approve.me
-   public static String MerchantsLink = "";
+   public static String ProgressiveLink = "";//Approve.me
+   public static String MerchantsLink = "https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=Qb8Y0Z7nJoI%3d";
    public static String TempoeLink = "";
-   public static String OkinusLink = "";
+   public static String OkinusLink = "https://app.okinus.com/applicationStart?storeguid=9a4326f4-d29f-4b52-adcc-17a5e12a07e5&sel=true";
    public static String WestLink = "";
    
 
