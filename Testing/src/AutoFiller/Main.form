@@ -2596,7 +2596,7 @@
     <Component class="javax.swing.JComboBox" name="RelationShipComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
+          <StringArray count="10">
             <StringItem index="0" value="Aunt"/>
             <StringItem index="1" value="Uncle"/>
             <StringItem index="2" value="Brother"/>
@@ -2605,6 +2605,8 @@
             <StringItem index="5" value="Parent"/>
             <StringItem index="6" value="Son"/>
             <StringItem index="7" value="Daughter"/>
+            <StringItem index="8" value="Wife"/>
+            <StringItem index="9" value="Husband"/>
           </StringArray>
         </Property>
       </Properties>
@@ -2616,7 +2618,7 @@
     <Component class="javax.swing.JComboBox" name="RelationShipComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
+          <StringArray count="10">
             <StringItem index="0" value="Aunt"/>
             <StringItem index="1" value="Uncle"/>
             <StringItem index="2" value="Brother"/>
@@ -2625,6 +2627,8 @@
             <StringItem index="5" value="Parent"/>
             <StringItem index="6" value="Son"/>
             <StringItem index="7" value="Daughter"/>
+            <StringItem index="8" value="Wife"/>
+            <StringItem index="9" value="Husband"/>
           </StringArray>
         </Property>
       </Properties>

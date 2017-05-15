@@ -132,16 +132,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    public static int todayM = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
    
-   public static String CrestLink = "";
-   public static String SimpleLink = "";//AcimaCredit
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/1712";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=B859A0";//AcimaCredit
    public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
    public static String SnapUsername="";
    public static String SnapPassword="";
    public static String ProgressiveLink = "";//Approve.me
-   public static String MerchantsLink = "https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=Qb8Y0Z7nJoI%3d";
+   public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://app.okinus.com/applicationStart?storeguid=9a4326f4-d29f-4b52-adcc-17a5e12a07e5&sel=true";
-   public static String WestLink = "";
+   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=LindseysSuiteDealsFurnitureLLC";
+   public static String WestLink = "https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=sweetdealsfurniture&mdlrl=1";
    
 
  
@@ -171,7 +171,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         if(WestLink == ""){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
         if(TempoeLink == ""){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
         
-       debugAutoFill.setVisible(false);  
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
         
     }
@@ -890,9 +890,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             }
         });
 
-        RelationShipComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter" }));
+        RelationShipComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter", "Wife", "Husband" }));
 
-        RelationShipComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter" }));
+        RelationShipComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aunt", "Uncle", "Brother", "Sister", "Grand Parent", "Parent", "Son", "Daughter", "Wife", "Husband" }));
 
         dlstate1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY" }));
 
