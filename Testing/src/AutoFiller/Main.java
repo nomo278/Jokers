@@ -138,7 +138,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String SnapUsername="";
    public static String SnapPassword="";
    public static String ProgressiveLink = "";//Approve.me
-   public static String MerchantsLink = "";
+   public static String MerchantsLink = "https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=EU9vB4FtpD8%3d";
    public static String TempoeLink = "";
    public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=LindseysSuiteDealsFurnitureLLC";
    public static String WestLink = "https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=sweetdealsfurniture&mdlrl=1";
@@ -3592,9 +3592,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             //driver4.findElement(By.id("ContentPlaceHolder1_UC_Step3_Ref2PhoneTextBox")).sendKeys(refPhone2);
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Fieldset2\"]/div/div/div[3]/div/span[1]/span/span[2]")).click();
             Thread.sleep(500);
-            if(RelationRef == "Aunt" || RelationRef == "Uncle"  ){
+            if(RelationRef == "Aunt" || RelationRef == "Uncle"){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[1]")).click();
-            }else if(RelationRef == "Brother" || RelationRef == "Sister"  ){
+            }else if(RelationRef == "Brother" || RelationRef == "Sister" || RelationRef == "Wife" || RelationRef == "Husband" ){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[2]")).click();
             }else if(RelationRef == "Grand Parent"){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref1RelationshipSelect_listbox\"]/li[3]")).click();
@@ -3609,7 +3609,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             Thread.sleep(500);
             if(RelationRef1 == "Aunt" || RelationRef1 == "Uncle"  ){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[1]")).click();
-            }else if(RelationRef1 == "Brother" || RelationRef1 == "Sister"  ){
+            }else if(RelationRef1 == "Brother" || RelationRef1 == "Sister" || RelationRef1 == "Wife" || RelationRef1 == "Husband"){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[2]")).click();
             }else if(RelationRef1 == "Grand Parent"){
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_Ref2RelationshipSelect_listbox\"]/li[3]")).click();
