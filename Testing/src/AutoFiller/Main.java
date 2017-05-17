@@ -116,7 +116,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static boolean uRent;
    public static boolean uOwn;   
    public static String employerState;
-   public static boolean ProgressBar = false;
+   public static boolean ProgressBar = true;
    
    public static int odd1 = 0;
    public static int odd2 = 0;
@@ -132,16 +132,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    public static int todayM = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/1712";
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=B859A0";//AcimaCredit
-   public static String SnapLink = "";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="";
-   public static String SnapPassword="";
-   public static String ProgressiveLink = "";//Approve.me
-   public static String MerchantsLink = "https://directlink.mplease.com/AddLeaseApplication.aspx?linkId=EU9vB4FtpD8%3d";
+   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/furniture_place_temple_hills";
+   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=10F13B";//AcimaCredit
+   public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
+   public static String SnapUsername="furnplacebranch";
+   public static String SnapPassword="Rayan2014";
+   public static String ProgressiveLink = "https://approve.me/s/rayanfurnituremd/56817";//Approve.me
+   public static String MerchantsLink = "";
    public static String TempoeLink = "";
-   public static String OkinusLink = "https://applications.okinus.com/disclaimer.aspx?dealer=LindseysSuiteDealsFurnitureLLC";
-   public static String WestLink = "https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=sweetdealsfurniture&mdlrl=1";
+   public static String OkinusLink = "";
+   public static String WestLink = "";
    
 
  
@@ -2615,9 +2615,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         System.out.println("I started Crest");
         
         try{
-            if(ProgressBar){
+           // if(ProgressBar){
            driver.manage().window().setPosition(new Point(-2000, 0));
-            }
+          //  }
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
         driver.findElement(By.id("LastName")).sendKeys(lastName);
