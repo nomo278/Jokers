@@ -116,7 +116,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static boolean uRent;
    public static boolean uOwn;   
    public static String employerState;
-   public static boolean ProgressBar = true;
+   public static boolean ProgressBar = false;
    
    public static int odd1 = 0;
    public static int odd2 = 0;
@@ -2615,9 +2615,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
         System.out.println("I started Crest");
         
         try{
-           // if(ProgressBar){
+            if(ProgressBar){
            driver.manage().window().setPosition(new Point(-2000, 0));
-          //  }
+            }
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
         driver.findElement(By.id("LastName")).sendKeys(lastName);
