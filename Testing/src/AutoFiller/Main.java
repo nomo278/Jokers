@@ -9,6 +9,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,6 +42,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait; 
 //import static java.lang.Math.abs;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 /**
  *
  * @author MohammedPC
@@ -132,12 +141,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
    public static int todayM = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
    
-   public static String CrestLink = "https://dealers.crestfinancial.com/Applicants/CreateApplicant/furniture_place_temple_hills";
-   public static String SimpleLink = "https://portal.acimacredit.com/customer/leases/new?location_id=10F13B";//AcimaCredit
+   public static String CrestLink = "";
+   public static String SimpleLink = "";//AcimaCredit
    public static String SnapLink = "https://merchant.snapfinance.com/#/dashboard";//https://merchant.snapfinance.com/#/dashboard
-   public static String SnapUsername="furnplacebranch";
-   public static String SnapPassword="Rayan2014";
-   public static String ProgressiveLink = "https://approve.me/s/rayanfurnituremd/56817";//Approve.me
+   public static String SnapUsername="";
+   public static String SnapPassword="";
+   public static String ProgressiveLink = "";//Approve.me
    public static String MerchantsLink = "";
    public static String TempoeLink = "";
    public static String OkinusLink = "";
@@ -150,18 +159,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
      * Creates new form Main
      */
     public Main() {
+    
         Login newLogin = new Login();
         initComponents(); 
         this.setVisible(false);
-        
-        if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){
-            System.out.print("we made it");
-          /*  
-           SignUp pageSignUp = new SignUp();
-           pageSignUp.setVisible(true); 
-           */
-        }
-        
+         
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
         if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
         if(SnapLink == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
@@ -1622,6 +1624,50 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private String[] stateToFullState = {"Alaska", "Alabama", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia",  "Delaware", "Florida", "Georgia", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana",  "Kansas", "Kentucky", "Louisiana", "Massachusetts",  "Maryland", "Maine", "Michigan", "Minnesota", "Missouri",  "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         
+        String inputLine = null; 
+        java.net.URL connectURL;
+        BufferedReader data = null; 
+        try {
+         Properties prop = new Properties();
+	InputStream input1 = null;
+       
+           input1 = new FileInputStream("config.properties");
+       
+        // load a properties file
+		prop.load(input1);
+
+		// get the property value and print it out
+		String tempUsername = prop.getProperty("username");
+                //Check if value
+                connectURL = new URL("https://www.surconsultinggroup.com/finance/submitButton.php?username="+ tempUsername );
+                System.out.println(connectURL);
+                data = new BufferedReader(new InputStreamReader(connectURL.openStream()));
+                    
+                System.out.println(data); 
+                
+                
+                } catch (FileNotFoundException ex) {
+           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (IOException ex) {
+           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+       } 
+        try {
+            inputLine = data.readLine();
+            if (inputLine != null) {
+                System.out.println(inputLine);
+                this.setVisible(false);
+                new Main().setVisible(true);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
+            }
+            data.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         // TODO add your handling code here:
         firstName = this.firstname.getText();
         middleName = this.middlename.getText();
@@ -2411,10 +2457,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
      * @param args the command line arguments
      */ 
     public static void main(String args[]) {
-        
-        Main obj = new Main();
-        Thread tobj = new Thread(obj);
-        tobj.start();
+        //Dont know or remember what this does, prop just trash
+       // Main obj = new Main();
+       // Thread tobj = new Thread(obj);
+       // tobj.start();
         
        // Thread tobj1 = new Thread(obj);
        // tobj1.start();
@@ -2442,10 +2488,67 @@ public class Main extends javax.swing.JFrame implements Runnable{
   /* Create and display the form */
   
    java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                
+            public void run() { 
+                
+                String tempUsername = "";
+                String tempPassword = "";
+            
+                 
+                 
+	Properties prop = new Properties();
+	InputStream input = null;
+ 
+        try {
+
+		input = new FileInputStream("config.properties");
+
+		// load a properties file
+		prop.load(input);
+
+		// get the property value and print it out
+		tempUsername = prop.getProperty("username");
+		tempPassword = prop.getProperty("password"); 
+                new Main().setVisible(true);
+
+	} catch (IOException ex) {
+            
+                
+               if(tempUsername == "" || tempPassword == ""){
+                new Login().setVisible(true);
+                new Main().setVisible(false);
+                     System.out.println("Running Loginthings");
+                } 
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+ 
+            //    if(false){
+                
+        //if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){ 
+        //    System.out.print("we made it");
+            
+       //    SignUp pageSignUp = new SignUp();
+        //   pageSignUp.setVisible(true); 
+          
+//        }
+                
+                
+         //       }
+                
+             //   new Main().setVisible(true);
+                
+                
+                
             System.out.println("Running RUN()");
          
-            new Main().setVisible(true);
+            //new Main().setVisible(true);
            // new Main().setVisible(true);
            //     new NewJFrame().setVisible(true);
             }
@@ -4679,4 +4782,5 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
         JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

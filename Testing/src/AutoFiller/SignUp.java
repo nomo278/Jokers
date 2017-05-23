@@ -11,6 +11,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +24,7 @@ import java.time.Month;
 import java.time.ZoneId;  
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import javax.swing.JFrame;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,6 +34,8 @@ import java.util.Random;
 import java.util.logging.Level;       
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -89,6 +96,7 @@ public class SignUp extends javax.swing.JFrame {
         Okinus = new javax.swing.JToggleButton();
         Progressive = new javax.swing.JToggleButton();
         SubmitButton = new javax.swing.JButton();
+        westCreek = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +152,13 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+        westCreek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/wcf_logo-150.png"))); // NOI18N
+        westCreek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                westCreekActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,27 +168,29 @@ public class SignUp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Crest)
                     .addComponent(Merchant))
-                .addGap(42, 42, 42)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(Acima)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(Snap)
-                        .addContainerGap(20, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(Okinus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                        .addComponent(Progressive)
-                        .addContainerGap(20, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(westCreek)
+                                    .addComponent(Okinus))
+                                .addGap(60, 60, 60)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(16, 16, 16))
+                                    .addComponent(Progressive, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(Acima)
+                                .addGap(60, 60, 60)
+                                .addComponent(Snap)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,9 +207,15 @@ public class SignUp extends javax.swing.JFrame {
                     .addComponent(Okinus, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Progressive)
                     .addComponent(Merchant, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(westCreek)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -283,7 +306,6 @@ public class SignUp extends javax.swing.JFrame {
             WebDriver driver3 = new ChromeDriver();
             driver3.get("https://merchant.snapfinance.com/#/login");
             firstThread.SnapGetLink(driver3);
-             
         }if(odd4S == 1){
             WebDriver driver4 = new ChromeDriver();
             driver4.get("https://directlink.mplease.com/Accessible/Login.aspx?ReturnUrl=%2f");
@@ -296,8 +318,76 @@ public class SignUp extends javax.swing.JFrame {
             WebDriver driver6 = new ChromeDriver();
             driver6.get("https://www.progressivelp.com/rtocp/Login.aspx");
             firstThread.ProgressiveGetLink(driver6); 
+        }if(odd7S == 1){
+            WebDriver driver7 = new ChromeDriver();
+            driver7.get("https://sb7.compass-technologies.com:8158/kwik/kdlogin.pgm?task=logout&clid=122");
+            firstThread.WestCreekGetLink(driver7); 
         }
+        
+        java.net.URL connectURL;
+          try {
+              //name="+ user + "&pass=" + pass
+              String tempString = null;
+              if(CrestLink != ""){
+              tempString += "crest=" + CrestLink;
+              }
+              if(SimpleLink != ""){
+              tempString += "&simple=" + SimpleLink;
+              }
+              if(SnapUsername != ""){
+              tempString += "&snapUser=" + SnapUsername;
+              }
+              if(SnapPassword != ""){
+              tempString += "&snapPass=" + SnapPassword;
+              }
+              if(ProgressiveLink != ""){
+              tempString += "&progressive=" + ProgressiveLink;
+              }
+              if(MerchantsLink != ""){
+              tempString += "&merchants=" + MerchantsLink;
+              }
+              if(OkinusLink != ""){
+              tempString += "&okinus=" + OkinusLink;
+              }
+              if(WestLink != ""){
+              tempString += "&west=" + WestLink;
+              } 
+              if(CrestLink == "" && SimpleLink == "" && SnapUsername == "" && SnapPassword == "" && ProgressiveLink == "" && MerchantsLink == "" && OkinusLink == "" && WestLink  == ""){
+               tempString = null;
+                  new SignUp().setVisible(true);
+              }
+              Properties prop = new Properties();
+	InputStream input = null;
+              input = new FileInputStream("config.properties");
+
+		// load a properties file
+		prop.load(input);
+
+		// get the property value and print it out
+		String tempUsername = prop.getProperty("username");
+		 
+              
+            connectURL = new URL("https://www.surconsultinggroup.com/finance/getlinks.php?"+ tempString + "&username=" + tempUsername );
+            System.out.println(connectURL); 
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception occured");
+        }
+        
+                new Main().setVisible(true);
     }//GEN-LAST:event_SubmitButtonActionPerformed
+
+    private void westCreekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westCreekActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        if(odd7S == 0){
+            westCreek.setBackground(Color.green);
+            odd7S ++;
+        } else if(odd7S == 1){ 
+            westCreek.setBackground(Color.LIGHT_GRAY);
+            odd7S --;
+        }
+    }//GEN-LAST:event_westCreekActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,9 +449,13 @@ public class SignUp extends javax.swing.JFrame {
     public javax.swing.JToggleButton Snap;
     public javax.swing.JButton SubmitButton;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JToggleButton westCreek;
     // End of variables declaration//GEN-END:variables
 
     private void CrestGetLink(WebDriver driver1) {
+        
+        //samawad
+        //
         WebElement CrestLogin = (new WebDriverWait(driver1, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[1]/div[1]/select")));
        WebElement CrestLogin1 = (new WebDriverWait(driver1, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Image144\"]")));
         //Todo username: aboutlastnight pass:123456$
@@ -371,20 +465,70 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     private void AcimaGetLink(WebDriver driver2) {
+       
+       try {
+            WebElement AcimaLink = (new WebDriverWait(driver2, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"main_nav_collapse\"]/ul[1]/li[6]/a/span")));
+            Thread.sleep(1000);
+            driver2.findElement(By.xpath("//*[@id=\"main_nav_collapse\"]/ul[1]/li[6]/a/span")).click();
+            
+            WebElement AcimaLink1 = (new WebDriverWait(driver2, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr[1]/td[1]")));
+            
+                                                       
+            if(driver2.findElements(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr[2]/td[1]")).size() > 0){
+                //Try to see if there is more then one store, if there is more then one store ask user. If there isn't more then on select the first box
+            //Just make a lot of boxes in case they have a bunch of stores
+            
+            String[] options =  new String[11];
+             int i=1; 
+            for(i = 1; i < 10; i++){
+                
+                System.out.println(driver2.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+i+"]/td[1]")).getText());
+                  options[i] = driver2.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+i+"]/td[1]")).getText();
+                 //   if(driver2.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+i+"]/td[1]")).getText()==)
+                 
+                 System.out.println(driver2.findElements(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+(i+1)+"]/td[1]")).size() > 0);
+                 if(!(driver2.findElements(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+(i+1)+"]/td[1]")).size() > 0)){
+                 break;
+                 }
+                 
+                }
+            
+         
+            //Ask user
+         
+        ImageIcon icon = new ImageIcon("AutoFiller/Acimalogo.png"); 
+        // simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
+        String n = (String)JOptionPane.showInputDialog(null, "Which store is this?","Trying to find this?", JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+        System.out.println(n); 
         
+        for(i = 1; i < 10; i++){
+         if(options[i]== n){
+          SimpleLink = driver2.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr["+i+"]/td[3]/a[3]")).getAttribute("href");
+             System.out.println(SimpleLink);
+         }
+        } 
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }else{
+             SimpleLink = driver2.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div/div/div[2]/div/div/div[2]/table/tbody/tr[1]/td[3]/a[3]")).getAttribute("href");
+             
+             System.out.println(SimpleLink);
+            }
+           
+       } catch (InterruptedException ex) {
+           Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+       }
+         
     }
 
     private void SnapGetLink(WebDriver driver3) {
        // WebElement SnapLogin = (new WebDriverWait(driver3, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[1]/div[1]/select")));
        
        System.out.println("This is the snap logins :" + SnapUsername + " :" + SnapPassword );
-         new WebDriverWait(driver3,100000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")));
+         new WebDriverWait(driver3,1000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")));
       
        
-        SnapUsername = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")).getAttribute("innerHTML");
-        SnapPassword = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[2]/input")).getAttribute("innerHTML");
+        SnapUsername = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")).getAttribute("value");
+        SnapPassword = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[2]/input")).getAttribute("value");
        new WebDriverWait(driver3,10000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/div/img")));
         
         System.out.println("This is the snap logins :" + SnapUsername + " :" + SnapPassword );
@@ -396,16 +540,41 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     private void MerchantGetLink(WebDriver driver4) {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void OkinusGetLink(WebDriver driver5) {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void ProgressiveGetLink(WebDriver driver6) {
-        
+        //jokersaudiocorp
+        //leasing1
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    private void WestCreekGetLink(WebDriver driver7) {
+        //navRedir('WCF_APP.PGM?clid=122&pdno=abfgreenville&return=kdlnlist.pgm&fromkdlr=Y','nav3');
+        //https://sb7.compass-technologies.com:8158/kwik/KDMAIN.pgm#
+        //https://sb7.compass-technologies.com:8158/kwik/WCF_APP.PGM?clid=122&pdno=abfgreenville&return=kdlnlist.pgm&fromkdlr=Y
+        String firstHalfLink = "https://sb7.compass-technologies.com:8158/kwik/";
+      try {
+        WebElement WestCreekLink = (new WebDriverWait(driver7, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"nav3\"]")));
+    
+           Thread.sleep(1000);
+         
+        WestLink = driver7.findElement(By.xpath("//*[@id=\"nav3\"]")).getAttribute("onclick");
+        String[] result = WestLink.split("'");
+        
+        WestLink = firstHalfLink + result[1];
+        
+           System.out.println(WestLink);
+       } catch (InterruptedException ex) {
+           Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+       } 
     }
 }

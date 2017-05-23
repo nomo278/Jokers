@@ -16,13 +16,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
 
 /**
  *
  * @author MohammedPC
  */
 public class Login extends javax.swing.JFrame {
+    
+     
 
+    public String user = null;
+    public String pass = null;
+    
     /**
      * Creates new form Login
      */
@@ -136,8 +145,8 @@ public class Login extends javax.swing.JFrame {
         
         // TODO add your handling code here:
         String inputLine = null;
-        String user = username.getText();
-        String pass = password.getText(); 
+         user = username.getText().trim();
+         pass = password.getText().trim(); 
         if ( username.getText().trim().length() == 0 ||password.getText().trim().length() == 0 ){
             JOptionPane.showMessageDialog(null, "Please enter username and password"); 
             return ;
@@ -173,7 +182,7 @@ public class Login extends javax.swing.JFrame {
             if (inputLine != null) {
                 System.out.println(inputLine);
                 this.setVisible(false);
-                new Main().setVisible(true);
+                new SignUp().setVisible(true);
             }
             else
             {
@@ -183,11 +192,40 @@ public class Login extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
+           Properties prop = new Properties();
+	OutputStream output = null;
+        
+        	try {
+
+        output = new FileOutputStream("config.properties");
+
+		// set the properties value
+		prop.setProperty("username", user);
+		prop.setProperty("password", pass);
+		prop.setProperty("ipaddress", "Null");
+
+		// save properties to project root folder
+		prop.store(output, null); 
+                System.out.print("We are saving the to the outfile" + user + "&" + pass);
+	} catch (IOException io) {
+		io.printStackTrace();
+	} finally {
+		if (output != null) {
+			try {
+				output.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+            }
     }//GEN-LAST:event_loginActionPerformed
 
     public String getUsername() {
-        return username.getText().trim();
+        return user;
+    }
+    
+    public String getPassword() {
+        return pass;
     }
 /*
     public String getPassword() {
@@ -256,6 +294,8 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                
                 new Login().setVisible(true);
             }
         });
