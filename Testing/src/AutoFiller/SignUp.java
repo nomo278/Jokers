@@ -315,9 +315,9 @@ public class SignUp extends javax.swing.JFrame {
             driver5.get("https://portal.okinus.com");
             firstThread.OkinusGetLink(driver5); 
         }if(odd6S == 1){
-            WebDriver driver6 = new ChromeDriver();
-            driver6.get("https://www.progressivelp.com/rtocp/Login.aspx");
-            firstThread.ProgressiveGetLink(driver6); 
+            //WebDriver driver6 = new ChromeDriver();
+            //driver6.get("https://www.progressivelp.com/rtocp/Login.aspx");
+            firstThread.ProgressiveGetLink(); 
         }if(odd7S == 1){
             WebDriver driver7 = new ChromeDriver();
             driver7.get("https://sb7.compass-technologies.com:8158/kwik/kdlogin.pgm?task=logout&clid=122");
@@ -327,7 +327,7 @@ public class SignUp extends javax.swing.JFrame {
         java.net.URL connectURL;
           try {
               //name="+ user + "&pass=" + pass
-              String tempString = null;
+              String tempString = "";
               if(CrestLink != ""){
               tempString += "crest=" + CrestLink;
               }
@@ -549,11 +549,20 @@ public class SignUp extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void ProgressiveGetLink(WebDriver driver6) {
+    private void ProgressiveGetLink() {
         //jokersaudiocorp
         //leasing1
+         
+            //Ask user
+         
+        //ImageIcon icon = new ImageIcon("AutoFiller/Acimalogo.png"); 
+        // simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
+        String n = (String)JOptionPane.showInputDialog(null, "What is the approve me link?","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
+        System.out.println(n); 
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProgressiveLink = n;
+        
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
