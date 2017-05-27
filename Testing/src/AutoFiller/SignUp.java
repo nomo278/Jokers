@@ -298,22 +298,27 @@ public class SignUp extends javax.swing.JFrame {
            WebDriver driver1 = new ChromeDriver();
             driver1.get("https://dealers.crestfinancial.com/Login?ReturnUrl=%2f");
             firstThread.CrestGetLink(driver1);
+            driver1.close();
         }if(odd2S == 1){
             WebDriver driver2 = new ChromeDriver();
             driver2.get("https://portal.acimacredit.com/merchant_login");
             firstThread.AcimaGetLink(driver2);
+            driver2.close();
         }if(odd3S == 1){
             WebDriver driver3 = new ChromeDriver();
             driver3.get("https://merchant.snapfinance.com/#/login");
             firstThread.SnapGetLink(driver3);
+            driver3.close();
         }if(odd4S == 1){
             WebDriver driver4 = new ChromeDriver();
             driver4.get("https://directlink.mplease.com/Accessible/Login.aspx?ReturnUrl=%2f");
             firstThread.MerchantGetLink(driver4);
+            driver4.close();
         }if(odd5S == 1){
             WebDriver driver5 = new ChromeDriver();
             driver5.get("https://portal.okinus.com");
             firstThread.OkinusGetLink(driver5); 
+            driver5.close();
         }if(odd6S == 1){
             //WebDriver driver6 = new ChromeDriver();
             //driver6.get("https://www.progressivelp.com/rtocp/Login.aspx");
@@ -322,6 +327,7 @@ public class SignUp extends javax.swing.JFrame {
             WebDriver driver7 = new ChromeDriver();
             driver7.get("https://sb7.compass-technologies.com:8158/kwik/kdlogin.pgm?task=logout&clid=122");
             firstThread.WestCreekGetLink(driver7); 
+            driver7.close();
         }
         
         java.net.URL connectURL;
@@ -455,13 +461,20 @@ public class SignUp extends javax.swing.JFrame {
     private void CrestGetLink(WebDriver driver1) {
         
         //samawad
-        //
-        WebElement CrestLogin = (new WebDriverWait(driver1, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[1]/div[1]/select")));
-       WebElement CrestLogin1 = (new WebDriverWait(driver1, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Image144\"]")));
+        try{
+        //WebElement CrestLogin = (new WebDriverWait(driver1, 10000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[1]/div[1]/select")));
+         WebElement CrestLogin = (new WebDriverWait(driver1, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"Image144\"]")));
+         driver1.findElement(By.xpath("//*[@id=\"Image144\"]")).click();
+         Thread.sleep(1000); 
+        
         //Todo username: aboutlastnight pass:123456$
         
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CrestLink = driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div[3]/div/span")).getText();
+        System.out.println(CrestLink);
+        }catch (InterruptedException ex) {
+         Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void AcimaGetLink(WebDriver driver2) {

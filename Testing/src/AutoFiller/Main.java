@@ -166,7 +166,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
          
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
         if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
-        if(SnapLink == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
+        if(SnapUsername == "" || SnapUsername == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
         if(ProgressiveLink == ""){progressiveEnabled.setVisible(false);}else{progressiveEnabled.setVisible(true);}
         if(OkinusLink == ""){okinusEnabled.setVisible(false);}else{okinusEnabled.setVisible(true);}
         if(MerchantsLink == ""){merchantsEnabled.setVisible(false);}else{merchantsEnabled.setVisible(true);}
