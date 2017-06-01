@@ -295,39 +295,68 @@ public class SignUp extends javax.swing.JFrame {
         this.setVisible(false);
          SignUp firstThread = new SignUp();
         if(odd1S == 1){
+            try{
            WebDriver driver1 = new ChromeDriver();
             driver1.get("https://dealers.crestfinancial.com/Login?ReturnUrl=%2f");
             firstThread.CrestGetLink(driver1);
             driver1.close();
+            }catch (Exception ex) { 
+            System.out.println("Exception occured1");
+        }
         }if(odd2S == 1){
+            try{
             WebDriver driver2 = new ChromeDriver();
             driver2.get("https://portal.acimacredit.com/merchant_login");
             firstThread.AcimaGetLink(driver2);
             driver2.close();
+            }catch (Exception ex) { 
+            System.out.println("Exception occured2");
+        }
         }if(odd3S == 1){
+            try{
             WebDriver driver3 = new ChromeDriver();
             driver3.get("https://merchant.snapfinance.com/#/login");
             firstThread.SnapGetLink(driver3);
             driver3.close();
+            }catch (Exception ex) { 
+            System.out.println("Exception occured3");
+        }
         }if(odd4S == 1){
+            try{
             WebDriver driver4 = new ChromeDriver();
             driver4.get("https://directlink.mplease.com/Accessible/Login.aspx?ReturnUrl=%2f");
             firstThread.MerchantGetLink(driver4);
             driver4.close();
+            }catch (Exception ex) { 
+            System.out.println("Exception occured4");
+        }
         }if(odd5S == 1){
+            try{
             WebDriver driver5 = new ChromeDriver();
             driver5.get("https://portal.okinus.com");
             firstThread.OkinusGetLink(driver5); 
             driver5.close();
+            }catch (Exception ex) { 
+            System.out.println("Exception occured5");
+        }
         }if(odd6S == 1){
+            try{
             //WebDriver driver6 = new ChromeDriver();
             //driver6.get("https://www.progressivelp.com/rtocp/Login.aspx");
             firstThread.ProgressiveGetLink(); 
+            }catch (Exception ex) { 
+            System.out.println("Exception occured6");
+        }
         }if(odd7S == 1){
+         try{
             WebDriver driver7 = new ChromeDriver();
             driver7.get("https://sb7.compass-technologies.com:8158/kwik/kdlogin.pgm?task=logout&clid=122");
             firstThread.WestCreekGetLink(driver7); 
             driver7.close();
+         }catch (Exception ex) { 
+            System.out.println("Exception occured7");
+        }
+         
         }
         
         java.net.URL connectURL;
@@ -377,7 +406,7 @@ public class SignUp extends javax.swing.JFrame {
             System.out.println(connectURL); 
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Exception occured");
+            System.out.println("Exception occured0");
         }
         
                 new Main().setVisible(true);
@@ -554,12 +583,45 @@ public class SignUp extends javax.swing.JFrame {
 
     private void MerchantGetLink(WebDriver driver4) {
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try { 
+        WebElement MerchantLinkElement = new WebDriverWait(driver4,1000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ManageLinkLi\"]/a")));
+       
+           Thread.sleep(1000);
+        if(driver4.findElement(By.xpath("//*[@id=\"sidebar_main_toggle\"]")).isDisplayed()){
+            Thread.sleep(500);
+        driver4.findElement(By.xpath("//*[@id=\"sidebar_main_toggle\"]")).click();
+        }
+        //*[@id="sidebar_main_toggle"]
+        //*[@id="ManageLinkLi"]/a
+        Thread.sleep(500);
+        driver4.findElement(By.xpath("//*[@id=\"ManageLinkLi\"]/a")).click(); 
+      Thread.sleep(500);
+      driver4.findElement(By.xpath("//*[@id=\"GenerateWebsiteLinkLink\"]")).click();
+      Thread.sleep(500);
+      driver4.findElement(By.xpath("//*[@id=\"ManageLinkLi\"]/a")).click();
+      
+         MerchantsLink = driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_LinkDiv\"]")).getAttribute("value");
+         
+      System.out.println("!!@# ");   
+      System.out.println(MerchantsLink);
+       } catch (InterruptedException ex) {
+           Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
+        
     }
 
     private void OkinusGetLink(WebDriver driver5) {
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          //Ask user
+         
+        //ImageIcon icon = new ImageIcon("AutoFiller/Acimalogo.png"); 
+        // simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
+        String O = (String)JOptionPane.showInputDialog(null, "What is the Okinus link?","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
+        System.out.println(O); 
+        
+        OkinusLink = O;
+         
     }
 
     private void ProgressiveGetLink() {
