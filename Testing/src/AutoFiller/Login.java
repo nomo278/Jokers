@@ -202,7 +202,7 @@ public class Login extends javax.swing.JFrame {
 		// set the properties value
 		prop.setProperty("username", user);
 		prop.setProperty("password", pass);
-		prop.setProperty("ipaddress", "Null");
+		prop.setProperty("ipaddress", "Null"); //The ip address needs to be set on login
 
 		// save properties to project root folder
 		prop.store(output, null); 

@@ -163,72 +163,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         this.setVisible(false);
-        
-                String inputLine = null; 
-        java.net.URL connectURL;
-        BufferedReader data = null; 
-        try {
-         Properties prop = new Properties();
-	InputStream input1 = null;
-       
-           input1 = new FileInputStream("config.properties");
-       
-        // load a properties file
-		prop.load(input1);
-
-		// get the property value and print it out
-		String tempUsername = prop.getProperty("username");
-                //Check if value
-                connectURL = new URL("https://www.surconsultinggroup.com/finance/submitButton.php?username="+ tempUsername );
-                System.out.println(connectURL);
-                data = new BufferedReader(new InputStreamReader(connectURL.openStream()));
-                     
-                
-              String tempStringData =org.apache.commons.io.IOUtils.toString(data);
-              
-                System.out.println(tempStringData);
-              String[] tempData = tempStringData.split(":");  
-              
-              for (String t : tempData)
-                System.out.println(t);
-              
-              System.out.println(tempData + "Bullshit");
-            System.out.println(tempData[0]);
-              CrestLink = tempData[0];
-                System.out.println(CrestLink + "Bullshit1");
-            System.out.println(tempData[1]);
-              SimpleLink = tempData[1];
-            System.out.println(tempData[2]);
-              SnapUsername = tempData[2];
-            System.out.println(tempData[3]);
-              SnapPassword = tempData[3];
-            System.out.println(tempData[4]);
-              ProgressiveLink = tempData[4];
-            System.out.println(tempData[5]);
-              MerchantsLink = tempData[5];
-            System.out.println(tempData[6]);
-              OkinusLink = tempData[6];
-            System.out.println(tempData[7]);
-              WestLink = tempData[7]; 
-              
-              
-              
-            data.close();
-            
-            if(tempStringData == null){
-            JOptionPane.showMessageDialog(null, "Houston, We have a problem!! Please call Tech Support!"); 
-            
-            }
-                } catch (FileNotFoundException ex) {
-           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-       } catch (IOException ex) {
-           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-       } 
          
-        System.out.println(CrestLink + " Bucks video");
         if(CrestLink == ""){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);}
         if(SimpleLink == ""){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
-        if(SnapUsername == "" || SnapPassword == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
+        if(SnapUsername == "" || SnapUsername == ""){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
         if(ProgressiveLink == ""){progressiveEnabled.setVisible(false);}else{progressiveEnabled.setVisible(true);}
         if(OkinusLink == ""){okinusEnabled.setVisible(false);}else{okinusEnabled.setVisible(true);}
         if(MerchantsLink == ""){merchantsEnabled.setVisible(false);}else{merchantsEnabled.setVisible(true);}
@@ -1685,7 +1623,55 @@ public class Main extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_ref3ActionPerformed
     private String[] stateToFullState = {"Alaska", "Alabama", "Arkansas", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia",  "Delaware", "Florida", "Georgia", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana",  "Kansas", "Kentucky", "Louisiana", "Massachusetts",  "Maryland", "Maine", "Michigan", "Minnesota", "Missouri",  "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-         
+        
+        String inputLine = null; 
+        java.net.URL connectURL;
+        BufferedReader data = null; 
+        try {
+         Properties prop = new Properties();
+	InputStream input1 = null;
+        
+                String filename = "config.properties";
+    		input1 = Main.class.getClassLoader().getResourceAsStream(filename);
+    		if(input1 ==null){
+    	            System.out.println("Sorry, unable to find " + filename);
+    		    return;
+    		}
+
+        // load a properties file
+		prop.load(input1);
+
+		// get the property value and print it out
+		String tempUsername = prop.getProperty("username");
+                //Check if value
+                connectURL = new URL("https://www.surconsultinggroup.com/finance/submitButton.php?username="+ tempUsername );
+                System.out.println(connectURL);
+                data = new BufferedReader(new InputStreamReader(connectURL.openStream()));
+                    
+                System.out.println(data); 
+                
+                
+                } catch (FileNotFoundException ex) {
+           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (IOException ex) {
+           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+       } 
+        try {
+            inputLine = data.readLine();
+            if (inputLine != null) {
+                System.out.println(inputLine);
+                this.setVisible(false);
+                new Main().setVisible(true);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(null, "Username or Password incorrect. Please try again!!"); 
+            }
+            data.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         // TODO add your handling code here:
         firstName = this.firstname.getText();
@@ -2504,16 +2490,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>.  
-         
   /* Create and display the form */
   
    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() { 
-                
-                 
-        new Main().setVisible(true);
-        
-        /*        
                 
                 String tempUsername = "";
                 String tempPassword = "";
@@ -2524,16 +2504,20 @@ public class Main extends javax.swing.JFrame implements Runnable{
 	InputStream input = null;
  
         try {
-
-		input = new FileInputStream("config.properties");
-
+ 
+                String filename = "config.properties";
+    		input = Main.class.getClassLoader().getResourceAsStream(filename);
+    		if(input==null){
+    	            System.out.println("Sorry, unable to find " + filename);
+    		    return;
+    		}
 		// load a properties file
 		prop.load(input);
 
 		// get the property value and print it out
 		tempUsername = prop.getProperty("username");
 		tempPassword = prop.getProperty("password"); 
-                
+                new Main().setVisible(true);
 
 	} catch (IOException ex) {
             
@@ -2553,7 +2537,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
 			}
 		}
 	}
- */
+ 
             //    if(false){
                 
         //if("".equals(CrestLink) || "".equals(SimpleLink) || "".equals(SnapUsername) || "".equals(SnapPassword) || "".equals(ProgressiveLink) ||  "".equals(MerchantsLink) || "".equals(TempoeLink) ||  "".equals(OkinusLink) || "".equals(WestLink)){ 
@@ -4144,9 +4128,6 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            
            
            driver7.findElement(By.xpath("//*[@id=\"CEENA1\"]")).sendKeys(employerN);
-           
-           
-           
            
            
            driver7.findElement(By.xpath("//*[@id=\"CETITLE\"]")).sendKeys(postHold);

@@ -31,6 +31,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.logging.Level;       
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -393,8 +394,13 @@ public class SignUp extends javax.swing.JFrame {
               }
               Properties prop = new Properties();
 	InputStream input = null;
-              input = new FileInputStream("config.properties");
-
+          
+              	String filename = "config.properties";
+    		input = SignUp.class.getClassLoader().getResourceAsStream(filename);
+    		if(input==null){
+    	            System.out.println("Sorry, unable to find " + filename);
+    		    return;
+    		}
 		// load a properties file
 		prop.load(input);
 
@@ -617,7 +623,7 @@ public class SignUp extends javax.swing.JFrame {
          
         //ImageIcon icon = new ImageIcon("AutoFiller/Acimalogo.png"); 
         // simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
-        String O = (String)JOptionPane.showInputDialog(null, "What is the Okinus link?","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
+        String O = (String)JOptionPane.showInputDialog(null, "<html> What is the<b> Okinus </b> link?","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
         System.out.println(O); 
         
         OkinusLink = O;
@@ -632,7 +638,7 @@ public class SignUp extends javax.swing.JFrame {
          
         //ImageIcon icon = new ImageIcon("AutoFiller/Acimalogo.png"); 
         // simpleEnabled.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
-        String n = (String)JOptionPane.showInputDialog(null, "What is the approve me link?","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
+        String n = (String)JOptionPane.showInputDialog(null, "<html> What is the Progressive <b> approve me link </b>?</html>","Trying to find this?", JOptionPane.QUESTION_MESSAGE);
         System.out.println(n); 
         
         ProgressiveLink = n;
@@ -645,6 +651,7 @@ public class SignUp extends javax.swing.JFrame {
         //navRedir('WCF_APP.PGM?clid=122&pdno=abfgreenville&return=kdlnlist.pgm&fromkdlr=Y','nav3');
         //https://sb7.compass-technologies.com:8158/kwik/KDMAIN.pgm#
         //https://sb7.compass-technologies.com:8158/kwik/WCF_APP.PGM?clid=122&pdno=abfgreenville&return=kdlnlist.pgm&fromkdlr=Y
+        //https://sb7.compass-technologies.com:8158/kwik/wcf_app.pgm?fromweb=y&wdlr=abfgreenville&mdlrl=1
         String firstHalfLink = "https://sb7.compass-technologies.com:8158/kwik/";
       try {
         WebElement WestCreekLink = (new WebDriverWait(driver7, 1000)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"nav3\"]")));
