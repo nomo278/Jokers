@@ -1634,7 +1634,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 String filename = "config.properties";
     		input1 = Main.class.getClassLoader().getResourceAsStream(filename);
     		if(input1 ==null){
-    	            System.out.println("Sorry, unable to find " + filename);
+    	            System.out.println("Sorry, unable to find " + filename + "at " + input1 );
     		    return;
     		}
 
@@ -2508,7 +2508,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 String filename = "config.properties";
     		input = Main.class.getClassLoader().getResourceAsStream(filename);
     		if(input==null){
-    	            System.out.println("Sorry, unable to find " + filename);
+    	             System.out.println("Sorry, unable to find " + filename + "at " + input );
     		    return;
     		}
 		// load a properties file
