@@ -1630,9 +1630,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         try {
          Properties prop = new Properties();
 	InputStream input1 = null;
-       
-           input1 = new FileInputStream("config.properties");
-       
+        
+                String filename = "config.properties";
+    		input1 = Main.class.getClassLoader().getResourceAsStream(filename);
+    		if(input1 ==null){
+    	            System.out.println("Sorry, unable to find " + filename);
+    		    return;
+    		}
+
         // load a properties file
 		prop.load(input1);
 
@@ -2499,9 +2504,13 @@ public class Main extends javax.swing.JFrame implements Runnable{
 	InputStream input = null;
  
         try {
-
-		input = new FileInputStream("config.properties");
-
+ 
+                String filename = "config.properties";
+    		input = Main.class.getClassLoader().getResourceAsStream(filename);
+    		if(input==null){
+    	            System.out.println("Sorry, unable to find " + filename);
+    		    return;
+    		}
 		// load a properties file
 		prop.load(input);
 
@@ -4119,9 +4128,6 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            
            
            driver7.findElement(By.xpath("//*[@id=\"CEENA1\"]")).sendKeys(employerN);
-           
-           
-           
            
            
            driver7.findElement(By.xpath("//*[@id=\"CETITLE\"]")).sendKeys(postHold);
