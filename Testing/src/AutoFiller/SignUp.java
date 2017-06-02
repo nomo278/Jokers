@@ -605,7 +605,7 @@ public class SignUp extends javax.swing.JFrame {
       Thread.sleep(500);
       driver4.findElement(By.xpath("//*[@id=\"GenerateWebsiteLinkLink\"]")).click();
       Thread.sleep(500);
-      driver4.findElement(By.xpath("//*[@id=\"ManageLinkLi\"]/a")).click();
+      driver4.findElement(By.xpath("//*[@id=\"ManageLinkLi\"]/a")).click();  
       
          MerchantsLink = driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_LinkDiv\"]")).getAttribute("value");
          
