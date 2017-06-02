@@ -398,9 +398,10 @@ public class SignUp extends javax.swing.JFrame {
               	String filename = "config.properties";
     		input = SignUp.class.getClassLoader().getResourceAsStream(filename);
     		if(input==null){
-    	              System.out.println("Sorry, unable to find " + filename + "at " + input );
-    		  
-    		    return;
+    	           
+    		  input = new FileInputStream("config.properties");
+                     System.out.println("Sorry, unable to find " + filename + " at " + input );
+    		  // return;
     		}
 		// load a properties file
 		prop.load(input);
@@ -411,12 +412,14 @@ public class SignUp extends javax.swing.JFrame {
               
             connectURL = new URL("https://www.surconsultinggroup.com/finance/getlinks.php?"+ tempString + "&username=" + tempUsername );
             System.out.println(connectURL); 
+            
+            new Main().setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Exception occured0");
         }
         
-                new Main().setVisible(true);
+                
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
     private void westCreekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_westCreekActionPerformed
