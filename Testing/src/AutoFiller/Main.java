@@ -164,14 +164,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         initComponents(); 
         this.setVisible(false);
          CheckUserInfo();
-        if(CrestLink.isEmpty()){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);} 
-        if(SimpleLink.isEmpty()){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
-        if(SnapUsername.isEmpty() || SnapPassword.isEmpty()){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
-        if(ProgressiveLink.isEmpty()){progressiveEnabled.setVisible(false);}else{progressiveEnabled.setVisible(true);}
-        if(OkinusLink.isEmpty()){okinusEnabled.setVisible(false);}else{okinusEnabled.setVisible(true);}
-        if(MerchantsLink.isEmpty()){merchantsEnabled.setVisible(false);}else{merchantsEnabled.setVisible(true);}
-        if(WestLink .isEmpty()){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
-        if(TempoeLink.isEmpty()){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
         
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
@@ -4777,14 +4769,14 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            
               String tempStringData = org.apache.commons.io.IOUtils.toString(data);
                //data.split("\\|", -1);
-              String[] tempData = tempStringData.split(":", -1);  
+              String[] tempData = tempStringData.split(";");  
                
               for(int i = 0; i < tempData.length ; i++){
                   System.out.println("OO " + tempData[i]);
               }
             
             System.out.println(tempData[0]);
-            if(tempData[0] == ""){
+            if(tempData[0] != ""){
               CrestLink = tempData[0];
             System.out.println(CrestLink + "Bullshit1");
             }
@@ -4817,6 +4809,17 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
               WestLink = tempData[7]; 
             }  
             //data.close();
+            
+            
+            if(CrestLink.isEmpty()){crestEnabled.setVisible(false);}else{crestEnabled.setVisible(true);} 
+        if(SimpleLink.isEmpty()){simpleEnabled.setVisible(false);}else{simpleEnabled.setVisible(true);}
+        if(SnapUsername.isEmpty() || SnapPassword.isEmpty()){snapEnabled.setVisible(false);}else{snapEnabled.setVisible(true);}
+        if(ProgressiveLink.isEmpty()){progressiveEnabled.setVisible(false);}else{progressiveEnabled.setVisible(true);}
+        if(OkinusLink.isEmpty()){okinusEnabled.setVisible(false);}else{okinusEnabled.setVisible(true);}
+        if(MerchantsLink.isEmpty()){merchantsEnabled.setVisible(false);}else{merchantsEnabled.setVisible(true);}
+        if(WestLink .isEmpty()){westEnabled.setVisible(false);}else{westEnabled.setVisible(true);}
+        if(TempoeLink.isEmpty()){tempoeEnabled.setVisible(false);}else{tempoeEnabled.setVisible(true);}
+        
             
             if(tempStringData == null){
             JOptionPane.showMessageDialog(null, "Houston, We have a problem!! Please call Tech Support!"); 

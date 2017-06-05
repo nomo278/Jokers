@@ -507,9 +507,11 @@ public class SignUp extends javax.swing.JFrame {
          Thread.sleep(1000); 
         
         //Todo username: aboutlastnight pass:123456$
-        
-        
-        CrestLink = driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div[3]/div/span")).getText();
+        if(driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div[3]/div/span")).isDisplayed()){
+           CrestLink = driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/div/span")).getText();
+        }else{        
+        CrestLink = driver1.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/div/span")).getText();
+        }
         System.out.println(CrestLink);
         }catch (InterruptedException ex) {
          Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -578,16 +580,23 @@ public class SignUp extends javax.swing.JFrame {
        System.out.println("This is the snap logins :" + SnapUsername + " :" + SnapPassword );
          new WebDriverWait(driver3,1000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")));
       
-       
+       while(true){
+            System.out.print(SnapUsername + " " + SnapPassword);
         SnapUsername = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[1]/input")).getAttribute("value");
         SnapPassword = driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/form/div[2]/input")).getAttribute("value");
-       new WebDriverWait(driver3,10000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/div/img")));
-        
+        System.out.println(SnapUsername + " 1" + SnapPassword);
+        if(driver3.findElement(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/div/img")).isDisplayed()){
+        break;
+        }
+      
+       }
+        //new WebDriverWait(driver3,10000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login\"]/div/div/div/div/div/div/div[2]/div/div[1]/div/img")));
         System.out.println("This is the snap logins :" + SnapUsername + " :" + SnapPassword );
         if(SnapUsername == "" || SnapPassword == ""){
         SnapGetLink(driver3);
         
         }
+        
         
     }
 
