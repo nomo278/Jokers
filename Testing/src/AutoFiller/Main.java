@@ -47,6 +47,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 /**
  *
  * @author MohammedPC
@@ -125,7 +126,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static boolean uRent;
    public static boolean uOwn;   
    public static String employerState;
-   public static boolean ProgressBar = false;
+   public static boolean ProgressBar = true;
    
    public static int odd1 = 0;
    public static int odd2 = 0;
@@ -152,6 +153,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String OkinusLink = "";
    public static String WestLink = "";
    
+   private static final String ACCESS_TOKEN = "<ACCESS TOKEN>";
+   
 
  
    public int toggleLang = 0;
@@ -163,7 +166,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         Login newLogin = new Login();
         initComponents(); 
         this.setVisible(false);
-         CheckUserInfo();
+        CheckUserInfo();
         
        debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
@@ -1506,8 +1509,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
         streetaddress.setText("25 Park Pl");
         city.setText("Atlanta");
         states.setSelectedIndex(10);
-        
-        
         zip.setText("30303");
         // addyears.setText(getRandomYear());
         // addmonths.setText(getRandomMonth());
@@ -1722,17 +1723,15 @@ public class Main extends javax.swing.JFrame implements Runnable{
         if(ProgressBar){
            this.setVisible(false);
            new Results().setVisible(true);
-        }
-          
-        Results value = new Results();
-         
+           Results value = new Results();
+         }
         Main firstThread = new Main();
         //Crest
         
         if(crestEnabled.isSelected()){
             WebDriver driver = new ChromeDriver();
             driver.get(CrestLink);
-            value.setValueCR(10);
+            //value.setValueCR(10);
             firstThread.CrestFinance(driver);
         }
         
@@ -1932,11 +1931,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
     private void progressiveEnabledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressiveEnabledActionPerformed
         // TODO add your handling code here:
         if(odd4 == 0){
-        progressiveEnabled.setBackground(Color.green);
-        odd4 ++; 
+            progressiveEnabled.setBackground(Color.green);
+            odd4 ++; 
         } else if(odd4 == 1){
-        progressiveEnabled.setBackground(Color.LIGHT_GRAY);
-        odd4 --;
+            progressiveEnabled.setBackground(Color.LIGHT_GRAY);
+            odd4 --;
         } 
     }//GEN-LAST:event_progressiveEnabledActionPerformed
 
@@ -1960,7 +1959,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         // TODO add your handling code here:
          // TODO add your handling code here:
         if(toggleLang == 0){
-            LangToggle.setText("Spanish");
+            LangToggle.setText("English");
             jLabel9.setText("Nombre De Pila");
             jLabel10.setText("Segundo Nombre");
             jLabel11.setText("Apellido");
@@ -2013,9 +2012,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             jLabel52.setText("Próximo día de pago"); 
             
             
-        toggleLang ++; 
+            toggleLang ++; 
         } else if(toggleLang == 1){
-              LangToggle.setText("English");
+            LangToggle.setText("Spanish");
             jLabel9.setText("First Name");
             jLabel10.setText("Middle Name");
             jLabel11.setText("Last Name");
@@ -2067,7 +2066,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
             jLabel51.setText("Last Payday");
             jLabel52.setText("Next Payday "); 
             
-        toggleLang --;
+            toggleLang --;
         } 
     }//GEN-LAST:event_LangToggleActionPerformed
 
@@ -2078,7 +2077,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             simpleEnabled.setBackground(Color.green);
             odd2 ++;
         } else if(odd2 == 1){
-
             simpleEnabled.setBackground(Color.LIGHT_GRAY);
             odd2 --;
         }
@@ -2090,7 +2088,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             westEnabled.setBackground(Color.green);
             odd8 ++;
         } else if(odd8 == 1){
-
             westEnabled.setBackground(Color.LIGHT_GRAY);
             odd8 --;
         }
@@ -2102,7 +2099,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             snapEnabled.setBackground(Color.green);
             odd3 ++;
         } else if(odd3 == 1){
-
             snapEnabled.setBackground(Color.LIGHT_GRAY);
             odd3 --;
         }
@@ -2125,7 +2121,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             okinusEnabled.setBackground(Color.green);
             odd5 ++;
         } else if(odd5 == 1){
-
             okinusEnabled.setBackground(Color.LIGHT_GRAY);
             odd5 --;
         }
@@ -2148,7 +2143,6 @@ public class Main extends javax.swing.JFrame implements Runnable{
             crestEnabled.setBackground(Color.green);
             odd1 ++;
         } else if(odd1 == 1){
-
             crestEnabled.setBackground(Color.LIGHT_GRAY);
             odd1 --;
         }
@@ -2441,11 +2435,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
                 
                 String tempUsername = "";
                 String tempPassword = "";
-            
-                 
-                 
-	Properties prop = new Properties();
-	InputStream input = null;
+                Properties prop = new Properties();
+                InputStream input = null;
  
         try {
  
@@ -2674,7 +2665,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         try{
             if(ProgressBar){
-           driver.manage().window().setPosition(new Point(-2000, 0));
+             driver.manage().window().setPosition(new Point(-2000, 0));
             }
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
@@ -3816,9 +3807,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            
        
            if(ProgressBar){
-                System.out.println("Element 123123 "); 
            driver6.manage().window().setPosition(new Point(-2000, 0));
-           System.out.println("Element 321321 ");
            }
            int tempIncome = 0;           
            
@@ -4028,7 +4017,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
       private void WestCreekFinance(WebDriver driver7) {
        try {
              if(ProgressBar){
-           driver7.manage().window().setPosition(new Point(-2000, 0));
+                driver7.manage().window().setPosition(new Point(-2000, 0));
             }
            /*
            driver7.findElement(By.xpath("//*[@id=\"PDNO\"]")).sendKeys("abfgreenville");
@@ -4737,6 +4726,9 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
 
     private void CheckUserInfo() {
         
+       // AutoUpdate("","");
+        
+        
         String inputLine = null; 
         java.net.URL connectURL;
         BufferedReader data = null; 
@@ -4833,6 +4825,79 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
        } 
           
+    }
+    
+    private void AutoUpdate () throws FileNotFoundException, IOException
+    {
+    /*
+     // Create Dropbox client
+        DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
+        DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+
+        // Get current account info
+        FullAccount account = client.users().getCurrentAccount();
+        System.out.println(account.getName().getDisplayName());
+
+        // Get files and folder metadata from Dropbox root directory
+        ListFolderResult result = client.files().listFolder("");
+        while (true) {
+            for (Metadata metadata : result.getEntries()) {
+                System.out.println(metadata.getPathLower());
+            }
+
+            if (!result.getHasMore()) {
+                break;
+            }
+
+            result = client.files().listFolderContinue(result.getCursor());
+        }
+
+        // Upload "test.txt" to Dropbox
+        try (InputStream in = new FileInputStream("test.txt")) {
+            FileMetadata metadata = client.files().uploadBuilder("/test.txt")
+                .uploadAndFinish(in);
+        }
+    } 
+        DropboxDownloadPathTo = NameOfNewApplication;
+        DropboxDownloadPathFrom = downloadPathFrom;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), "Download file ...", Toast.LENGTH_SHORT).show();
+                Thread th = new Thread(new Runnable() {
+                    public void run() {
+                        File file = new File(DropboxDownloadPathTo + DropboxDownloadPathFrom.substring(DropboxDownloadPathFrom.lastIndexOf('.')));
+                        if (file.exists()) file.delete();
+                        try {
+                            FileOutputStream outputStream = new FileOutputStream(file);
+                            main.dropboxAPI.getFile(DropboxDownloadPathFrom, null, outputStream, null);
+                            getMain().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "File successfully downloaded.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        if(file.exists())
+                        {
+                            while (file.length() == 0)
+                            {
+                                try {Thread.sleep(100);} catch (InterruptedException e) {e.printStackTrace();}
+                            }
+
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }
+                });
+                th.start();
+            }
+        });*/
+        
     }
 
 }
