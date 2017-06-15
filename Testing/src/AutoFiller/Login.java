@@ -31,7 +31,7 @@ public class Login extends javax.swing.JFrame {
 
     public String user = null;
     public String pass = null;
-    
+    public String[] TempLine;
     /**
      * Creates new form Login
      */
@@ -179,6 +179,13 @@ public class Login extends javax.swing.JFrame {
         }
         try {
             inputLine = data.readLine();
+            TempLine = inputLine.split("\\s+");
+            System.out.println("This is the TempLine output" + TempLine[0]+ TempLine[1]+ TempLine[2]);
+            if(TempLine[0] == user && TempLine[1] == pass){
+            
+                this.setVisible(false);
+                new SignUp().setVisible(true);
+            }
             if (inputLine != null) {
                 System.out.println(inputLine);
                 this.setVisible(false);
@@ -202,7 +209,7 @@ public class Login extends javax.swing.JFrame {
 		// set the properties value
 		prop.setProperty("username", user);
 		prop.setProperty("password", pass);
-		prop.setProperty("ipaddress", "Null"); //The ip address needs to be set on login
+		prop.setProperty("ipaddress", TempLine[2]); //The ip address needs to be set on login
 
 		// save properties to project root folder
 		prop.store(output, null); 
