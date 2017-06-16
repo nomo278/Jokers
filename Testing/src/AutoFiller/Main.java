@@ -126,7 +126,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static boolean uRent;
    public static boolean uOwn;   
    public static String employerState;
-   public static boolean ProgressBar = true;
+   public static boolean ProgressBar = false;
    
    public static int odd1 = 0;
    public static int odd2 = 0;

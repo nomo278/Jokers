@@ -398,7 +398,7 @@ public class SignUp extends javax.swing.JFrame {
           
               	String filename = "config.properties";
     		input = SignUp.class.getClassLoader().getResourceAsStream(filename);
-    		if(input==null){
+    		if(input == null){
     	           
     		  input = new FileInputStream("config.properties");
                      System.out.println("Sorry, unable to find " + filename + " at " + input );
