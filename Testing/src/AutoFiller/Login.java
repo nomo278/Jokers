@@ -181,15 +181,17 @@ public class Login extends javax.swing.JFrame {
             inputLine = data.readLine();
             TempLine = inputLine.split("\\s+");
             System.out.println("This is the TempLine output" + TempLine[0]+ TempLine[1]+ TempLine[2]);
-            if(TempLine[0] == user && TempLine[1] == pass){
-            
+           
+            /*if(TempLine[0] == user && TempLine[1] == pass){
+            TODO: Huge problem signin not cross checking username and password! Need to fix asap
                 this.setVisible(false);
                 new SignUp().setVisible(true);
-            }
+            }*/
             if (inputLine != null) {
-                System.out.println(inputLine);
-                this.setVisible(false);
+                System.out.println(inputLine); 
+                 this.setVisible(false);
                 new SignUp().setVisible(true);
+                //JOptionPane.showMessageDialog(null, "Please put a valid username and password!"); 
             }
             else
             {
