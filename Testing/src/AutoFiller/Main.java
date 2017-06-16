@@ -1721,8 +1721,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
            //TODO: Progressive flip
            
         if(ProgressBar){
+         
            this.setVisible(false);
-           new Results().setVisible(true);
+              new Results().setVisible(true);
            Results value = new Results();
          }
         Main firstThread = new Main();
@@ -2667,6 +2668,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
             if(ProgressBar){
              driver.manage().window().setPosition(new Point(-2000, 0));
             }
+            
+        Results.BarValue = 0;
+        
         Select dropdown = null;
         driver.findElement(By.id("FirstName")).sendKeys(firstName);
         driver.findElement(By.id("LastName")).sendKeys(lastName);
@@ -2679,6 +2683,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
            Thread.sleep(100);
            driver.findElement(By.xpath("//*[@id='DateOfBirth']")).sendKeys(dOb);
         }
+         Results.BarValue = 15;
         //driver.findElement(By.id("SocialSecurityNumber")).sendKeys(ssN);
         SetText(driver,"//*[@id='SocialSecurityNumber']",ssN,true);
         //driver.findElement(By.id("PrimaryPhone")).sendKeys(phoneN1);
