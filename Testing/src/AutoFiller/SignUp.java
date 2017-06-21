@@ -99,6 +99,7 @@ public class SignUp extends javax.swing.JFrame {
         Progressive = new javax.swing.JToggleButton();
         SubmitButton = new javax.swing.JButton();
         westCreek = new javax.swing.JToggleButton();
+        SkipSignup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,38 +162,48 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+        SkipSignup.setForeground(new java.awt.Color(51, 51, 255));
+        SkipSignup.setText("<html><u>Skip</u></html>");
+        SkipSignup.setToolTipText("");
+        SkipSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SkipSignupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Crest)
-                    .addComponent(Merchant))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Crest)
+                            .addComponent(Merchant)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(SkipSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(westCreek)
-                                    .addComponent(Okinus))
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(16, 16, 16))
-                                    .addComponent(Progressive, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(Acima)
-                                .addGap(60, 60, 60)
-                                .addComponent(Snap)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(westCreek)
+                                .addComponent(Okinus))
+                            .addGap(60, 60, 60)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(16, 16, 16))
+                                .addComponent(Progressive, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Acima)
+                            .addGap(60, 60, 60)
+                            .addComponent(Snap))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +227,9 @@ public class SignUp extends javax.swing.JFrame {
                         .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(westCreek)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(SkipSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(westCreek))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -389,10 +402,12 @@ public class SignUp extends javax.swing.JFrame {
               if(WestLink != ""){
               tempString += "&west=" + WestLink;
               } 
+              
+              /*
               if(CrestLink == "" && SimpleLink == "" && SnapUsername == "" && SnapPassword == "" && ProgressiveLink == "" && MerchantsLink == "" && OkinusLink == "" && WestLink  == ""){
                tempString = null;
                   new SignUp().setVisible(true);
-              }
+              }*/
               Properties prop = new Properties();
 	InputStream input = null;
           
@@ -434,6 +449,12 @@ public class SignUp extends javax.swing.JFrame {
             odd7S --;
         }
     }//GEN-LAST:event_westCreekActionPerformed
+
+    private void SkipSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkipSignupActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+         new Main().setVisible(true);
+    }//GEN-LAST:event_SkipSignupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,6 +513,7 @@ public class SignUp extends javax.swing.JFrame {
     public javax.swing.JToggleButton Merchant;
     public javax.swing.JToggleButton Okinus;
     public javax.swing.JToggleButton Progressive;
+    private javax.swing.JButton SkipSignup;
     public javax.swing.JToggleButton Snap;
     public javax.swing.JButton SubmitButton;
     private javax.swing.JLabel jLabel1;

@@ -11,6 +11,7 @@ import static AutoFiller.Main.OkinusLink;
 import static AutoFiller.Main.ProgressiveLink;
 import static AutoFiller.Main.SimpleLink;
 import static AutoFiller.Main.SnapLink;
+import static AutoFiller.Main.SnapUsername;
 import static AutoFiller.Main.TempoeLink;
 import static AutoFiller.Main.WestLink;
 import java.awt.Color;
@@ -28,10 +29,7 @@ public class Results extends javax.swing.JFrame {
      * Creates new form Results
      */
     
-    public static int  BarValue = 100; 
-    private WebDriver driver;
-    private WebDriver driver1;
-    private WebDriver driver2;
+    public static int  BarValue = 100;  
     
     public Results() {
         initComponents(); 
@@ -41,7 +39,7 @@ public class Results extends javax.swing.JFrame {
         setValueCR(100);
         setValueOK(100);
         setValuePR(100);
-        errorButton.setVisible(false);
+        
     }
 
     /**
@@ -85,7 +83,7 @@ public class Results extends javax.swing.JFrame {
 
         jProgressBar1.setStringPainted(true);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Simple.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AutoFiller/Acimalogo.png"))); // NOI18N
 
         jProgressBar2.setStringPainted(true);
 
@@ -303,20 +301,22 @@ public class Results extends javax.swing.JFrame {
     private void errorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        Main.openErrorCS(driver);
+       // Main.driver.manage().window().maximize();
+       // Main.openErrorCS();
+       // Main.openErrorCS(driver);
         
     }//GEN-LAST:event_errorButtonActionPerformed
 
     private void errorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton1ActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-        Main.openErrorCS(driver1);
+       // Main.openErrorCS(driver1);
     }//GEN-LAST:event_errorButton1ActionPerformed
 
     private void errorButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton2ActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-        Main.openErrorCS(driver2);
+       // Main.openErrorCS(driver2);
     }//GEN-LAST:event_errorButton2ActionPerformed
 
     private void errorButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButton3ActionPerformed
@@ -367,55 +367,34 @@ public class Results extends javax.swing.JFrame {
     
     public void SetVisiable(){
         
-     if(CrestLink == ""){
+     if(CrestLink.isEmpty()){
          jLabel2.setVisible(false);
          jProgressBar1.setVisible(false);
-     }else{
-         jLabel2.setVisible(true);
-         jProgressBar1.setVisible(true);
      }
-        if(SimpleLink == ""){
-            jLabel3.setVisible(false);
-            jProgressBar2.setVisible(false);
-        }else{
-            jLabel3.setVisible(true);
-        jProgressBar2.setVisible(true);
-        }
-        if(SnapLink == ""){
-            jLabel7.setVisible(false);
+        if(SimpleLink.isEmpty()){
+             jLabel3.setVisible(false);
+        jProgressBar2.setVisible(false);
+        } 
+        if(SnapUsername.isEmpty()){
+           jLabel7.setVisible(false);
             jProgressBar6.setVisible(false);
-        }else{
-            jLabel7.setVisible(true);
-            jProgressBar6.setVisible(true);
-        }
-        if(ProgressiveLink == ""){
+        } 
+        if(ProgressiveLink.isEmpty()){
             jLabel4.setVisible(false);
             jProgressBar3.setVisible(false);
-        }else{
-            jLabel4.setVisible(true);
-            jProgressBar3.setVisible(true);
         }
-        if(OkinusLink == ""){
-            jLabel5.setVisible(false);
+        if(OkinusLink.isEmpty()){
+          jLabel5.setVisible(false);
             jProgressBar4.setVisible(false);
-        }else{
-            jLabel5.setVisible(true);
-            jProgressBar4.setVisible(true);
-        }
-        if(MerchantsLink == ""){
-            jLabel6.setVisible(false);
+        } 
+        if(MerchantsLink.isEmpty()){
+           jLabel6.setVisible(false);
             jProgressBar5.setVisible(false);
-        }else{
-            jLabel7.setVisible(true);
-            jProgressBar5.setVisible(true);
-        }
-        if(WestLink == ""){
+        } 
+        if(WestLink.isEmpty()){
             jLabel8.setVisible(false);
             jProgressBar7.setVisible(false);
-        }else{
-            jLabel8.setVisible(true);
-            jProgressBar7.setVisible(true);
-        }
+        } 
         //if(TempoeLink == ""){jLabel3.setVisible(false);}else{jLabel3.setVisible(true);}
     }
     
