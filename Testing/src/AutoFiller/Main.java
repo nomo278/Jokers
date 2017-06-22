@@ -4089,15 +4089,15 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             ClickState(driver6 ,stateN);
             
             }catch(Exception e){
-        System.out.println("Element not Found on Okinus  page" + "\n" + e);
+        System.out.println("Element not Found on Okinus  page state" + "\n" + e);
         }
            driver6.findElement(By.xpath("//*[@id='off-app-personal-zip']")).sendKeys(zipN);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-social-sec']")).sendKeys(ssN);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-birthdate']")).sendKeys(dOb);
+           driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-social-sec\"]")).sendKeys(ssN);
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-birthdate\"]")).sendKeys(dOb);
            
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-social-sec']")).click();
+           driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-social-sec\"]")).click();
            Thread.sleep(200);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-driver-lic']")).sendKeys(dlN);
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-driver-lic\"]")).sendKeys(dlN);
            
            
                try{
@@ -4112,6 +4112,10 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
           
            driver6.findElement(By.xpath("//*[@id='off-app-personal-home-phone']")).sendKeys(phoneN1);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-cell-phone']")).sendKeys(phoneN2);
+           
+           SetText(driver6,"//*[@id='off-app-personal-home-phone']",phoneN1,true); 
+           SetText(driver6,"//*[@id='off-app-personal-cell-phone']",phoneN2,true);   
+           
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email']")).sendKeys(emailN);
            driver6.findElement(By.xpath("//*[@id='off-app-personal-email-confirm']")).sendKeys(emailN);
             
@@ -4176,9 +4180,9 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-base-pay']")).sendKeys(tempIncomeString);
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-last-pay']")).sendKeys(recentPay);
            driver6.findElement(By.xpath("//*[@id='off-app-prim-income-yes']")).click();
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-routing']")).sendKeys(routingNumber); 
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-bank-name']")).sendKeys(bankName);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-checking-account']")).sendKeys(accountNumber);
+           driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-routing\"]")).sendKeys(routingNumber); 
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-bank-name\"]")).sendKeys(bankName);
+           driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-checking-account\"]")).sendKeys(accountNumber);
           // Date today = new Date();
            String tempMonthS = "01";
            String tempDayS = "01"; 
@@ -4207,11 +4211,11 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
           
            String tempDate =  tempMonthS + tempDayS + tempYearS;
            System.out.println(tempDate);
-           driver6.findElement(By.id("off-app-personal-date-opened")).sendKeys(tempDate);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-number']")).sendKeys(cardNumber);
-           driver6.findElement(By.xpath("//*[@id='off-app-online-yes']")).click();
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-date-opened\"]")).sendKeys(tempDate);
+           driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-debit-card-number\"]")).sendKeys(cardNumber);
+           driver6.findElement(By.xpath("//*[@id=\"off-app-online-yes\"]")).click();
            Thread.sleep(400);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-bank-name']")).sendKeys(bankName);
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-debit-bank-name\"]")).sendKeys(bankName);
            
            //Decode Card Type by number
            //  VISA("^4[0-9]{12}(?:[0-9]{3})?$"),
@@ -4232,7 +4236,8 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("html/body/ul[6]/li[4]/a")).click();
            }  
             
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-expire-date']")).sendKeys(editExpMonth(expMonth) + "/" + editExpYear(expYear));
+           driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-expire-date']")).sendKeys(editExpYear(expYear));
+           driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-expire-date']")).sendKeys(editExpMonth(expMonth)); 
            driver6.findElement(By.xpath("//*[@id='off-app-personal-debit-card-code']")).sendKeys(cardCode);
            
            
@@ -4414,20 +4419,20 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
          
     }
 
-    public int editExpMonth(String expMonth){
-        if(expMonth == "Jan"){ return 01; 
-        }else if(expMonth == "Feb"){ return 02; 
-        }else if(expMonth == "Mar"){ return 03; 
-        }else if(expMonth == "Apr"){ return 04; 
-        }else if(expMonth == "May"){ return 05; 
-        }else if(expMonth == "Jun"){ return 06; 
-        }else if(expMonth == "Jul"){ return 07;
-        }else if(expMonth == "Aug"){ return 8;
-        }else if(expMonth == "Sep"){ return 9;
-        }else if(expMonth == "Oct"){ return 10;
-        }else if(expMonth == "Nov"){ return 11; 
-        }else if(expMonth == "Dec"){ return 12; }        
-        return 01;
+    public String editExpMonth(String expMonth){
+        if(expMonth == "Jan"){ return "01"; 
+        }else if(expMonth == "Feb"){ return "02"; 
+        }else if(expMonth == "Mar"){ return "03"; 
+        }else if(expMonth == "Apr"){ return "04"; 
+        }else if(expMonth == "May"){ return "05"; 
+        }else if(expMonth == "Jun"){ return "06"; 
+        }else if(expMonth == "Jul"){ return "07";
+        }else if(expMonth == "Aug"){ return "08";
+        }else if(expMonth == "Sep"){ return "09";
+        }else if(expMonth == "Oct"){ return "10";
+        }else if(expMonth == "Nov"){ return "11"; 
+        }else if(expMonth == "Dec"){ return "12"; }        
+        return "01";
     }
             
     public String editExpYear(String expYear){
@@ -4553,111 +4558,111 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
        if(stateK == "Alabama"){
        driver.findElement(By.xpath("/html/body/ul[3]/li[5]/a")).click();
        }else if(stateK == "Alaska"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[6]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[6]/a")).click();
        }else if(stateK == "Arizona"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[7]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[7]/a")).click();
        }else if(stateK == "Arkansas"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[8]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[8]/a")).click();
        }else if(stateK == "California"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[9]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[9]/a")).click();
        }else if(stateK == "Colorado"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[10]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[10]/a")).click();
        }else if(stateK == "Connecticut"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[11]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[11]/a")).click();
        }else if(stateK == "Delaware"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[12]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[12]/a")).click();
        }else if(stateK == "District of Columbia"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[13]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[13]/a")).click();
        }else if(stateK == "Florida"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[14]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[14]/a")).click();
        }else if(stateK == "Georgia"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[15]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[15]/a")).click();
        }else if(stateK == "Hawaii"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[16]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[16]/a")).click();
        }else if(stateK == "Idaho"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[17]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[17]/a")).click();
        }else if(stateK == "Illinois"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[18]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[18]/a")).click();
        }else if(stateK == "Indiana"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[19]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[19]/a")).click();
        }else if(stateK == "Iowa"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[20]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[20]/a")).click();
        }else if(stateK == "Kansas"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[21]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[21]/a")).click();
        }else if(stateK == "Kentucky"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[22]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[22]/a")).click();
        }else if(stateK == "Louisiana"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[23]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[23]/a")).click();
        }else if(stateK == "Maine"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[24]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[24]/a")).click();
        }else if(stateK == "Maryland"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[25]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[25]/a")).click();
        }else if(stateK == "Massachusetts"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[26]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[26]/a")).click();
        }else if(stateK == "Michigan"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[27]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[27]/a")).click();
        }else if(stateK == "Minnesota"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[28]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[28]/a")).click();
        }else if(stateK == "Massachusetts"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[29]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[29]/a")).click();
        }else if(stateK == "Missouri"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[30]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[30]/a")).click();
        }else if(stateK == "Montana"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[31]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[31]/a")).click();
        }else if(stateK == "Nebraska"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[32]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[32]/a")).click();
        }else if(stateK == "Nevada"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[33]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[33]/a")).click();
        }else if(stateK == "New Hampshire"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[34]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[34]/a")).click();
        }else if(stateK == "New Jersey"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[35]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[35]/a")).click();
        }else if(stateK == "New Mexico"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[36]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[36]/a")).click();
        }else if(stateK == "New York"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[37]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[37]/a")).click();
        }else if(stateK == "North Carolina"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[38]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[38]/a")).click();
        }else if(stateK == "North Dakota"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[39]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[39]/a")).click();
        }else if(stateK == "Ohio"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[40]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[40]/a")).click();
        }else if(stateK == "Oklahoma"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[41]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[41]/a")).click();
        }else if(stateK == "Oregon"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[42]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[42]/a")).click();
        }else if(stateK == "Pennsylvania"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[43]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[43]/a")).click();
        }/*else if(stateK == "PR"){
        driver.findElement(By.xpath("html/body/ul[3]/li[44]/a")).click();
        }*/else if(stateK == "Rhode Island"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[45]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[45]/a")).click();
        }else if(stateK == "South Carolina"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[46]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[46]/a")).click();
        }else if(stateK == "South Dakota"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[47]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[47]/a")).click();
        }else if(stateK == "Tennessee"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[48]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[48]/a")).click();
        }else if(stateK == "Texas"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[49]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[49]/a")).click();
        }else if(stateK == "Utah"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[50]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[50]/a")).click();
        }else if(stateK == "Vermont"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[51]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[51]/a")).click();
        }else if(stateK == "Virginia"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[52]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[52]/a")).click();
        }else if(stateK == "Washington"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[53]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[53]/a")).click();
        }else if(stateK == "West Virginia"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[54]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[54]/a")).click();
        }else if(stateK == "Wisconsin"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[55]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[55]/a")).click();
        }else if(stateK == "Wyoming"){
-       driver.findElement(By.xpath("html/body/ul[3]/li[56]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[56]/a")).click();
        }/*else if(stateK == "VI"){
        driver.findElement(By.xpath("html/body/ul[3]/li[57]/a")).click();
        } */else{
-       driver.findElement(By.xpath("html/body/ul[3]/li[15]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[3]/li[15]/a")).click();
        }        
     }
     
