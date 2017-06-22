@@ -73,6 +73,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static int dObM; 
    public static int dObD; 
    public static int dObY; 
+   public static int hireDMonth;
+   public static int hireDYear;
    public static String stateK; 
    public static int stateKMP; 
    public static String dlN;   
@@ -392,6 +394,11 @@ public class Main extends javax.swing.JFrame implements Runnable{
         jLabel43.setText("Hire Date");
 
         hireDateMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        hireDateMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hireDateMonthActionPerformed(evt);
+            }
+        });
 
         hireDateYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000" }));
         hireDateYear.addActionListener(new java.awt.event.ActionListener() {
@@ -1671,6 +1678,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         employerN = this.employer.getText();
         employerPhone = this.employerphone.getText();
         incomeN = this.income.getText();
+        hireDMonth = hireDateMonth.getSelectedIndex();
+        hireDYear = hireDateYear.getSelectedIndex();
         hireD = hireDateMonth.getSelectedItem().toString() + 
                 hireDateYear.getSelectedItem().toString();
         recentPay = lastPaydayMonth.getSelectedItem().toString() +
@@ -2163,6 +2172,10 @@ public class Main extends javax.swing.JFrame implements Runnable{
         uOwn = true;
         uRent = false;
     }//GEN-LAST:event_ownActionPerformed
+
+    private void hireDateMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireDateMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hireDateMonthActionPerformed
     
     Random r = new Random();
     
@@ -2542,8 +2555,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
     public javax.swing.JTextField employer;
     public javax.swing.JTextField employerphone;
     public javax.swing.JTextField firstname;
-    private javax.swing.JComboBox<String> hireDateMonth;
-    private javax.swing.JComboBox<String> hireDateYear;
+    public javax.swing.JComboBox<String> hireDateMonth;
+    public javax.swing.JComboBox<String> hireDateYear;
     public javax.swing.JTextField income;
     private javax.swing.JComboBox<String> incomeType;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -2954,10 +2967,24 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
        // driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_identification_number")).sendKeys(ssN);
         
-       
+      
         SetText(driver1, "//*[@id=\"lease_applications_lease_application_form_applicant_identity_attributes_identification_number\"]", ssN, true);
         //TODO: Date change, day month year
-        driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_identification_number")).sendKeys(dOb);
+        Select dropdownDOBDay = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_day")));
+        dropdownDOBDay.selectByIndex(dObD+1);
+        Select dropdownDOBMonth = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_month")));
+        dropdownDOBMonth.selectByIndex(dObM + 1); 
+        Select dropdownDOBYear = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_year")));
+        dropdownDOBYear.selectByIndex(dObY -17);
+        
+        //driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_information_attributes_date_of_birth_year\"]/option[1]")).click();
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_identification_number")).sendKeys(Integer.toString(dObM));
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_identification_number")).sendKeys(Integer.toString(dObD));
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_identification_number")).sendKeys(Integer.toString(dObY));
+        
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_day")).sendKeys(Integer.toString(dObM));
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_month")).sendKeys(Integer.toString(dObD));
+        //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_date_of_birth_year")).sendKeys(Integer.toString(dObY));
         
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_card_number")).sendKeys(dlN);
          Select dropdownDLState = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_identity_attributes_card_state_code")));
@@ -3109,18 +3136,34 @@ public class Main extends javax.swing.JFrame implements Runnable{
         
         SetText(driver1, "//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number\"]", employerPhone, true);
         //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(employerPhone);
-        WebElement tempSimple = driver1.findElement(By.xpath("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number"));
+        WebElement tempSimple = driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number\"]"));
         tempSimple.sendKeys(Keys.TAB);
         tempSimple.sendKeys(hireDateMonth.getSelectedItem().toString());
         
-        System.out.println("Whyyyyyyyyyyyyyyy WILLLLL i dont know why it is not typing");
-         //driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_month")).sendKeys(hireDateMonth.getSelectedItem().toString());
-         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year")).sendKeys(hireDateYear.getSelectedItem().toString());
-  
+        //System.out.println("Try something wil i dont know why it is not typing");
+        
+        driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_month\"]")).sendKeys(hireDateMonth.getSelectedItem().toString());
+        
+        System.out.println(hireDMonth);
+        System.out.println(hireDYear);
+       int tempM = hireDMonth + 2;
+        int tempY = hireDYear + 2;
+       //*[@id="lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_month"]/option[2]
+       //*[@id="lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year"]/option[2]
+       driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_month")).click();
+       driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_month\"]/option["+ tempM +"]")).click();
+       driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year")).click();
+       driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year\"]/option["+tempY+"]")).click();
+       // Select hireYear = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year")));
+     
+         
+         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
          
         }else if(employmentPayment == "Paychecks from Employer"){
                  Select dropdown = new Select(driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_income_source"))); 
           
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[3]")).click();
          
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(employerN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(employerPhone);
@@ -3129,39 +3172,65 @@ public class Main extends javax.swing.JFrame implements Runnable{
          driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_start_date_year")).sendKeys(hireDateYear.getSelectedItem().toString());
   
          
-        driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[3]")).click();
+        
+        
+         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[3]")).click();
+         
         }else if(employmentPayment == "Self-Employment"){
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[4]")).click();
          driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(employerN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(employerPhone);
         
         
+         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[3]")).click();
+         
         }else if(employmentPayment == "Social Security"){
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[5]")).click();
         
             driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(Main.phoneN1);
+        
+        
+         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
+         
         }else if(employmentPayment == "Long Term Disability"){
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[8]")).click();
         
             driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(Main.phoneN1);
+        
+                 driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
+         
         }else if(employmentPayment == "Military"){
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[7]")).click();
         
             driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(Main.phoneN1);
+        
+                 driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
         }else if(employmentPayment == "Alimony"){
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[9]")).click();
         
             driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(Main.phoneN1);
         
+                 driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
+        
         }else if(employmentPayment == "Retirement"){//TODO: no retirement dropdown on employmentPayment
         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_income_source\"]/option[6]")).click();
         
             driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_name")).sendKeys(ssN);
         driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_source_phone_number")).sendKeys(Main.phoneN1);
+        
+                 driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method")).click();
+         driver1.findElement(By.xpath("//*[@id=\"lease_applications_lease_application_form_applicant_primary_income_attributes_payment_method\"]/option[2]")).click();
+         
         }
         
 
@@ -4016,8 +4085,9 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            driver6.findElement(By.xpath("//*[@id='off-app-personal-city']")).sendKeys(cityN);
            try{
            //State
-            driver6.findElement(By.xpath("//*[@id='offerFormConsol']/section[2]/div/div[1]/div[2]/div[4]/a/span[2]")).click();
+            driver6.findElement(By.xpath("//*[@id=\"offerFormConsol\"]/section[2]/div/div[1]/div[2]/div[5]/a/span[2]")).click();
             ClickState(driver6 ,stateN);
+            
             }catch(Exception e){
         System.out.println("Element not Found on Okinus  page" + "\n" + e);
         }
@@ -4371,7 +4441,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
     
     public void ClickState(WebDriver driver,String stateN){
        if(stateN == "Alabama"){
-       driver.findElement(By.xpath("html/body/ul[2]/li[2]/a")).click();
+       driver.findElement(By.xpath("/html/body/ul[2]/li[2]/a")).click();
        }else if(stateN == "Alaska"){
        driver.findElement(By.xpath("html/body/ul[2]/li[3]/a")).click();
        }else if(stateN == "Arizona"){
