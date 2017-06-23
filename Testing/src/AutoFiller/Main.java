@@ -172,7 +172,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         this.setVisible(false);
         CheckUserInfo();
         
-       debugAutoFill.setVisible(true);  
+       debugAutoFill.setVisible(false);  
        LangToggle.setVisible(true);  
         
     }
@@ -4091,7 +4091,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             }catch(Exception e){
         System.out.println("Element not Found on Okinus  page state" + "\n" + e);
         }
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-zip']")).sendKeys(zipN);
+           driver6.findElement(By.xpath("//*[@id=\"off-app-personal-zip\"]")).sendKeys(zipN);
            driver6.findElement(By.xpath("//*[@id=\"edit-off-app-personal-social-sec\"]")).sendKeys(ssN);
            driver6.findElement(By.xpath("//*[@id=\"off-app-personal-birthdate\"]")).sendKeys(dOb);
            
@@ -4110,8 +4110,8 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
         
            }   
           
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-home-phone']")).sendKeys(phoneN1);
-           driver6.findElement(By.xpath("//*[@id='off-app-personal-cell-phone']")).sendKeys(phoneN2);
+           //driver6.findElement(By.xpath("//*[@id='off-app-personal-home-phone']")).sendKeys(phoneN1);
+          // driver6.findElement(By.xpath("//*[@id='off-app-personal-cell-phone']")).sendKeys(phoneN2);
            
            SetText(driver6,"//*[@id='off-app-personal-home-phone']",phoneN1,true); 
            SetText(driver6,"//*[@id='off-app-personal-cell-phone']",phoneN2,true);   
