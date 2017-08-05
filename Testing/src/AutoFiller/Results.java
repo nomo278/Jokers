@@ -301,8 +301,9 @@ public class Results extends javax.swing.JFrame {
     private void errorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_errorButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-       // Main.driver.manage().window().maximize();
-       // Main.openErrorCS();
+        //Main.openErrorCS(); 
+        //Main.driver.manage().window().maximize();
+        //Main.openErrorCS();
        // Main.openErrorCS(driver);
         
     }//GEN-LAST:event_errorButtonActionPerformed

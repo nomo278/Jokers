@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -154,6 +154,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
    public static String TempoeLink = "";
    public static String OkinusLink = "";
    public static String WestLink = "";
+
+    public void openErrorCS() {
+         
+       //driver.manage().window().maximize();
+    
+    }
    
    public WebDriver driver;
    
@@ -172,7 +178,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         this.setVisible(false);
         CheckUserInfo();
         
-       debugAutoFill.setVisible(false);  
+       debugAutoFill.setVisible(true);  
        LangToggle.setVisible(true);  
         
     }
@@ -920,7 +926,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
+                                .addGap(47, 47, 47)
                                 .addComponent(LangToggle)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -1229,9 +1235,9 @@ public class Main extends javax.swing.JFrame implements Runnable{
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
+                                .addGap(28, 28, 28)
                                 .addComponent(LangToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
+                                .addGap(28, 28, 28)
                                 .addComponent(jLabel2))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
@@ -2403,11 +2409,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
     }
          
-    public void openErrorCS(){
-      
-       driver.manage().window().maximize();
- 
-    }
+    
     
     
     /**
@@ -2443,6 +2445,8 @@ public class Main extends javax.swing.JFrame implements Runnable{
         }
         //</editor-fold>.  
   /* Create and display the form */
+  
+   
   
    java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() { 
@@ -2920,12 +2924,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //do nothing
         }
         
-        //driver.findElement(By.id("form-submit")).sendKeys(Keys.RETURN);
+        driver.findElement(By.id("form-submit")).sendKeys(Keys.RETURN);
         
 
         
         System.out.println("I Typed 1");
         }catch(Exception e){
+            
+            driver.manage().window().maximize();
         System.out.println("Element not Found in Crest Financial: " + e.getMessage());
         
        // Results temp = new Results();
@@ -2934,10 +2940,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
         temp.setValueCR(10);
         openErrorCS(driver);
         }*/
-        }
-         
- 
-        
+        } 
     }
 
    
@@ -3011,13 +3014,12 @@ public class Main extends javax.swing.JFrame implements Runnable{
         //driver1.findElement(By.id("lease_applications_lease_application_form_references_attributes_reference_2_phone_number")).sendKeys(refPhone2);
         SetText(driver1, "//*[@id=\"lease_applications_lease_application_form_references_attributes_reference_2_phone_number\"]", refPhone2, true);
         
-       // driver1.findElement(By.id("lease_applicant_attributes_employer_name")).sendKeys(employerN);
-       // driver1.findElement(By.id("lease_applicant_attributes_employer_phone")).sendKeys(employerPhone);
-
-         
+        
+        
+         //*[@id="lease_applications_lease_application_form_applicant_primary_income_attributes_income_source"]
          if(Pay == "Weekly"){
              
-                     driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_paycheck_net")).sendKeys(incomeN); 
+                     driver1.findElement(By.id("lease_applications_lease_application_form_applicant_primary_income_attributes_income_source")).sendKeys(incomeN); 
         System.out.println(Integer.valueOf(incomeN) / 4);
            int tempIncome = Integer.valueOf(incomeN) / 4;
            System.out.println(tempIncome);
@@ -3253,8 +3255,14 @@ public class Main extends javax.swing.JFrame implements Runnable{
         driver2.findElement(By.name("password")).sendKeys(SnapPassword);
         driver2.findElement(By.id("btn-login")).click();
         
-        WebElement FirstPageSnap = (new WebDriverWait(driver2, 10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
-                
+         WebElement FirstPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
+        
+               Thread.sleep(1500);
+        driver2.findElement(By.xpath("//*[@id=\"appLinkModal\"]/div/button")).click();
+        
+       // WebElement FirstPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"merchPortal\"]/a[3]")));
+                //*[@id="appLinkModal"]/div/button
+          Thread.sleep(500);
         driver2.findElement(By.cssSelector("a.btn.btn-success.pull-right.toolbtns")).click();
         
         WebElement SecondPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"selectSalesPerson\"]/div[2]/div/form/div[2]/div/div[1]/input")));
@@ -3331,6 +3339,16 @@ public class Main extends javax.swing.JFrame implements Runnable{
          driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[11]/div/div/label[1]")).click();
          driver2.findElement(By.xpath("//*[@id=\"personalInfo\"]/div[2]/form/div[2]/div[12]/button")).click();
          
+         //*[@id="emailError"]/div/div[6]/div[2]/button
+          Thread.sleep(2000);
+           driver2.findElement(By.xpath("//*[@id=\"emailError\"]/div/div[6]/div[2]/button")).click();
+         /*
+         if(driver.findElements(By.xpath("//*[@id=\"emailError\"]/div/div[6]/div[2]/button")).size() != 0){
+             
+             System.out.println("This is supposed to show up when the element is there");
+          //WebElement FourthPageSnap = (new WebDriverWait(driver2, 100)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"emailError\"]/div/div[6]/div[2]/button"))); 
+        
+        }*/
            Thread.sleep(4500);
          driver2.findElement(By.xpath("//*[@id=\"bankNumbers\"]/div/div[1]/div/input")).sendKeys(routingNumber);
          driver2.findElement(By.xpath("//*[@id=\"bankNumbers\"]/div/div[2]/input")).sendKeys(accountNumber);
@@ -3400,7 +3418,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
          
          
          Thread.sleep(500);
-         driver2.findElement(By.xpath("//*[@id=\"incomeInfo\"]/div[2]/div[3]/div/div/form/div[3]/div[6]/div[2]/button[1]")).click();
+         driver2.findElement(By.xpath("//*[@id=\"notextmessage\"]]")).click();
          System.out.println("Finished page three snap ");
          Thread.sleep(2500);
         // if(0 != driver2.FindElements(By.cssSelector("a.btn.btn-success.btn-mega")).Count){
@@ -3615,6 +3633,7 @@ public class Main extends javax.swing.JFrame implements Runnable{
        
                   ///driver3.findElement(By.id("submit-app")).click();
           }    catch(Exception e){
+              driver3.manage().window().maximize(); 
         System.out.println("Element not Found on 4th page(Progressive)" + e);
         } 
     }
@@ -3956,9 +3975,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             driver4.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_UC_Step3_pPayFreqSelect_listbox\"]/li[3]")).click();  
             
             }
-             
-             
-             
+              
             System.out.println("Finished Merchants Preferred");
        
         } catch(Exception e){
@@ -4122,7 +4139,9 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
            try{
            driver6.findElement(By.xpath("//*[@id=\"tos_accept\"]")).click(); //Dont know what this is on Okinus
            }catch(Exception e){
-        System.out.println("Element not Found in Crest Financial: " + e.getMessage());
+               
+                     driver6.manage().window().maximize();
+        System.out.println("Element not Found in OKINUS Financial: " + e.getMessage());
         
            }       
            driver6.findElement(By.xpath("//*[@id=\"off-app-prim-income-yes\"]")).click();
@@ -4245,6 +4264,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
           
            
        } catch(Exception e){
+           driver6.manage().window().maximize();
         System.out.println("Element not Found on Okinus  page" + "\n" + e);
         }
     }
@@ -5005,7 +5025,7 @@ driver4.findElement(By.name("ctl00$ContentPlaceHolder1$UC_Step3$pEmpMonthsTextBo
             System.out.println(tempData[0]);
             if(tempData[0] != ""){
               CrestLink = tempData[0];
-            System.out.println(CrestLink + "Bullshit1");
+            System.out.println(CrestLink);
             }
             if(tempData[1] != ""){
             System.out.println(tempData[1]);
